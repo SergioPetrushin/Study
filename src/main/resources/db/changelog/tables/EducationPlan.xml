@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="EducationPlan-001" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <sequenceExists  schemaName="REPOSITORY" sequenceName="EducationPlan_SEQ" />
+            </not>
+        </preConditions>
+        <createSequence schemaName="REPOSITORY" sequenceName="EducationPlan_SEQ" startValue="1" />
+    </changeSet>
+
+    <changeSet id="MESSAGE-002" author="petrushin_ss">
+
+        <preConditions>
+            <not>
+                <tableExists  schemaName="REPOSITORY" tableName="MESSAGE" />
+            </not>
+        </preConditions>
+
+        <createTable  schemaName="REPOSITORY" tableName="PLAN_ID">
+            <column name="PLAN_ID" type="INT" defaultValueSequenceNext="PLAN_ID_SEQ">
+                <constraints primaryKey="true" primaryKeyName="PK-PLAN_ID"/>
+            </column>
+
+            <column name="NAME" type="VARCHAR(256)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DESCRIPTION" type="VARCHAR(256)"/>
+
+            <column name="USER_ID" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

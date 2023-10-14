@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="TEACHERSTUDENTS-001" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <sequenceExists  schemaName="REPOSITORY" sequenceName="TEACHERSTUDENTS_SEQ" />
+            </not>
+        </preConditions>
+        <createSequence schemaName="REPOSITORY" sequenceName="TEACHERSTUDENTS_SEQ" startValue="1" />
+    </changeSet>
+
+    <changeSet id="TEACHERSTUDENTS-002" author="petrushin_ss">
+
+        <preConditions>
+            <not>
+                <tableExists  schemaName="REPOSITORY" tableName="TEACHERSTUDENTS" />
+            </not>
+        </preConditions>
+
+        <createTable  schemaName="REPOSITORY" tableName="TEACHERSTUDENTS">
+            <column name="teacherStudents_ID" type="INT" defaultValueSequenceNext="TEACHERSTUDENTS_SEQ">
+                <constraints primaryKey="true" primaryKeyName="PK-TEACHERSTUDENTS"/>
+            </column>
+
+            <column name="TEACHER_ID" type="INT" defaultValueSequenceNext="TEACHERSTUDENTS_SEQ">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="STUDENT_ID" type="INT" >
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
