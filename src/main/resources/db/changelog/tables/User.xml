@@ -11,7 +11,7 @@
                 <sequenceExists schemaName="REPOSITORY" sequenceName="USER_SEQ"/>
             </not>
         </preConditions>
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_SEQ" startValue="0"/>
+        <createSequence schemaName="REPOSITORY" sequenceName="USER_SEQ" startValue="1"/>
     </changeSet>
 
     <changeSet id="USER-002" author="vyushin_aa">

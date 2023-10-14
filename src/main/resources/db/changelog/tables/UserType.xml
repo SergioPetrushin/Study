@@ -12,7 +12,7 @@
             </not>
         </preConditions>
 
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="0" />
+        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="1" />
 
     </changeSet>
 
