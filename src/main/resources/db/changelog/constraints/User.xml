@@ -21,7 +21,7 @@
 
     </changeSet>
 
-    <changeSet id="USER-001" author="vyushin_aa">
+    <changeSet id="USER-002" author="vyushin_aa">
 
 
         <preConditions>
