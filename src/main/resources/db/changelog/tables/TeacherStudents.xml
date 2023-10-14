@@ -4,34 +4,34 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="TEACHERSTUDENTS-001" author="petrushin_ss">
+    <changeSet id="TEACHER-STUDENTS-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <sequenceExists  schemaName="REPOSITORY" sequenceName="TEACHERSTUDENTS_SEQ" />
+                <sequenceExists  schemaName="REPOSITORY" sequenceName="TEACHER_STUDENTS_SEQ" />
             </not>
         </preConditions>
-        <createSequence schemaName="REPOSITORY" sequenceName="TEACHERSTUDENTS_SEQ" startValue="1" />
+        <createSequence schemaName="REPOSITORY" sequenceName="TEACHER_STUDENTS_SEQ" startValue="1" />
     </changeSet>
 
-    <changeSet id="TEACHERSTUDENTS-002" author="petrushin_ss">
+    <changeSet id="TEACHER-STUDENTS-002" author="petrushin_ss">
 
         <preConditions>
             <not>
-                <tableExists  schemaName="REPOSITORY" tableName="TEACHERSTUDENTS" />
+                <tableExists  schemaName="REPOSITORY" tableName="TEACHER_STUDENTS" />
             </not>
         </preConditions>
 
-        <createTable  schemaName="REPOSITORY" tableName="TEACHERSTUDENTS">
-            <column name="teacherStudents_ID" type="INT" defaultValueSequenceNext="TEACHERSTUDENTS_SEQ">
-                <constraints primaryKey="true" primaryKeyName="PK-TEACHERSTUDENTS"/>
+        <createTable  schemaName="REPOSITORY" tableName="TEACHER_STUDENTS">
+            <column name="TEACHER_STUDENTS_ID" type="INT" defaultValueSequenceNext="TEACHER_STUDENTS_SEQ">
+                <constraints primaryKey="true" primaryKeyName="PK-TEACHER-STUDENTS"/>
             </column>
 
-            <column name="TEACHER_ID" type="INT" defaultValueSequenceNext="TEACHERSTUDENTS_SEQ">
-                <constraints nullable="false" unique="true"/>
+            <column name="TEACHER_ID" type="INT">
+                <constraints nullable="false"/>
             </column>
 
             <column name="STUDENT_ID" type="INT" >
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">

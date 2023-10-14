@@ -7,21 +7,21 @@
     <changeSet id="EducationPlan-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <sequenceExists  schemaName="REPOSITORY" sequenceName="EducationPlan_SEQ" />
+                <sequenceExists  schemaName="REPOSITORY" sequenceName="EDUCATION_PLAN_SEQ" />
             </not>
         </preConditions>
-        <createSequence schemaName="REPOSITORY" sequenceName="EducationPlan_SEQ" startValue="1" />
+        <createSequence schemaName="REPOSITORY" sequenceName="EDUCATION_PLAN_SEQ" startValue="1" />
     </changeSet>
 
-    <changeSet id="MESSAGE-002" author="petrushin_ss">
+    <changeSet id="EDUCATION-PLAN-002" author="petrushin_ss">
 
         <preConditions>
             <not>
-                <tableExists  schemaName="REPOSITORY" tableName="MESSAGE" />
+                <tableExists  schemaName="REPOSITORY" tableName="EDUCATION_PLAN" />
             </not>
         </preConditions>
 
-        <createTable  schemaName="REPOSITORY" tableName="PLAN_ID">
+        <createTable  schemaName="REPOSITORY" tableName="EDUCATION_PLAN">
             <column name="PLAN_ID" type="INT" defaultValueSequenceNext="PLAN_ID_SEQ">
                 <constraints primaryKey="true" primaryKeyName="PK-PLAN_ID"/>
             </column>
@@ -33,7 +33,7 @@
             <column name="DESCRIPTION" type="VARCHAR(256)"/>
 
             <column name="USER_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">

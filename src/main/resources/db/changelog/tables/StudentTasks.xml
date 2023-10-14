@@ -29,7 +29,7 @@
             </column>
 
             <column name="USER_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="TASK_ID" type="INT">
@@ -37,7 +37,7 @@
             </column>
 
             <column name="STATUS_TASK_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="EXPIRIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">

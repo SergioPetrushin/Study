@@ -27,17 +27,17 @@
             </column>
 
             <column name="TO" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="FROM" type="INT" >
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="TEXT" type="VARCHAR(256)"/>
 
             <column name="STATUS_MESSAGE_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
