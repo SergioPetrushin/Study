@@ -27,7 +27,7 @@
             </column>
 
             <column name="PLAN_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="NAME" type="VARCHAR(256)">

@@ -13,7 +13,7 @@
         <createSequence schemaName="REPOSITORY" sequenceName="STUDENT_TASKS_SEQ" startValue="1"/>
     </changeSet>
 
-    <changeSet id="STUDENT-TASKS-001-002" author="petrushin_ss">
+    <changeSet id="STUDENT-TASKS-002" author="petrushin_ss">
 
 
         <preConditions>
@@ -33,7 +33,7 @@
             </column>
 
             <column name="TASK_ID" type="INT">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="STATUS_TASK_ID" type="INT">
