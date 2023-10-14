@@ -4,29 +4,30 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="USER-TYPE-001" author="vyushin_aa">
-
+    <changeSet id="TASK-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <sequenceExists  schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" />
+                <sequenceExists schemaName="REPOSITORY" sequenceName="TASK_SEQ"/>
             </not>
         </preConditions>
-
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="0" />
-
+        <createSequence schemaName="REPOSITORY" sequenceName="TASK_SEQ" startValue="1"/>
     </changeSet>
 
-    <changeSet id="USER-TYPE-002" author="vyushin_aa">
+    <changeSet id="TASK-002" author="petrushin_ss">
 
         <preConditions>
             <not>
-                <tableExists  schemaName="REPOSITORY" tableName="USER_TYPE" />
+                <tableExists  schemaName="REPOSITORY" tableName="TASK" />
             </not>
         </preConditions>
 
-        <createTable  schemaName="REPOSITORY" tableName="USER_TYPE">
-            <column name="USER_TYPE_ID" type="INT" defaultValueSequenceNext="USER_TYPE_SEQ">
-                <constraints primaryKey="true" primaryKeyName="PK-USER_TYPE"/>
+        <createTable  schemaName="REPOSITORY" tableName="TASK">
+            <column name="TASK_ID" type="INT" defaultValueSequenceNext="TASK_SEQ">
+                <constraints primaryKey="true" primaryKeyName="PK-TASK"/>
+            </column>
+
+            <column name="PLAN_ID" type="INT">
+                <constraints nullable="false"/>
             </column>
 
             <column name="NAME" type="VARCHAR(256)">
@@ -47,6 +48,5 @@
 
 
     </changeSet>
-
 
 </databaseChangeLog>

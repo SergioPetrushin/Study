@@ -10,7 +10,7 @@
                 <sequenceExists schemaName="REPOSITORY" sequenceName="USER_STATUS_SEQ"/>
             </not>
         </preConditions>
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_STATUS_SEQ" startValue="1"/>
+        <createSequence schemaName="REPOSITORY" sequenceName="USER_STATUS_SEQ" startValue="0"/>
     </changeSet>
 
     <changeSet id="USER-STATUS-002" author="vyushin_aa">

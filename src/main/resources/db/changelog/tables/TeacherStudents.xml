@@ -4,36 +4,35 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="USER-TYPE-001" author="vyushin_aa">
-
+    <changeSet id="TEACHER-STUDENTS-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <sequenceExists  schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" />
+                <sequenceExists  schemaName="REPOSITORY" sequenceName="TEACHER_STUDENTS_SEQ" />
             </not>
         </preConditions>
-
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="0" />
-
+        <createSequence schemaName="REPOSITORY" sequenceName="TEACHER_STUDENTS_SEQ" startValue="1" />
     </changeSet>
 
-    <changeSet id="USER-TYPE-002" author="vyushin_aa">
+    <changeSet id="TEACHER-STUDENTS-002" author="petrushin_ss">
 
         <preConditions>
             <not>
-                <tableExists  schemaName="REPOSITORY" tableName="USER_TYPE" />
+                <tableExists  schemaName="REPOSITORY" tableName="TEACHER_STUDENTS" />
             </not>
         </preConditions>
 
-        <createTable  schemaName="REPOSITORY" tableName="USER_TYPE">
-            <column name="USER_TYPE_ID" type="INT" defaultValueSequenceNext="USER_TYPE_SEQ">
-                <constraints primaryKey="true" primaryKeyName="PK-USER_TYPE"/>
+        <createTable  schemaName="REPOSITORY" tableName="TEACHER_STUDENTS">
+            <column name="TEACHER_STUDENTS_ID" type="INT" defaultValueSequenceNext="TEACHER_STUDENTS_SEQ">
+                <constraints primaryKey="true" primaryKeyName="PK-TEACHER-STUDENTS"/>
             </column>
 
-            <column name="NAME" type="VARCHAR(256)">
+            <column name="TEACHER_ID" type="INT">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="DESCRIPTION" type="VARCHAR(256)"/>
+            <column name="STUDENT_ID" type="INT" >
+                <constraints nullable="false"/>
+            </column>
 
             <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
@@ -45,8 +44,5 @@
 
         </createTable>
 
-
     </changeSet>
-
-
 </databaseChangeLog>
