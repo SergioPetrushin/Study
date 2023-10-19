@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="TEACHER-STUDENTS-001" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER_STUDENTS-USERS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="TEACHER_STUDENTS" baseColumnNames="TEACHER_ID"
+                                 constraintName="FK-TEACHER_STUDENTS-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="USERS" referencedColumnNames="USER_ID"/>
+    </changeSet>
+
+    <changeSet id="TEACHER-STUDENTS-002" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER_STUDENTS-USER_STATUS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="TEACHER_STUDENTS" baseColumnNames="STUDENT_ID"
+                                 constraintName="FK-TEACHER_STUDENTS-USER_STATUS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="USER_STATUS" referencedColumnNames="USER_STATUS_ID"/>
+    </changeSet>
+</databaseChangeLog>
