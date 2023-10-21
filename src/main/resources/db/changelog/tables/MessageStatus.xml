@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="MESSAGE-STATUS-001" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <sequenceExists schemaName="REPOSITORY" sequenceName="MESSAGE_STATUS_SEQ"/>
+            </not>
+        </preConditions>
+        <createSequence schemaName="REPOSITORY" sequenceName="MESSAGE_STATUS_SEQ" startValue="0"/>
+    </changeSet>
+    <changeSet id="MESSAGE-STATUS-002" author="petrushin_ss">
+
+
+        <preConditions>
+            <not>
+                <tableExists schemaName="REPOSITORY" tableName="MESSAGE_STATUS"/>
+            </not>
+        </preConditions>
+
+
+        <createTable schemaName="REPOSITORY" tableName="MESSAGE_STATUS">
+            <column name="MESSAGE_STATUS_ID" type="INT" defaultValueSequenceNext="MESSAGE_STATUS_SEQ">
+                <constraints primaryKey="true" primaryKeyName="MESSAGE_STATUS_PK"/>
+            </column>
+
+            <column name="NAME" type="VARCHAR(256)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DESCRIPTION" type="VARCHAR(256)"/>
+
+            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
