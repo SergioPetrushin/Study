@@ -36,7 +36,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="STATUS_TASK_ID" type="INT">
+            <column name="TASK_STATUS_ID" type="INT">
                 <constraints nullable="false"/>
             </column>
 

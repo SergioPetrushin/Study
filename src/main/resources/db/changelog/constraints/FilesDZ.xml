@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="FILES_DZ-001" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-FILES_DZ-STUDENT_TASKS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="FILES_DZ" baseColumnNames="STUDENT_TASK_ID"
+                                 constraintName="FK-FILES_DZ-STUDENT_TASKS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="STUDENT_TASKS" referencedColumnNames="STUDENT_TASK_ID"/>
+    </changeSet>
+</databaseChangeLog>

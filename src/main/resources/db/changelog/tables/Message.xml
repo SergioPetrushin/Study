@@ -36,7 +36,7 @@
 
             <column name="TEXT" type="VARCHAR(256)"/>
 
-            <column name="STATUS_MESSAGE_ID" type="INT">
+            <column name="MESSAGE_STATUS_ID" type="INT">
                 <constraints nullable="false"/>
             </column>
 
