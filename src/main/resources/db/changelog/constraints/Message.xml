@@ -7,11 +7,33 @@
     <changeSet id="MESSAGE-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK-MESSAGE-USERS"/>
+                <foreignKeyConstraintExists foreignKeyName="FK-MESSAGE-TO-USERS"/>
             </not>
         </preConditions>
-        <addForeignKeyConstraint baseTableName="MESSAGE" baseColumnNames="STATUS_MESSAGE_ID"
-                                 constraintName="FK-MESSAGE-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
+        <addForeignKeyConstraint baseTableName="MESSAGE" baseColumnNames="TO"
+                                 constraintName="FK-MESSAGE-TO-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
                                  referencedTableName="USERS" referencedColumnNames="USER_ID"/>
+    </changeSet>
+
+    <changeSet id="MESSAGE-002" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-MESSAGE-FROM-USERS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="MESSAGE" baseColumnNames="FROM"
+                                 constraintName="FK-MESSAGE-FROM-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="USERS" referencedColumnNames="USER_ID"/>
+    </changeSet>
+
+    <changeSet id="MESSAGE-003" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-MESSAGE-MESSAGE-STATUS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="MESSAGE" baseColumnNames="MESSAGE_STATUS_ID"
+                                 constraintName="FK-MESSAGE-MESSAGE-STATUS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="MESSAGE_STATUS" referencedColumnNames="MESSAGE_STATUS_ID"/>
     </changeSet>
 </databaseChangeLog>

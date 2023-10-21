@@ -7,22 +7,33 @@
     <changeSet id="STUDENT-TASKS-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK-TASK-EDUCATION_PLAN"/>
+                <foreignKeyConstraintExists foreignKeyName="FK-STUDENT-TASKS-USERS"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseTableName="STUDENT_TASKS" baseColumnNames="USER_ID"
-                                 constraintName="FK-TASK-EDUCATION_PLAN" onUpdate="RESTRICT" onDelete="RESTRICT"
-                                 referencedTableName="EDUCATION_PLAN" referencedColumnNames="USERS"/>
+                                 constraintName="FK-STUDENT-TASKS-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="USERS" referencedColumnNames="USER_ID"/>
     </changeSet>
 
     <changeSet id="STUDENT-TASKS-002" author="petrushin_ss">
         <preConditions>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK-STUDENT_TASKS-TASK"/>
+                <foreignKeyConstraintExists foreignKeyName="FK-STUDENT-TASKS-TASK"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseTableName="STUDENT_TASKS" baseColumnNames="TASK_ID"
-                                 constraintName="FK-STUDENT_TASKS-TASK" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 constraintName="FK-STUDENT-TASKS-TASK" onUpdate="RESTRICT" onDelete="RESTRICT"
                                  referencedTableName="TASK" referencedColumnNames="TASK_ID"/>
+    </changeSet>
+
+    <changeSet id="STUDENT-TASKS-003" author="petrushin_ss">
+        <preConditions>
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK-STUDENT-TASKS-TASK-STATUS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseTableName="STUDENT_TASKS" baseColumnNames="TASK_STATUS_ID"
+                                 constraintName="FK-STUDENT-TASKS-TASK-STATUS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="TASK_STATUS" referencedColumnNames="TASK_STATUS_ID"/>
     </changeSet>
 </databaseChangeLog>

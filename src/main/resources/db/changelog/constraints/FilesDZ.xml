@@ -12,6 +12,6 @@
         </preConditions>
         <addForeignKeyConstraint baseTableName="FILES_DZ" baseColumnNames="STUDENT_TASK_ID"
                                  constraintName="FK-FILES_DZ-STUDENT_TASKS" onUpdate="RESTRICT" onDelete="RESTRICT"
-                                 referencedTableName="STUDENT_TASKS" referencedColumnNames="TASK_ID"/>
+                                 referencedTableName="STUDENT_TASKS" referencedColumnNames="STUDENT_TASK_ID"/>
     </changeSet>
 </databaseChangeLog>

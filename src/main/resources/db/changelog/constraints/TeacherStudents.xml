@@ -7,22 +7,22 @@
     <changeSet id="TEACHER-STUDENTS-001" author="petrushin_ss">
         <preConditions>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER_STUDENTS-USERS"/>
+                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER-STUDENTS-USERS-001"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseTableName="TEACHER_STUDENTS" baseColumnNames="TEACHER_ID"
-                                 constraintName="FK-TEACHER_STUDENTS-USERS" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 constraintName="FK-TEACHER-STUDENTS-USERS-001" onUpdate="RESTRICT" onDelete="RESTRICT"
                                  referencedTableName="USERS" referencedColumnNames="USER_ID"/>
     </changeSet>
 
     <changeSet id="TEACHER-STUDENTS-002" author="petrushin_ss">
         <preConditions>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER_STUDENTS-USER_STATUS"/>
+                <foreignKeyConstraintExists foreignKeyName="FK-TEACHER-STUDENTS-USERS-002"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseTableName="TEACHER_STUDENTS" baseColumnNames="STUDENT_ID"
-                                 constraintName="FK-TEACHER_STUDENTS-USER_STATUS" onUpdate="RESTRICT" onDelete="RESTRICT"
-                                 referencedTableName="USER_STATUS" referencedColumnNames="USER_STATUS_ID"/>
+                                 constraintName="FK-TEACHER-STUDENTS-USERS-002" onUpdate="RESTRICT" onDelete="RESTRICT"
+                                 referencedTableName="USERS" referencedColumnNames="USER_ID"/>
     </changeSet>
 </databaseChangeLog>
