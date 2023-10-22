@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="MessageStatus" author="petrushin_ss">
+
+        <preConditions>
+            <tableIsEmpty schemaName="REPOSITORY" tableName="MESSAGE_STATUS"/>
+        </preConditions>
+
+        <insert schemaName="REPOSITORY" tableName="MESSAGE_STATUS">
+            <column name="NAME" value="MESSAGE_CREATED" />
+            <column name="DESCRIPTION" value="Сообщение создано"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="MESSAGE_STATUS">
+            <column name="NAME" value="MESSAGE_CHANGED" />
+            <column name="DESCRIPTION" value="Сообщение изменено"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="MESSAGE_STATUS">
+            <column name="NAME" value="MESSAGE_DELIVERED" />
+            <column name="DESCRIPTION" value="Сообщение доставлено"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="MESSAGE_STATUS">
+            <column name="NAME" value="MESSAGE_NOT_DELIVERED" />
+            <column name="DESCRIPTION" value="Сообщение не доставлено"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

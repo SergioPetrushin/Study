@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="TaskStatus" author="petrushin_ss">
+
+        <preConditions>
+            <tableIsEmpty schemaName="REPOSITORY" tableName="TASK_STATUS"/>
+        </preConditions>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="TASK_CREATED" />
+            <column name="DESCRIPTION" value="Задание создано"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="TASK_CHANGED" />
+            <column name="DESCRIPTION" value="Задание изменено"/>
+        </insert>
+
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="TASK_ISSUED" />
+            <column name="DESCRIPTION" value="Задание выдано"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="IN_A_STUDENTS_WORK" />
+            <column name="DESCRIPTION" value="В работе у ученика"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="STUDENT_HAS_QUESTIONS" />
+            <column name="DESCRIPTION" value="У ученика возникли вопросы"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="SENT_TO_TEACHER" />
+            <column name="DESCRIPTION" value="Выдано преподавателю"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="TASK_COMPLETED" />
+            <column name="DESCRIPTION" value="Задание выполнено"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="TASK_REJECTED" />
+            <column name="DESCRIPTION" value="Задание отклонено"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

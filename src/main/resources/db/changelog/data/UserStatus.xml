@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="UserStatus" author="petrushin_ss">
+
+        <preConditions>
+            <tableIsEmpty schemaName="REPOSITORY" tableName="USER_STATUS"/>
+        </preConditions>
+
+        <insert schemaName="REPOSITORY" tableName="USER_STATUS">
+            <column name="NAME" value="ACTIVE" />
+            <column name="DESCRIPTION" value="Активен"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="USER_STATUS">
+            <column name="NAME" value="BLOCKED" />
+            <column name="DESCRIPTION" value="Заблокирован"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="USER_STATUS">
+            <column name="NAME" value="ARCHIVED" />
+            <column name="DESCRIPTION" value="В архиве"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
