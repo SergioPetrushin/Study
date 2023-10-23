@@ -11,18 +11,18 @@
         </preConditions>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="TASK_CREATED" />
+            <column name="NAME" value="CREATED" />
             <column name="DESCRIPTION" value="Задание создано"/>
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="TASK_CHANGED" />
+            <column name="NAME" value="CHANGED" />
             <column name="DESCRIPTION" value="Задание изменено"/>
         </insert>
 
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="TASK_ISSUED" />
+            <column name="NAME" value="ISSUED" />
             <column name="DESCRIPTION" value="Задание выдано"/>
         </insert>
 
@@ -42,12 +42,12 @@
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="TASK_COMPLETED" />
+            <column name="NAME" value="COMPLETED" />
             <column name="DESCRIPTION" value="Задание выполнено"/>
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="TASK_REJECTED" />
+            <column name="NAME" value="REJECTED" />
             <column name="DESCRIPTION" value="Задание отклонено"/>
         </insert>
 
