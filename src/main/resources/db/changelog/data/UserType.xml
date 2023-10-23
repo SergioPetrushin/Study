@@ -25,7 +25,5 @@
             <column name="DESCRIPTION" value="Ученик"/>
         </insert>
 
-
-
     </changeSet>
 </databaseChangeLog>
