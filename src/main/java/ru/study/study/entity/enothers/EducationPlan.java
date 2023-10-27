@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @AttributeOverride(name = "id", column = @Column(name = "PLAN_ID"))
 public class EducationPlan extends EntityWithName {
+    //111111111111
     @Serial
     private static final long serialVersionUID = 1L;
     public EducationPlan(long id) {
