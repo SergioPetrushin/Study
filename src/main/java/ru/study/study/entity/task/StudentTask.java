@@ -42,12 +42,9 @@ public class StudentTask extends BaseEntity {
 
 
     @Column(name = "EXPIRIED")
-    private Timestamp exp;
+    private LocalDateTime exp;
 
-    public void setExp(Timestamp exp) {
-        this.exp = exp;
-    }
-
+    
     @Override
     public StudentTask setCreated(LocalDateTime created) {
         this.created = created;
