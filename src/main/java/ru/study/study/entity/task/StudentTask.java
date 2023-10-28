@@ -44,6 +44,12 @@ public class StudentTask extends BaseEntity {
     @Column(name = "EXPIRIED")
     private LocalDateTime exp;
 
+    @Override
+    public StudentTask setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     
     @Override
     public StudentTask setCreated(LocalDateTime created) {
