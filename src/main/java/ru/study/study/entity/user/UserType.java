@@ -8,6 +8,7 @@ import jakarta.persistence.OneToMany;
 import lombok.*;
 import ru.study.study.entity.EntityWithName;
 
+import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @AttributeOverride(name = "id", column = @Column(name = "USER_TYPE_ID"))
 public class UserType extends EntityWithName {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public UserType(long id) {
         this.id = id;
     }
