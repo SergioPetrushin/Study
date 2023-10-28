@@ -3,6 +3,7 @@ package ru.study.study.entity.task;
 import jakarta.persistence.*;
 import lombok.*;
 import ru.study.study.entity.EntityWithName;
+import ru.study.study.entity.enothers.EducationPlan;
 
 import java.time.LocalDateTime;
 

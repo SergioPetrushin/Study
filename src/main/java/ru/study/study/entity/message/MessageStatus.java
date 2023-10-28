@@ -1,56 +1,58 @@
-package ru.study.study.entity.user;
+package ru.study.study.entity.message;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
+import lombok.experimental.Accessors;
 import ru.study.study.entity.EntityWithName;
-
+import ru.study.study.entity.task.Task;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
 
-
-@Entity(name = "USER_STATUS")
+@Entity(name = "MESSAGE_STATUS")
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
-@AttributeOverride(name = "id", column = @Column(name = "USER_STATUS_ID"))
-public class UserStatus extends EntityWithName {
+@AttributeOverride(name = "id", column = @Column(name = "MESSAGE_STATUS_ID"))
+public class MessageStatus extends EntityWithName {
     @Serial
     private static final long serialVersionUID = 1L;
-    public UserStatus(long id) {
+
+    public MessageStatus(long id) {
         this.id = id;
     }
 
     @Override
-    public UserStatus setId(Long id) {
+    public MessageStatus setId(Long id) {
         this.id = id;
         return this;
     }
 
     @Override
-    public UserStatus setCreated(LocalDateTime created) {
+    public MessageStatus setCreated(LocalDateTime created) {
         this.created = created;
         return this;
     }
 
     @Override
-    public UserStatus setModified(LocalDateTime modified) {
+    public MessageStatus setModified(LocalDateTime modified) {
         this.modified = modified;
         return this;
     }
 
     @Override
-    public UserStatus setName(String name) {
+    public MessageStatus setName(String name) {
         this.name = name;
         return this;
     }
 
     @Override
-    public UserStatus setDescription(String description) {
+    public MessageStatus setDescription(String description) {
         this.description = description;
         return this;
     }

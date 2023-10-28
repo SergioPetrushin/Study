@@ -3,7 +3,7 @@ package ru.study.study.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
-import ru.study.study.entity.user.UserType;
+import ru.study.study.entity.task.StudentTask;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
