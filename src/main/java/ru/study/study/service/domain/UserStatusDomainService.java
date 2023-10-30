@@ -3,7 +3,10 @@ package ru.study.study.service.domain;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.entity.user.UserStatus;
+import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
+import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.mapper.userstatus.UserResponseMapper;
+import ru.study.study.mapper.userstatus.UserStatusMapper;
 import ru.study.study.repository.UserStatusRepository;
 
 import java.util.List;
@@ -14,20 +17,23 @@ public class UserStatusDomainService {
 
     private final UserStatusRepository repository;
 
+    private final UserResponseMapper userResponseMapper;
+    private final UserStatusMapper userStatusMapper;
+
 
     @Transactional
-    public void addUserStatus() {
-        repository.save(new UserStatus());
+    public Long addUserStatus(UserStatusAddRequest request) {
+        return repository.save(userStatusMapper.from(request)).getId();
     }
 
     @Transactional
-    public void getUserStatus(Long statusId) {
-        var status1 = repository.getReferenceById(statusId);
+    public UserStatusResponse getUserStatus(Long statusId) {
+        return userResponseMapper.from(repository.getReferenceById(statusId));
     }
 
     @Transactional
-    public void getUserStatusByName(String name) {
-        var status = repository.getUserStatusByName(name);
+    public UserStatusResponse getUserStatusByName(String name) {
+        return userResponseMapper.from(repository.getUserStatusByName(name));
     }
 
     @Transactional
@@ -36,8 +42,8 @@ public class UserStatusDomainService {
     }
 
     @Transactional
-    public List<UserStatus> getAllUserStatus() {
-        return repository.findAll();
+    public List<UserStatusResponse> getAllUserStatus() {
+        return userResponseMapper.from(repository.findAll());
     }
 
 }
