@@ -17,6 +17,8 @@ public class UserController {
     private final UserService service;
 
     private static final String USER_STATUS_ADD = "/api/v1/user-status/add";
+    private static final String USER_STATUS_EDIT = "/api/v1/user-status/edit";
+
 
 
     @PostMapping(
@@ -25,6 +27,15 @@ public class UserController {
             produces = APPLICATION_JSON_VALUE)
     public UserStatusResponse addStatus(@RequestBody UserStatusAddRequest request) {
         return service.addStatus(request);
+    }
+
+
+    @PostMapping(
+            value = USER_STATUS_EDIT,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public UserStatusResponse editStatus(@RequestBody UserStatusAddRequest request) {
+        return service.editStatus(request);
     }
 
 

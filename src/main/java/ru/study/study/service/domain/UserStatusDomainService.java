@@ -7,6 +7,7 @@ import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
 import ru.study.study.dto.response.UserStatusResponse;
 import ru.study.study.mapper.userstatus.UserResponseMapper;
 import ru.study.study.mapper.userstatus.UserStatusMapper;
+import ru.study.study.mapper.userstatus.UserStatusMerger;
 import ru.study.study.repository.UserStatusRepository;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class UserStatusDomainService {
 
     private final UserResponseMapper userResponseMapper;
     private final UserStatusMapper userStatusMapper;
+    private final UserStatusMerger userStatusMerger;
 
 
     @Transactional
@@ -29,6 +31,12 @@ public class UserStatusDomainService {
     @Transactional
     public UserStatusResponse getUserStatus(Long statusId) {
         return userResponseMapper.from(repository.getReferenceById(statusId));
+    }
+
+    @Transactional
+    public Long editUserStatus(UserStatusAddRequest request){
+        var status = repository.getReferenceById(request.getStatusId());
+        return  repository.save(userStatusMerger.merge(status, request)).getId();
     }
 
     @Transactional
