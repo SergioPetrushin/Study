@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
 import ru.study.study.dto.response.UserStatusResponse;
-import ru.study.study.mapper.userstatus.UserResponseMapper;
+import ru.study.study.mapper.userstatus.UserStatusResponseMapper;
 import ru.study.study.mapper.userstatus.UserStatusMapper;
 import ru.study.study.mapper.userstatus.UserStatusMerger;
 import ru.study.study.repository.UserStatusRepository;
@@ -18,7 +18,7 @@ public class UserStatusDomainService {
 
     private final UserStatusRepository repository;
 
-    private final UserResponseMapper userResponseMapper;
+    private final UserStatusResponseMapper userStatusResponseMapper;
     private final UserStatusMapper userStatusMapper;
     private final UserStatusMerger userStatusMerger;
 
@@ -30,7 +30,7 @@ public class UserStatusDomainService {
 
     @Transactional
     public UserStatusResponse getUserStatus(Long statusId) {
-        return userResponseMapper.from(repository.getReferenceById(statusId));
+        return userStatusResponseMapper.from(repository.getReferenceById(statusId));
     }
 
     @Transactional
@@ -41,7 +41,7 @@ public class UserStatusDomainService {
 
     @Transactional
     public UserStatusResponse getUserStatusByName(String name) {
-        return userResponseMapper.from(repository.getUserStatusByName(name));
+        return userStatusResponseMapper.from(repository.getUserStatusByName(name));
     }
 
     @Transactional
@@ -51,7 +51,7 @@ public class UserStatusDomainService {
 
     @Transactional
     public List<UserStatusResponse> getAllUserStatus() {
-        return userResponseMapper.from(repository.findAll());
+        return userStatusResponseMapper.from(repository.findAll());
     }
 
 }

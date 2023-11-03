@@ -8,7 +8,7 @@ import ru.study.study.mapper.Mapper;
 
 @Service
 @RequiredArgsConstructor
-public class UserResponseMapper implements Mapper<UserStatusResponse, UserStatus> {
+public class UserStatusResponseMapper implements Mapper<UserStatusResponse, UserStatus> {
 
     @Override
     public UserStatusResponse from(UserStatus source) {
