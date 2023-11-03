@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
-import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.mapper.userstatus.UserStatusResponseMapper;
 import ru.study.study.mapper.userstatus.UserStatusMapper;
 import ru.study.study.mapper.userstatus.UserStatusMerger;

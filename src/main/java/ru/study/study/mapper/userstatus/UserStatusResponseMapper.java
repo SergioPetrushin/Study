@@ -2,7 +2,7 @@ package ru.study.study.mapper.userstatus;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.entity.user.UserStatus;
 import ru.study.study.mapper.Mapper;
 

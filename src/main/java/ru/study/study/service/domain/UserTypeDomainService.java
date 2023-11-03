@@ -1,20 +1,22 @@
 package ru.study.study.service.domain;
 
 import jakarta.transaction.Transactional;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.entity.user.UserType;
+import ru.study.study.dto.response.usertype.UserTypeResponse;
+import ru.study.study.mapper.usertype.UserTypeResponseMapper;
 import ru.study.study.repository.UserTypeRepository;
 
 @Service
 @RequiredArgsConstructor
 public class UserTypeDomainService {
     private final UserTypeRepository userTypeRepository;
+    private final UserTypeResponseMapper userTypeResponseMapper;
 
     @Transactional
- public UserType getUserType(Long id){
-     return userTypeRepository.getReferenceById(id);
- }
+    public UserTypeResponse getUserType(Long id) {
+
+        return userTypeResponseMapper.from(userTypeRepository.getReferenceById(id));
+    }
 
 }
