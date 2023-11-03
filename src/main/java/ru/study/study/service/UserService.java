@@ -22,6 +22,11 @@ public class UserService {
         return userStatusDomainService.getUserStatus(id);
     }
 
+    public UserStatusResponse editStatus(UserStatusAddRequest request){
+        var id = userStatusDomainService.editUserStatus(request);
+        return userStatusDomainService.getUserStatus(id);
+    }
+
 
 
 
