@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 public class UserStatusAddRequest {
-    private Long statusId; //Пока не нужна
+    private Long statusId; 
     private String name;
     private String description;
 }
