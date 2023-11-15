@@ -13,17 +13,30 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserStatusService {
+
     private final UserStatusDomainService userStatusDomainService;
 
     public UserStatusResponse getUserStatus(UserStatusRequest request) {
         return userStatusDomainService.getUserStatus(request.getStatusId());
-    } //
+    } 
 
     public List<UserStatusResponse> getAllUserStatus() {
         return userStatusDomainService.getAllUserStatus();
     }
 
-    public void deletUserStatus(UserStatusAddRequest request) {
+    public void deleteUserStatus(UserStatusAddRequest request) {
         userStatusDomainService.deleteUserStatus(request.getStatusId());
     }
+
+    public UserStatusResponse addStatus(UserStatusAddRequest request){
+        var id = userStatusDomainService.addUserStatus(request);
+        return userStatusDomainService.getUserStatus(id);
+    }
+
+    public UserStatusResponse editStatus(UserStatusAddRequest request){
+        var id = userStatusDomainService.editUserStatus(request);
+        return userStatusDomainService.getUserStatus(id);
+    }
+
+
 }
