@@ -10,5 +10,5 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 public class UserStatusRequest {
-    private Long statusId;
+    private Long statusId; //
 }

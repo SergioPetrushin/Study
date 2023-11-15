@@ -17,7 +17,7 @@ public class UserStatusService {
 
     public UserStatusResponse getUserStatus(UserStatusRequest request) {
         return userStatusDomainService.getUserStatus(request.getStatusId());
-    }
+    } //
 
     public List<UserStatusResponse> getAllUserStatus() {
         return userStatusDomainService.getAllUserStatus();

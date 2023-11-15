@@ -12,5 +12,5 @@ import lombok.experimental.Accessors;
 public class UserStatusAddRequest {
     private Long statusId;
     private String name;
-    private String description;
+    private String description; //
 }
