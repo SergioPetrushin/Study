@@ -23,6 +23,7 @@ public class UserService {
     }
 
     public UserResponse getUser(UserRequest request) {
+
         return  userDomainService.getUser(request.getUserId());
     }
 }
