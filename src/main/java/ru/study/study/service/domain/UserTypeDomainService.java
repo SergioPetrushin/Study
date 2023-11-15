@@ -18,13 +18,6 @@ public class UserTypeDomainService {
     private final UserTypeResponseMapper userTypeResponseMapper;
     private final UserTypeRequestMapper userTypeRequestMapper;
 
-    //private final UserTypeResponseMapper userTypeResponseMapper;
-
-    //    @Transactional
-//    public UserTypeResponse getUserType(Long id) {
-//
-//        return userTypeResponseMapper.from(userTypeRepository.getReferenceById(id));
-//    }
     @Transactional
     public Long addUserType(UserTypeRequest request) {
         return repository.save(userTypeRequestMapper.from(request)).getId();
@@ -42,8 +35,7 @@ public class UserTypeDomainService {
 
     @Transactional
     public void deleteUserType(Long id) {
-
-        repository.deleteById(id);
+        
     }
 
 }
