@@ -3,8 +3,12 @@ package ru.study.study.service.domain;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.study.study.dto.request.usertype.UserTypeAddRequest;
 import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
+import ru.study.study.entity.user.UserType;
+import ru.study.study.mapper.usertype.UserTypeMapper;
+import ru.study.study.mapper.usertype.UserTypeMerger;
 import ru.study.study.mapper.usertype.UserTypeRequestMapper;
 import ru.study.study.mapper.usertype.UserTypeResponseMapper;
 import ru.study.study.repository.UserTypeRepository;
@@ -17,10 +21,20 @@ public class UserTypeDomainService {
     private final UserTypeRepository repository;
     private final UserTypeResponseMapper userTypeResponseMapper;
     private final UserTypeRequestMapper userTypeRequestMapper;
+    private final UserTypeMapper userTypeMapper;
+    private final UserTypeMerger userTypeMerger;
+
+    public void editUserType(UserTypeAddRequest request) {
+        var type = repository.getReferenceById(request.getTypeId());
+        userTypeMerger.merge(type, request);
+        repository.save(type);
+    }
 
     @Transactional
-    public Long addUserType(UserTypeRequest request) {
-        return repository.save(userTypeRequestMapper.from(request)).getId();
+    public Long addUserType(UserTypeAddRequest request) {
+        UserType userType = userTypeMapper.from(request);
+        Long id = repository.save(userType).getId();
+        return id;
     }
 
     @Transactional
@@ -30,6 +44,7 @@ public class UserTypeDomainService {
 
     @Transactional
     public List<UserTypeResponse> getAllUserType() {
+
         return userTypeResponseMapper.from(repository.findAll());
     }
 

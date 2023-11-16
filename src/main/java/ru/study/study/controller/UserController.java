@@ -23,12 +23,6 @@ public class UserController {
     private final UserService service;
     private static final String USER_ADD = "/api/v1/user/add";
     private static final String USER_GET = "/api/v1/user/get";
-    private static final String USER_TYPE_GET = "/api/v1/user-type/get";
-
-
-
-
-
 
     @PostMapping(
             value = USER_ADD,
@@ -44,14 +38,6 @@ public class UserController {
             produces = APPLICATION_JSON_VALUE)
     public UserResponse getUser(@RequestBody UserRequest request) {
         return service.getUser(request);
-    }
-
-    @PostMapping(
-            value = USER_TYPE_GET,
-            consumes = APPLICATION_JSON_VALUE,
-            produces = APPLICATION_JSON_VALUE)
-    public UserTypeResponse getUserType(@RequestBody UserTypeRequest request){
-        return service.getUserType(request);
     }
 
 }

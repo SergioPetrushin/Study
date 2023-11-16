@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
-import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.UserStatusService;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class UserStatusController {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public List<UserStatusResponse> getAllStatus() {
-        return service.getAllStatus();
+        return service.getAllUserStatus();
     }
 
 

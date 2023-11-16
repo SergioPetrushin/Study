@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
-import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.domain.UserStatusDomainService;
 
 import java.time.LocalDateTime;
@@ -82,7 +82,7 @@ class UserStatusServiceTest {
 
         when(userStatusDomainService.getAllUserStatus()).thenReturn(Collections.singletonList(getUserStatusResponse()));
 
-        var responses = service.getAllStatus();
+        var responses = service.getAllUserStatus();
 
         assertFalse(responses.isEmpty());
 
