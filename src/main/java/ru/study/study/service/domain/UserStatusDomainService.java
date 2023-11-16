@@ -46,11 +46,13 @@ public class UserStatusDomainService {
 
     @Transactional
     public void deleteUserStatus(Long statusId) {
+
         repository.deleteById(statusId);
     }
 
     @Transactional
     public List<UserStatusResponse> getAllUserStatus() {
+
         return userStatusResponseMapper.from(repository.findAll());
     }
 
