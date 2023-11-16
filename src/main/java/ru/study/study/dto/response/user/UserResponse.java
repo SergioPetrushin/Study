@@ -1,9 +1,10 @@
-package ru.study.study.dto.response;
+package ru.study.study.dto.response.user;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 
 @Data
 @ToString

@@ -1,4 +1,4 @@
-package ru.study.study.dto.request.userstatus;
+package ru.study.study.dto.request.usertype;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,8 +9,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class UserStatusAddRequest {
-    private Long statusId; 
+public class UserTypeAddRequest {
+    private Long typeId;
     private String name;
     private String description;
 }

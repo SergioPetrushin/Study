@@ -1,4 +1,4 @@
-package ru.study.study.dto.request.userstatus;
+package ru.study.study.dto.request.task;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -6,11 +6,11 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Data
-@Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class UserStatusAddRequest {
-    private Long statusId; 
+@Accessors(chain = true)
+public class TaskAddRequest {
     private String name;
-    private String description;
+    private Long planId;
+
 }

@@ -1,4 +1,4 @@
-package ru.study.study.dto.response;
+package ru.study.study.dto.response.userstatus;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
