@@ -5,12 +5,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.study.study.dto.request.UserAddRequest;
-import ru.study.study.dto.request.UserRequest;
-import ru.study.study.dto.response.UserResponse;
-import ru.study.study.dto.response.UserStatusResponse;
+import ru.study.study.dto.request.user.UserAddRequest;
+import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.response.user.UserResponse;
+import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.domain.UserDomainService;
-import ru.study.study.service.domain.UserStatusDomainService;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
