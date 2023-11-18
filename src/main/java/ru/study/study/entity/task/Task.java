@@ -2,6 +2,7 @@ package ru.study.study.entity.task;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 import ru.study.study.entity.EntityWithName;
 import ru.study.study.entity.enothers.EducationPlan;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity(name = "TASK")
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true, callSuper = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)

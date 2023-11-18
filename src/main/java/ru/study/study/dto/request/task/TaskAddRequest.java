@@ -6,11 +6,12 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Accessors(chain = true)
 public class TaskAddRequest {
-    private String name;
+    private Long taskId;
     private Long planId;
-
+    private String name;
+    private String description;
 }
