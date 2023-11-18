@@ -60,7 +60,7 @@ public class UserTypeController {
             value = USER_TYPE_EDIT,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
-    public UserTypeResponse deleteUserType(@RequestBody UserTypeAddRequest request) {
+    public UserTypeResponse editUserType(@RequestBody UserTypeAddRequest request) {
         return userTypeService.editUserType(request);
     }
 

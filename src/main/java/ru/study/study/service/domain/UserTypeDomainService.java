@@ -4,7 +4,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.usertype.UserTypeAddRequest;
-import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
 import ru.study.study.entity.user.UserType;
 import ru.study.study.mapper.usertype.UserTypeMapper;
@@ -23,7 +22,7 @@ public class UserTypeDomainService {
     private final UserTypeRequestMapper userTypeRequestMapper;
     private final UserTypeMapper userTypeMapper;
     private final UserTypeMerger userTypeMerger;
-
+    @Transactional
     public void editUserType(UserTypeAddRequest request) {
         var type = repository.getReferenceById(request.getTypeId());
         userTypeMerger.merge(type, request);
@@ -33,8 +32,8 @@ public class UserTypeDomainService {
     @Transactional
     public Long addUserType(UserTypeAddRequest request) {
         UserType userType = userTypeMapper.from(request);
-        Long id = repository.save(userType).getId();
-        return id;
+        return repository.save(userType).getId();
+
     }
 
     @Transactional
@@ -50,7 +49,8 @@ public class UserTypeDomainService {
 
     @Transactional
     public void deleteUserType(Long id) {
-        
+        repository.deleteById(id);
+
     }
 
 }
