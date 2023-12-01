@@ -2,7 +2,7 @@ package ru.study.study.mapper.task;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.dto.response.TaskResponse;
+import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.entity.task.Task;
 import ru.study.study.mapper.Mapper;
 import ru.study.study.mapper.educationplan.EducationPlanResponseMapper;

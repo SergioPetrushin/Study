@@ -29,6 +29,7 @@ public class UserController {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public UserResponse addUser(@RequestBody UserAddRequest request) {
+
         return service.addUser(request);
     }
 
@@ -37,6 +38,7 @@ public class UserController {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public UserResponse getUser(@RequestBody UserRequest request) {
+
         return service.getUser(request);
     }
 
