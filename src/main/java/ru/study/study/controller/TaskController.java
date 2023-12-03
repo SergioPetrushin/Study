@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.request.task.TaskAddRequest;
+import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.task.TaskRequest;
 import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.service.TaskService;
@@ -21,6 +22,7 @@ public class TaskController {
     private static final String TASK_GET =  "/api/v1/task/get";
     private static final String TASK_EDIT =  "/api/v1/task/egit";
     private static final String TASK_GET_ALL =  "/api/v1/task/get-all";
+    private static final String TASK_DELETE = "/api/v1/task/delete";
 
     @PostMapping(
             value = TASK_ADD,
@@ -53,5 +55,14 @@ public class TaskController {
             produces = APPLICATION_JSON_VALUE)
     public List<TaskResponse> getAllTask(){
         return service.getAllTask();
+    }
+
+    @PostMapping(
+            value = TASK_DELETE,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String deleteUserType(@RequestBody TaskRequest request) {
+        service.deleteTask(request);
+        return "UserType успешно удален";
     }
 }
