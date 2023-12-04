@@ -18,7 +18,7 @@ public class FileDzController {
 
     private static final String FILE_DZ_GET = "/api/v1/file-dz/get";
     private static final String FILE_DZ_ADD = "/api/v1/file-dz/add";
-    private static final String FILE_DZ_DELETE = "/api/v1/file-dz/get";
+    private static final String FILE_DZ_DELETE = "/api/v1/file-dz/delete";
 
 
     @PostMapping(
