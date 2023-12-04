@@ -23,7 +23,7 @@ public class UserStatusService {
         return userStatusDomainService.getAllUserStatus();
     }
 
-    public void deleteUserStatus(UserStatusAddRequest request) {
+    public void deleteUserStatus(UserStatusRequest request) {
         userStatusDomainService.deleteUserStatus(request.getStatusId());
     }
 

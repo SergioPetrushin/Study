@@ -6,14 +6,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
+import ru.study.study.dto.request.userstatus.UserStatusRequest;
 import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.domain.UserStatusDomainService;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -100,6 +100,31 @@ class UserStatusServiceTest {
 
     }
 
+    @Test
+    void deleteUserStatusTest() {
+
+        service.deleteUserStatus(new UserStatusRequest());
+
+        verify(userStatusDomainService).deleteUserStatus(any());
+        verifyNoMoreInteractions(userStatusDomainService);
+    }
+
+    @Test
+    void getUserStatusTest(){
+
+        when(userStatusDomainService.getUserStatus(any())).thenReturn(getUserStatusResponse());
+
+        var response = service.getUserStatus(new UserStatusRequest());
+
+        assertEquals(ID, response.getUserStatusId());
+        assertEquals(NAME, response.getName());
+        assertEquals(DESCRIPTION, response.getDescription());
+        assertEquals(CREATED, response.getCreated());
+        assertEquals(MODIFIED, response.getModified());
+
+        verify(userStatusDomainService).getUserStatus(any());
+        verifyNoMoreInteractions(userStatusDomainService);
+    }
 
     private UserStatusResponse getUserStatusResponse() {
         return new UserStatusResponse()
