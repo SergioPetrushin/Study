@@ -22,7 +22,7 @@ public class TaskController {
     private static final String TASK_GET =  "/api/v1/task/get";
     private static final String TASK_EDIT =  "/api/v1/task/egit";
     private static final String TASK_GET_ALL =  "/api/v1/task/get-all";
-    private static final String TASK_DELETE = "/api/v1/task/delete";
+    private static final String DELETE_TASK = "/api/v1/task/delete-task";
 
     @PostMapping(
             value = TASK_ADD,
@@ -58,11 +58,11 @@ public class TaskController {
     }
 
     @PostMapping(
-            value = TASK_DELETE,
+            value = DELETE_TASK,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
-    public String deleteUserType(@RequestBody TaskRequest request) {
+    public String deleteTask(@RequestBody TaskRequest request) {
         service.deleteTask(request);
-        return "UserType успешно удален";
+        return "Task успешно удален";
     }
 }
