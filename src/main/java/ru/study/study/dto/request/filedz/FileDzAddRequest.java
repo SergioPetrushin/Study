@@ -9,10 +9,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-
 public class FileDzAddRequest {
     private Long fileId;
     private String name;
     private String description;
-
 }

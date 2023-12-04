@@ -8,7 +8,6 @@ import ru.study.study.mapper.Mapper;
 
 @Service
 @RequiredArgsConstructor
-
 public class FileDzMapper implements Mapper<FileDz, FileDzAddRequest> {
     @Override
     public FileDz from(FileDzAddRequest source) {
@@ -17,5 +16,4 @@ public class FileDzMapper implements Mapper<FileDz, FileDzAddRequest> {
                 .setName(source.getName())
                 .setDescription(source.getDescription());
     }
-
 }

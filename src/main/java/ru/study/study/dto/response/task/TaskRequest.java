@@ -1,14 +1,13 @@
-package ru.study.study.dto.request.filedz;
+package ru.study.study.dto.response.task;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-
 @Data
-@Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-public class FileDzRequest {
-    private Long fileId;
+@Accessors(chain = true)
+public class TaskRequest {
+    private Long taskId;
 }

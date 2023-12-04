@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.filedz.FileDzAddRequest;
 import ru.study.study.dto.response.filedz.FileDzResponse;
+import ru.study.study.entity.FileDz;
 import ru.study.study.mapper.filedz.FileDzMapper;
 import ru.study.study.mapper.filedz.FileDzResponseMapper;
 import ru.study.study.repository.FileDzRepository;
@@ -31,5 +32,4 @@ public class FileDzDomainService {
     public void deleteFileDz(Long id) {
         fileDzRepository.deleteById(id);
     }
-
 }

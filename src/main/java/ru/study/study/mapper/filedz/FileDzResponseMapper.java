@@ -19,6 +19,5 @@ public class FileDzResponseMapper  implements Mapper<FileDzResponse, FileDz> {
                 .setModified(source.getModified())
                 .setDescription(source.getDescription())
                 .setCreated(source.getCreated());
-
     }
 }

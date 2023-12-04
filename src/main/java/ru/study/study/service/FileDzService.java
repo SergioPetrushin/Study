@@ -24,5 +24,4 @@ public class FileDzService {
     public void deleteFileDz(FileDzRequest request){
         service.deleteFileDz(request.getFileId());
     }
-
 }
