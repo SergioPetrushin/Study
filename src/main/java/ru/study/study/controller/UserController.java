@@ -6,12 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.request.user.UserRequest;
-import ru.study.study.dto.request.userstatus.UserStatusAddRequest;
-import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.user.UserResponse;
-import ru.study.study.dto.response.userstatus.UserStatusResponse;
-import ru.study.study.dto.response.usertype.UserTypeResponse;
-
 import ru.study.study.service.UserService;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

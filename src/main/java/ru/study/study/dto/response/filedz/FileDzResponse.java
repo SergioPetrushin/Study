@@ -18,6 +18,4 @@ public class FileDzResponse {
     private LocalDateTime created;
     private LocalDateTime modified;
     // private StudentTaskResponse;
-
-
 }

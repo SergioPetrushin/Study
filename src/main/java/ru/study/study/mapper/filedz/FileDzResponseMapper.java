@@ -8,12 +8,12 @@ import ru.study.study.mapper.Mapper;
 
 @Service
 @RequiredArgsConstructor
-public class FileDzResponseMapper implements Mapper<FileDzResponse, FileDz> {
 
+public class FileDzResponseMapper  implements Mapper<FileDzResponse, FileDz> {
 
     @Override
     public FileDzResponse from(FileDz source) {
-       return new FileDzResponse()
+        return new FileDzResponse()
                 .setFileId(source.getId())
                 .setName(source.getName())
                 .setModified(source.getModified())

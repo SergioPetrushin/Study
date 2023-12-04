@@ -9,12 +9,11 @@ import ru.study.study.mapper.Mapper;
 @Service
 @RequiredArgsConstructor
 public class FileDzMapper implements Mapper<FileDz, FileDzAddRequest> {
-
     @Override
     public FileDz from(FileDzAddRequest source) {
-       return new FileDz()
-               .setId(source.getFileId())
-               .setName(source.getName())
-               .setDescription(source.getDescription());
+        return new FileDz()
+                .setId(source.getFileId())
+                .setName(source.getName())
+                .setDescription(source.getDescription());
     }
 }
