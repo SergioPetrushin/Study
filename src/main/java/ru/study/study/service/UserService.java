@@ -10,6 +10,8 @@ import ru.study.study.dto.response.usertype.UserTypeResponse;
 import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.domain.UserTypeDomainService;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -30,5 +32,18 @@ public class UserService {
     }
     public UserTypeResponse getUserType(UserTypeRequest request){
         return userTypeDomainService.getUserType(request.getTypeId());
+    }
+
+    public List<UserResponse> getAllUser(){
+        return userDomainService.getAllUser();
+    }
+
+    public void deleteUser(UserRequest request){
+        userDomainService.deleteUser(request.getUserId());
+    }
+
+    public UserResponse editUser(UserAddRequest request){
+        userDomainService.editUser(request);
+        return userDomainService.getUser(request.getUserId());
     }
 }
