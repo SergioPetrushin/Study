@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.mapper.user.UserMapper;
+import ru.study.study.mapper.user.UserMerger;
 import ru.study.study.mapper.user.UserResponseMapper;
 import ru.study.study.repository.UserRepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +19,7 @@ public class UserDomainService {
 
     private final UserMapper userMapper;
     private final UserResponseMapper userResponseMapper;
+    private final UserMerger userMerger;
 
     @Transactional
     public Long addUser(UserAddRequest request) {
@@ -25,5 +29,22 @@ public class UserDomainService {
     @Transactional
     public UserResponse getUser(Long id) {
        return userResponseMapper.from(userRepository.findById(id).orElseThrow());
+    }
+
+    @Transactional
+    public List<UserResponse> getAllUser(){
+        return userResponseMapper.from(userRepository.findAll());
+    }
+
+    @Transactional
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void editUser(UserAddRequest request){
+        var user = userRepository.getReferenceById(request.getUserId());
+        userMerger.merge(user, request);
+        userRepository.save(user);
     }
 }
