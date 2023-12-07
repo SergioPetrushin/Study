@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode
 @Accessors(chain = true)
 public class UserAddRequest {
-
+    private Long userId;
     private String login;
     private String password;
     private String fullName;

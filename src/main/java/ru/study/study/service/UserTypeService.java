@@ -24,10 +24,12 @@ public class UserTypeService {
     }
 
     public List<UserTypeResponse> getAllUserType(){
+
         return userTypeDomainService.getAllUserType();
     }
 
     public void deleteUserType(UserTypeRequest request){
+
         userTypeDomainService.deleteUserType(request.getTypeId());
     }
 
