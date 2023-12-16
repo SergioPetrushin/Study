@@ -12,8 +12,6 @@ import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.domain.UserTypeDomainService;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -26,34 +24,35 @@ public class UserService {
 
     public UserResponse addUser(UserAddRequest request) {
         var id = userDomainService.addUser(request);
-        return  userDomainService.getUser(id);
+        return userDomainService.getUser(id);
     }
 
     public UserResponse getUser(UserRequest request) {
 
-        return  userDomainService.getUser(request.getUserId());
+        return userDomainService.getUser(request.getUserId());
     }
-    public UserTypeResponse getUserType(UserTypeRequest request){
+
+    public UserTypeResponse getUserType(UserTypeRequest request) {
         return userTypeDomainService.getUserType(request.getTypeId());
     }
 
-    public List<UserResponse> getAllUser(){
+    public List<UserResponse> getAllUser() {
         return userDomainService.getAllUser();
     }
 
-    public void deleteUser(UserRequest request){
+    public void deleteUser(UserRequest request) {
         userDomainService.deleteUser(request.getUserId());
     }
 
-    public UserResponse editUser(UserAddRequest request){
+    public UserResponse editUser(UserAddRequest request) {
         userDomainService.editUser(request);
         return userDomainService.getUser(request.getUserId());
     }
 
     public String changePWD(UserChangePWDRequest request) {
-        String reg = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$";
-       Matcher matcher = Pattern.compile(reg).matcher(request.getPassword());
-        if(matcher.matches()){
+        String reg = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
+
+        if (request.getPassword().matches(reg)) {
             return userDomainService.changePWD(request);
         } else {
             return "Пароль не подходит. Пароль должен содержать не " +
