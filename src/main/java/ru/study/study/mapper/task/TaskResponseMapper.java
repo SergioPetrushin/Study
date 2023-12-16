@@ -16,7 +16,7 @@ public class TaskResponseMapper implements Mapper<TaskResponse, Task> {
         return new TaskResponse()
                 .setTaskId(source.getId())
                 .setDescription(source.getDescription())
-                .setName(source.getName()).setModified(source.getModified())
+                .setName(source.getName())
                 .setCreated(source.getCreated())
                 .setPlan(educationPlanResponseMapper.from(source.getPlan()))
                 .setModified(source.getModified());
