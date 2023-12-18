@@ -20,6 +20,7 @@ public class UserStatusController {
     private static final String USER_STATUS_EDIT = "/api/v1/user-status/edit";
     private static final String USER_STATUS_GET_ALL = "/api/v1/user-status/get-all";
 
+
     private final UserStatusService service;
 
     @PostMapping(

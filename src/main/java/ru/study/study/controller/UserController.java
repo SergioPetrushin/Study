@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.request.user.UserAddRequest;
+import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
@@ -23,6 +24,7 @@ public class UserController {
     private static final String USER_GET_ALL = "/api/v1/user/get-all";
     private static final String USER_EDIT = "/api/v1/user/edit";
     private static final String USER_DELETE = "/api/v1/user/delete";
+    private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
 
     @PostMapping(
             value = USER_ADD,
@@ -41,6 +43,7 @@ public class UserController {
 
         return service.getUser(request);
     }
+
     @PostMapping(
             value = USER_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
@@ -64,5 +67,13 @@ public class UserController {
     public String deleteUser(@RequestBody UserRequest request) {
         service.deleteUser(request);
         return "User успешно удален";
+    }
+
+    @PostMapping(
+            value = USER_CHANGE_PWD,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String changePWD(@RequestBody UserChangePWDRequest request) {
+        return service.changePWD(request);
     }
 }

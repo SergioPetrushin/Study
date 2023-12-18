@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.UserAddRequest;
+import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.mapper.user.UserMapper;
 import ru.study.study.mapper.user.UserMerger;
@@ -46,5 +47,13 @@ public class UserDomainService {
         var user = userRepository.getReferenceById(request.getUserId());
         userMerger.merge(user, request);
         userRepository.save(user);
+    }
+
+    public String changePWD(UserChangePWDRequest request) {
+        var user = userRepository.findUserByLogin(request.getLogin())
+                .orElseThrow(()->new RuntimeException("Пользователь с заданным логином не найден"));
+        user.setPassword(request.getPassword());
+        userRepository.save(user);
+        return "Пароль успешно изменен";
     }
 }
