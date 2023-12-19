@@ -23,6 +23,7 @@ public class UserDomainService {
 
     @Transactional
     public Long addUser(UserAddRequest request) {
+
         return userRepository.save(userMapper.from(request)).getId();
     }
 
