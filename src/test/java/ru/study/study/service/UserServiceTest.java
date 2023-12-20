@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.study.study.dto.request.user.UserAddRequest;
-//import ru.study.study.dto.request.user.UserChangePWDRequest;
+import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.userstatus.UserStatusResponse;
@@ -69,29 +69,29 @@ class UserServiceTest {
 
     }
 
-//    @Test
-//    void changePWDTest1() {
-//        when(userDomainService.changePWD(any())).thenReturn("Пароль успешно изменен");
-//
-//        var result = service.changePWD(getUserChangePWDRequest("asf123#$*FFF"));
-//
-//        assertEquals("Пароль успешно изменен", result);
-//
-//        verify(userDomainService).changePWD(any());
-//
-//        verifyNoMoreInteractions(userDomainService);
-//    }
+    @Test
+   void changePWDTest1() {
+       when(userDomainService.changePWD(any())).thenReturn("Пароль успешно изменен");
 
-//    @Test
-//    void changePWDTest2() {
-//
-//        var result = service.changePWD(getUserChangePWDRequest("asd123"));
-//
-//        assertEquals("Пароль не подходит. Пароль должен содержать не " +
-//                "менее 6 символов, спец символы, большие и маленькие буквы.", result);
-//
-//        verifyNoMoreInteractions(userDomainService);
-//    }
+       var result = service.changePWD(getUserChangePWDRequest("asf123#$*FFF"));
+
+       assertEquals("Пароль успешно изменен", result);
+
+      verify(userDomainService).changePWD(any());
+
+       verifyNoMoreInteractions(userDomainService);
+    }
+
+    @Test
+   void changePWDTest2() {
+
+       var result = service.changePWD(getUserChangePWDRequest("asd123"));
+
+       assertEquals("Пароль не подходит. Пароль должен содержать не " +
+               "менее 6 символов, спец символы, большие и маленькие буквы.", result);
+
+       verifyNoMoreInteractions(userDomainService);
+    }
 
     private UserResponse getUserResponse() {
         return new UserResponse()
@@ -102,10 +102,10 @@ class UserServiceTest {
 
     }
 
-//    private UserChangePWDRequest getUserChangePWDRequest(String pswd) {
-//        return new UserChangePWDRequest()
-//                .setLogin("test123")
-//                .setPassword(pswd);
-//    }
+    private UserChangePWDRequest getUserChangePWDRequest(String pswd) {
+        return new UserChangePWDRequest()
+                .setLogin("test123")
+                .setPassword(pswd);
+    }
 
 }
