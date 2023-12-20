@@ -8,7 +8,6 @@ import ru.study.study.dto.response.usertype.UserTypeResponse;
 import ru.study.study.entity.user.UserType;
 import ru.study.study.mapper.usertype.UserTypeMapper;
 import ru.study.study.mapper.usertype.UserTypeMerger;
-import ru.study.study.mapper.usertype.UserTypeRequestMapper;
 import ru.study.study.mapper.usertype.UserTypeResponseMapper;
 import ru.study.study.repository.UserTypeRepository;
 
@@ -19,7 +18,6 @@ import java.util.List;
 public class UserTypeDomainService {
     private final UserTypeRepository repository;
     private final UserTypeResponseMapper userTypeResponseMapper;
-    private final UserTypeRequestMapper userTypeRequestMapper;
     private final UserTypeMapper userTypeMapper;
     private final UserTypeMerger userTypeMerger;
     @Transactional
