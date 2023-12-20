@@ -42,7 +42,7 @@ public class FileDzResponseMapperTest {
         verify(source).getDescription();
         verify(source).getCreated();
         verify(source).getModified();
-
+        verifyNoMoreInteractions(source);
 
     }
 
@@ -65,6 +65,7 @@ public class FileDzResponseMapperTest {
         verify(source, times(3)).getDescription();
         verify(source, times(3)).getCreated();
         verify(source, times(3)).getModified();
+        verifyNoMoreInteractions(source);
 
     }
 
