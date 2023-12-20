@@ -47,12 +47,13 @@ public class EducationPlanResponseMapperTest {
         assertNotNull(result.getUser());
 
         verify(userMapper).from((User) any());
+        verify(source).getUser();
         verify(source).getId();
         verify(source).getName();
         verify(source).getDescription();
         verify(source).getCreated();
         verify(source).getModified();
-        verifyNoInteractions(userMapper, source);
+        verifyNoMoreInteractions(userMapper, source);
 
     }
 
@@ -76,11 +77,12 @@ public class EducationPlanResponseMapperTest {
 
         verify(userMapper, times(3)).from((User) any());
         verify(source, times(3)).getId();
+        verify(source, times(3)).getUser();
         verify(source, times(3)).getName();
         verify(source, times(3)).getDescription();
         verify(source, times(3)).getCreated();
         verify(source, times(3)).getModified();
-        verifyNoInteractions(userMapper, source);
+        verifyNoMoreInteractions(userMapper, source);
     }
 
     private EducationPlan getEducationPlan() {
