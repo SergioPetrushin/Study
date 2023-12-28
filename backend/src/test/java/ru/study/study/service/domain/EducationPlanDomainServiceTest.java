@@ -82,7 +82,7 @@ public class EducationPlanDomainServiceTest {
 
 
         when(educationPlanResponseMapper.from((EducationPlan) any())).thenReturn(getEducationPlanResponse());
-        when(repository.findById(any())).thenReturn(Optional.of(getEducationPlan()));
+        when(repository.getReferenceById(any())).thenReturn(getEducationPlan());
 
         var result = service.getEducationPlan(ID);
 
@@ -94,7 +94,7 @@ public class EducationPlanDomainServiceTest {
         assertEquals(ID, result.getUser().getUserId());
 
         verify(educationPlanResponseMapper).from((EducationPlan) any());
-        verify(repository).findById(any());
+        verify(repository).getReferenceById(any());
         verifyNoMoreInteractions(educationPlanMapper, educationPlanMerger,
                 educationPlanResponseMapper, repository);
 
