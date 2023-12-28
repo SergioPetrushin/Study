@@ -1,6 +1,14 @@
 <template>
 
-  <v-btn @click=showMessage() >Кнопка</v-btn>
+  <v-btn
+      class = "btn"
+      rounded="xl"
+      variant="outlined"
+      icon="mdi-twitter"
+      size="x-large"
+      @click=showMessage() >
+    <v-icon>mdi-twitter</v-icon>
+  </v-btn>
 
 </template>
 
@@ -11,7 +19,7 @@ export default {
   methods : {
 
     showMessage(){
-      alert('Hello world!!!')
+      alert('Hello world!!!!')
     }
 
 
@@ -22,5 +30,9 @@ export default {
 </script>
 
 <style>
+.btn{
 
+  margin: 50px;
+
+}
 </style>
