@@ -16,6 +16,7 @@ import ru.study.study.mapper.educationplan.EducationPlanMapper;
 import ru.study.study.mapper.educationplan.EducationPlanMerger;
 import ru.study.study.mapper.educationplan.EducationPlanResponseMapper;
 import ru.study.study.repository.EducationPlanRepository;
+import java.util.List;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -102,7 +103,25 @@ public class EducationPlanDomainServiceTest {
 
     @Test
     void getAllEducationPlanTest() {
+        when(educationPlanResponseMapper.from((List<EducationPlan>)any())).thenReturn(List.of(getEducationPlanResponse(),
+                getEducationPlanResponse(), getEducationPlanResponse()));
+        when(repository.findAll()).thenReturn(List.of(getEducationPlan(), getEducationPlan(), getEducationPlan()));
 
+        var results = service.getAllEducationPlan();
+
+        for(var result:results) {
+            assertEquals(ID, result.getPlanId());
+            assertEquals(NAME, result.getName());
+            assertEquals(DESCRIPTION, result.getDescription());
+            assertEquals(CREATED, result.getCreated());
+            assertEquals(MODIFIED, result.getModified());
+            assertEquals(ID, result.getUser().getUserId());
+        }
+
+        verify(repository).findAll();
+        verify(educationPlanResponseMapper).from((List<EducationPlan>)any());
+        verifyNoMoreInteractions(educationPlanMapper, educationPlanMerger,
+                educationPlanResponseMapper, repository);
     }
 
     @Test
