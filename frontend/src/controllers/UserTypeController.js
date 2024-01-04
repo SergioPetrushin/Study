@@ -16,7 +16,40 @@ export default {
                 }
             }
         )
+    },
+
+    deleteUserType(id) {
+
+        return axios.post(
+            HOST + API + 'delete',
+            {
+                typeId : id
+            },
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+    },
+
+    edit(userType) {
+
+        return axios.post(
+            HOST + API + 'edit',
+            {
+                typeId : userType.id,
+                name : userType.name,
+                description : userType.description
+            },
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
     }
+
 
 
 

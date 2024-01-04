@@ -14,7 +14,7 @@ public class UserTypeResponseMapper implements Mapper<UserTypeResponse, UserType
     @Override
     public UserTypeResponse from(UserType source) {
         return new UserTypeResponse()
-                .setUserTypeId(source.getId())
+                .setId(source.getId())
                 .setName(source.getName())
                 .setDescription(source.getDescription())
                 .setCreated(source.getCreated())

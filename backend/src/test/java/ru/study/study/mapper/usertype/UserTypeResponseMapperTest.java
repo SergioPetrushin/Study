@@ -27,7 +27,7 @@ public class UserTypeResponseMapperTest {
         var source = spy(getUserType());
         var result = mapper.from(source);
 
-        assertEquals(ID, result.getUserTypeId());
+        assertEquals(ID, result.getId());
         assertEquals(NAME, result.getName());
         assertEquals(DESCRIPTION, result.getDescription());
         assertEquals(CREATED, result.getCreated());
@@ -48,7 +48,7 @@ public class UserTypeResponseMapperTest {
         assertEquals(3, resultList.size());
         var result = resultList.get(0);
 
-        assertEquals(ID, result.getUserTypeId());
+        assertEquals(ID, result.getId());
         assertEquals(NAME, result.getName());
         assertEquals(DESCRIPTION, result.getDescription());
         assertEquals(CREATED, result.getCreated());
