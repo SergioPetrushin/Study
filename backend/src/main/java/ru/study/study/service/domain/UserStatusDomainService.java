@@ -26,6 +26,7 @@ public class UserStatusDomainService {
     @Transactional
     public Long addUserStatus(UserStatusAddRequest request) {
         return repository.save(userStatusMapper.from(request)).getId();
+
     }
 
     @Transactional
