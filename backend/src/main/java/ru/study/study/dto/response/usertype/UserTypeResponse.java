@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode
 public class UserTypeResponse {
-    private Long userTypeId;
+    private Long id;
     private String name;
     private String description;
     private LocalDateTime created;
