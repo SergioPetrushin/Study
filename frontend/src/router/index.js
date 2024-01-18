@@ -4,7 +4,7 @@ import Tasks from "@/pages/Tasks.vue";
 import EducationPlans from "@/pages/EducationPlans.vue";
 import TaskStatus from "@/pages/TaskStatus.vue";
 import UserTypes from "@/pages/UserTypes.vue";
-import ZurnalUspevaemosti from "@/pages/ZurnalUspevaemosti.vue";
+import Gradebook from "@/pages/Gradebook.vue";
 import Messages from "@/pages/Messages.vue";
 import UserStatus from "@/pages/UserStatus.vue";
 import Students from "@/pages/Students.vue";
@@ -39,8 +39,8 @@ const routes = [
   },
 
   {
-    path : '/zurnal-uspevaemosti',
-    component : ZurnalUspevaemosti
+    path : '/gradebook',
+    component : Gradebook
   },
 
   {

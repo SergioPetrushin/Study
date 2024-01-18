@@ -24,7 +24,7 @@
               prepend-icon="mdi-text-box-edit-outline"
               title="Журнал успеваемости"
               value="3"
-              @click="routeZurnalUspevaemosti()"
+              @click="routeGradebook()"
           />
 
           <v-list-item
@@ -124,7 +124,7 @@ export default {
     routeEducationPlans(){this.$router.push('/education-plans')},
     routeTaskStatus(){this.$router.push('/admin/task-status')},
     routeUserType(){this.$router.push('/admin/user-type')},
-      routeZurnalUspevaemosti(){this.$router.push('/zurnal-uspevaemosti')},
+      routeGradebook(){this.$router.push('/gradebook')},
       routeMessages(){this.$router.push('/messages')},
       routeUserStatus(){this.$router.push('/admin/user-status')},
       routeStudents(){this.$router.push('/admin/students')},
