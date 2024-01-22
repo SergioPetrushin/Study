@@ -48,9 +48,22 @@ export default {
                 }
             }
         )
+    },
+
+    add(userType) {
+
+        return axios.post(
+            HOST + API + 'add',
+            {
+                name : userType.name,
+                description : userType.description
+            },
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
     }
-
-
-
 
 }
