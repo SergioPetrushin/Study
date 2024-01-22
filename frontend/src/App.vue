@@ -7,71 +7,83 @@
       >
         <v-list density="compact" nav>
           <v-list-item
-              prepend-icon="mdi-folder"
+
+              prepend-icon="mdi-clipboard-list-outline"
               title="Задания"
               value="1"
               @click="routeTasks()"
           />
           <v-list-item
-              prepend-icon="mdi-account-multiple"
+              prepend-icon="mdi-bookshelf"
               title="Учебные планы"
               value="2"
               @click="routeEducationPlans()"
           />
 
           <v-list-item
-              prepend-icon="mdi-star"
+              prepend-icon="mdi-text-box-edit-outline"
               title="Журнал успеваемости"
-              value="3"/>
+              value="3"
+              @click="routeZurnalUspevaemosti()"
+          />
 
           <v-list-item
-              prepend-icon="mdi-star"
+              prepend-icon="mdi-email-outline"
               title="Сообщения"
-              value="4"/>
+              value="4"
+              @click="routeMessages()"
+          />
 
 
           <v-list-group value="5">
             <template v-slot:activator="{props}">
               <v-list-item
               v-bind="props"
-              prepend-icon="mdi-star"
+              prepend-icon="mdi-crown"
               title="Админстрирование"
               />
             </template>
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-list-status"
                 title="Статус задач"
                 value="5.1"
                 @click="routeTaskStatus()"
             />
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-account-check-outline"
                 title="Статус пользователя"
-                value="5.2"/>
+                value="5.2"
+                @click="routeUserStatus()"
+            />
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-account-supervisor"
                 title="Тип пользователя"
                 value="5.3"
                 @click="routeUserType()"
             />
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-account-school"
                 title="Студенты"
-                value="5.4"/>
+                value="5.4"
+                @click="routeStudents()"
+            />
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-human-male-board-poll"
                 title="Преподаватели"
-                value="5.5"/>
+                value="5.5"
+                @click="routeTeachers()"
+            />
 
             <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon="mdi-account-group"
                 title="Все пользователи"
-                value="5.6"/>
+                value="5.6"
+                @click="routeAllUsers()"/>
           </v-list-group>
         </v-list>
       </v-navigation-drawer>
@@ -111,7 +123,15 @@ export default {
     routeTasks(){this.$router.push('/tasks')},
     routeEducationPlans(){this.$router.push('/education-plans')},
     routeTaskStatus(){this.$router.push('/admin/task-status')},
-    routeUserType(){this.$router.push('/admin/user-type')}
+    routeUserType(){this.$router.push('/admin/user-type')},
+      routeZurnalUspevaemosti(){this.$router.push('/zurnal-uspevaemosti')},
+      routeMessages(){this.$router.push('/messages')},
+      routeUserStatus(){this.$router.push('/admin/user-status')},
+      routeStudents(){this.$router.push('/admin/students')},
+      routeTeachers(){this.$router.push('/admin/teachers')},
+      routeAllUsers(){this.$router.push('/admin/all-users')},
+
+
 }
 
 

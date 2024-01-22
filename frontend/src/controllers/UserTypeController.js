@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "http://localhost:9000"
+const HOST = "http://localhost:8080"
 const API = "/api/v1/user-type/"
 
 export default {
