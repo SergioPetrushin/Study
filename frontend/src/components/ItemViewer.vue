@@ -6,6 +6,11 @@ export default {
     item: {
       type: Object,
       require: true
+    },
+
+    id: {
+      type : Object,
+      required : true
     }
 
   },
@@ -25,7 +30,7 @@ export default {
   >
     <v-card-title>{{ item.name }}</v-card-title>
     <v-card-text>
-      <div><strong>ID:</strong> {{ item.id }}</div>
+      <div><strong>ID:</strong> {{ id }}</div>
       <div> {{ item.description }}</div>
       <div><strong>Создан:</strong> {{ item.created }}</div>
       <div><strong>Изменен:</strong> {{ item.modified }}</div>
@@ -39,7 +44,7 @@ export default {
       >Редактировать</v-btn>
       <v-btn
           variant="outlined"
-          @click="$emit('item_delete', item.id)"
+          @click="$emit('item_delete', id)"
       >Удалить</v-btn>
 
     </v-card-actions>
