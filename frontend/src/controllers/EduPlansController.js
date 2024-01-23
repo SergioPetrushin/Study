@@ -1,0 +1,29 @@
+import axios from "axios"
+
+
+const HOST = "http://localhost:8080"
+const API = "/api/v1/education-plan/"
+
+
+export default {
+
+
+
+    getAll() {
+
+        return axios.post(
+            HOST + API + 'get-all',
+            {},
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+    }
+
+
+
+}
+
+
