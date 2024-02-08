@@ -75,7 +75,7 @@ export default {
 
   methods : {
 
-    routeTasks(){this.$router.push('/tasks')},
+    routeTasks(){this.$router.push('/task')},
     routeEducationPlans(){this.$router.push('/education-plans')},
     routeGradebook(){this.$router.push('/gradebook')},
     routeMessages(){this.$router.push('/messages')},
