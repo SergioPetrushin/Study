@@ -22,7 +22,7 @@
         </preConditions>
 
         <createTable  schemaName="REPOSITORY" tableName="EDUCATION_PLAN">
-            <column name="PLAN_ID" type="INT" defaultValueSequenceNext="PLAN_ID_SEQ">
+            <column name="PLAN_ID" type="INT" defaultValueSequenceNext="EDUCATION_PLAN_SEQ">
                 <constraints primaryKey="true" primaryKeyName="PK-PLAN_ID"/>
             </column>
 
