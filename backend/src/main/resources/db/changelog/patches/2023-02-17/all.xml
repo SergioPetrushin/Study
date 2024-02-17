@@ -4,9 +4,10 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <includeAll path="classpath:/db/changelog/tables"/>
-    <includeAll path="classpath:/db/changelog/constraints"/>
-    <includeAll path="classpath:/db/changelog/data"/>
-    <include file="classpath:/db/changelog/patches/all.xml"/>
+    <changeSet id="ADD-EMAIL-USER-001" author="vyushin_aa">
+        <addColumn tableName="USERS">
+            <column name="EMAIL" type="VARCHAR(50)" value="no email"/>
+        </addColumn>
 
+    </changeSet>
 </databaseChangeLog>
