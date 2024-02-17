@@ -51,6 +51,20 @@ export default {
             }
         )
 
+    },
+
+    add(plan) {
+
+        return axios.post(
+            HOST + API + 'add',
+            plan,
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+
     }
 
 
