@@ -27,8 +27,8 @@ public class UserType extends EntityWithName {
         this.id = id;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
-    private List<User> users = Collections.emptyList();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
+//    private List<User> users = Collections.emptyList();
 
 
     @Override

@@ -19,6 +19,11 @@ export default {
 
   },
 
+    computed:{
+      show(){
+          return this.isShow
+      }},
+
   data(){
     return{
 
@@ -33,7 +38,7 @@ export default {
 
 <template>
   <v-snackbar
-      v-model=this.isShow
+      v-model=show
   >
     {{text}}
 

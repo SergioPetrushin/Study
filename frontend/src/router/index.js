@@ -21,7 +21,7 @@ const routes = [
     },
 
     {
-        path: '/tasks',
+        path: '/task',
         component: Tasks
     },
     {
