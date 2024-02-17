@@ -34,6 +34,6 @@ public class EducationPlanService {
 
     public EducationPlanResponse editEducationPlan(EducationPlanAddRequest request) {
         service.editEducationPlan(request);
-        return service.getEducationPlan(request.getUserId());
+        return service.getEducationPlan(request.getPlanId());
     }
 }
