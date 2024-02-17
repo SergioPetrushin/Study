@@ -50,7 +50,7 @@ class EducationPlanMapperTest {
 private EducationPlanAddRequest getEducationPlanAddRequest(){
         return new EducationPlanAddRequest()
                 .setName(NAME)
-                .setUserId(ID)
+                .setPlanId(ID)
                 .setDescription(DESCRIPTION);
 }
 }
