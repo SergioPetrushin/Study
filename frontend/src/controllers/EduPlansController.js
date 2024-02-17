@@ -23,6 +23,22 @@ export default {
 
     },
 
+
+    deletePlan(id) {
+
+        return axios.post(
+            HOST + API + 'delete',
+            {
+                planId : id
+            },
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+    },
+
     edit(plan) {
 
         return axios.post(

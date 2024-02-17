@@ -2,9 +2,10 @@
 
 import eduPlansController from "@/controllers/EduPlansController";
 import ItemViewer from "@/components/ItemViewer.vue";
+import MySnackbar from "@/components/MySnackbar.vue";
 
 export default {
-  components: {ItemViewer},
+  components: {MySnackbar, ItemViewer},
 
   data() {
     return {
@@ -15,7 +16,10 @@ export default {
         planId : '',
         name : '',
         description : ''
-      }
+      },
+
+      snackbar: false,
+      snackbarText: '',
     }
   },
 
@@ -44,11 +48,26 @@ export default {
           .catch()
 
       this.isShowEditDialog = false
+},
+ 
+
+    deletePlan(id){
+
+      eduPlansController.deletePlan(id)
+          .then(response => {
+            this.plans = this.plans.filter( plan => plan.planId !== id)
+            this.snackbarText = response.data
+            this.snackbar = true
+          })
+          .catch(error => alert("Произошла ошибка при удалении плана: " + error.message))
+
+    },
+
+    closeSnackBar(){
+      this.snackbar = false
     }
 
-
   }
-
 
 }
 </script>
@@ -107,6 +126,13 @@ export default {
     </v-card>
   </v-dialog>
 
+
+
+
+  <my-snackbar
+      :text=snackbarText
+      :is-show=snackbar
+      v-on:snackbar-close=closeSnackBar()></my-snackbar>
 
 </template>
 
