@@ -20,8 +20,22 @@ export default {
                 }
             }
         )
-    }
 
+    },
+
+    edit(plan) {
+
+        return axios.post(
+            HOST + API + 'edit',
+            plan,
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+
+    }
 
 
 }
