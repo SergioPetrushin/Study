@@ -22,7 +22,7 @@ public class EducationPlanDomainService {
 
     @Transactional
     public void editEducationPlan(EducationPlanAddRequest request) {
-        var plan = repository.getReferenceById(request.getUserId());
+        var plan = repository.getReferenceById(request.getPlanId());
         educationPlanMerger.merge(plan, request);
         repository.save(plan);
     }

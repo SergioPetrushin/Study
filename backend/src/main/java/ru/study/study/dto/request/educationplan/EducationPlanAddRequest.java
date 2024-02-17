@@ -11,6 +11,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode
 public class EducationPlanAddRequest {
     private String name;
-    private Long userId;
+    private Long planId;
     private String description;
 }
