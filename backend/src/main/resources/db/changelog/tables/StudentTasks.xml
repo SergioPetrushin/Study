@@ -10,7 +10,7 @@
                 <sequenceExists schemaName="REPOSITORY" sequenceName="STUDENT_TASKS_SEQ"/>
             </not>
         </preConditions>
-        <createSequence schemaName="REPOSITORY" sequenceName="STUDENT_TASKS_SEQ" startValue="1"/>
+        <createSequence schemaName="REPOSITORY" sequenceName="STUDENT_TASKS_SEQ" startValue="1" minValue="0"/>
     </changeSet>
 
     <changeSet id="STUDENT-TASKS-002" author="petrushin_ss">
@@ -24,7 +24,7 @@
 
 
         <createTable schemaName="REPOSITORY" tableName="STUDENT_TASKS">
-            <column name="STUDENT_TASK_ID" type="INT" defaultValueSequenceNext="STUDENT_TASK_SEQ">
+            <column name="STUDENT_TASK_ID" type="INT" defaultValueSequenceNext="STUDENT_TASKS_SEQ">
                 <constraints primaryKey="true" primaryKeyName="STUDENT_TASK_PK"/>
             </column>
 
@@ -40,15 +40,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="EXPIRIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+            <column name="EXPIRIED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+            <column name="CREATED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 

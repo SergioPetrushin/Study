@@ -12,7 +12,7 @@
             </not>
         </preConditions>
 
-        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="0" />
+        <createSequence schemaName="REPOSITORY" sequenceName="USER_TYPE_SEQ" startValue="0" minValue="0"/>
 
     </changeSet>
 
@@ -35,11 +35,11 @@
 
             <column name="DESCRIPTION" type="VARCHAR(256)"/>
 
-            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+            <column name="CREATED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP">
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 
