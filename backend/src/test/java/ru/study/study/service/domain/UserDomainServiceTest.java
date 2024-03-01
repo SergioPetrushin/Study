@@ -21,10 +21,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class UserDomainServiceTest {
@@ -56,7 +60,7 @@ class UserDomainServiceTest {
 
         var result = service.addUser(new UserAddRequest());
 
-        assertEquals(ID, result);
+        assertThat(result).isEqualTo(ID);
 
         verify(userMapper).from((UserAddRequest) any());
         verify(repository).save(any());
@@ -88,9 +92,8 @@ class UserDomainServiceTest {
 
         when(repository.findById(any())).thenReturn(Optional.empty());
 
-
-        assertThrows(NoSuchElementException.class, () ->  service.getUser(ID));
-
+        assertThatThrownBy(() -> service.getUser(ID))
+                .isInstanceOf(NoSuchElementException.class);
 
         verify(repository).findById(any());
         verifyNoMoreInteractions(repository, userMapper, userMerger, userResponseMapper);
@@ -103,6 +106,8 @@ class UserDomainServiceTest {
         when(repository.findAll()).thenReturn(List.of(getUser(),getUser(),getUser()));
 
         var results = service.getAllUser();
+
+        assertThat(results).hasSize(3);
 
         for(var result : results){
             assertEquals(ID, result.getUserId());

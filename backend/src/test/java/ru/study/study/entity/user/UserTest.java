@@ -6,6 +6,7 @@ import ru.study.study.entity.BaseEntityTest;
 
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -41,7 +42,8 @@ class UserTest extends BaseEntityTest {
         assertEquals(CREATED, user.getCreated());
         assertEquals(MODIFIED, user.getModified());
 
-        assertEquals(-ID, user2.getId());
+       // assertEquals(-ID, user2.getId());
+        assertThat(user2.getId()).isEqualTo(-ID);
 
     }
 
