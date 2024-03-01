@@ -23,6 +23,7 @@
         <spring-security-version>6.1.4</spring-security-version>
         <lombok-version>1.18.30</lombok-version>
         <postgresql-version>42.6.0</postgresql-version>
+        <mail>1.4.7</mail>
     </properties>
 
 
@@ -88,6 +89,13 @@
             <version>${spring-security-version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
