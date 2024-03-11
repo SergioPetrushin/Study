@@ -2,9 +2,7 @@ package ru.study.study.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.dto.request.user.UserAddRequest;
-import ru.study.study.dto.request.user.UserChangePWDRequest;
-import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
@@ -59,4 +57,23 @@ public class UserService {
                     "менее 6 символов, спец символы, большие и маленькие буквы.";
         }
     }
+
+    public String userCheckEmail(UserCheckEmailRequest request){
+        boolean result = userDomainService.checkEmail(request);
+        if (result==true){
+            return "Такая почта имеется";
+        } else {
+            return "Такая почта отсутствует";
+        }
+    }
+
+    public String userCheckLogin(UserCheckLoginRequest request){
+        boolean result = userDomainService.checkLogin(request);
+        if (result==true){
+            return "Такой логин имеется";
+        } else {
+            return "Такой логин отсутствует";
+        }
+    }
+
 }

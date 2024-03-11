@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.inner.EmailRequest;
-import ru.study.study.dto.request.user.UserAddRequest;
-import ru.study.study.dto.request.user.UserChangePWDRequest;
-import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
 import ru.study.study.service.utils.MailService;
@@ -30,6 +28,8 @@ public class UserController {
     private static final String USER_DELETE = "/api/v1/user/delete";
     private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
     private static final String MAIL_SENDER = "/api/v1/user/mail-sender";
+    private static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
+    private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
 
     @PostMapping(
             value = USER_ADD,
@@ -91,4 +91,21 @@ public class UserController {
                 .setSubject("Тестовая тема").setText("Тестовый тест"));
         return "User успешно удален";
     }
+
+    @PostMapping(
+            value = USER_CHECK_EMAIL,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String userCheckEmail(@RequestBody UserCheckEmailRequest request) {
+        return service.userCheckEmail(request);
+    }
+
+    @PostMapping(
+            value = USER_CHECK_LOGIN,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String userCheckLogin(@RequestBody UserCheckLoginRequest request) {
+        return service.userCheckLogin(request);
+    }
+
 }

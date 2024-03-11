@@ -43,6 +43,9 @@ public class User extends BaseEntity {
     @Column(name = "FULL_NAME")
     private String fullName;
 
+    @Column(name = "EMAIL")
+    private String email;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_TYPE_ID")
     private UserType type;

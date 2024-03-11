@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.request.user.UserChangePWDRequest;
+import ru.study.study.dto.request.user.UserCheckEmailRequest;
+import ru.study.study.dto.request.user.UserCheckLoginRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.mapper.user.UserMapper;
 import ru.study.study.mapper.user.UserMerger;
@@ -30,21 +32,21 @@ public class UserDomainService {
 
     @Transactional
     public UserResponse getUser(Long id) {
-       return userResponseMapper.from(userRepository.findById(id).orElseThrow());
+        return userResponseMapper.from(userRepository.findById(id).orElseThrow());
     }
 
     @Transactional
-    public List<UserResponse> getAllUser(){
+    public List<UserResponse> getAllUser() {
         return userResponseMapper.from(userRepository.findAll());
     }
 
     @Transactional
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
 
     @Transactional
-    public void editUser(UserAddRequest request){
+    public void editUser(UserAddRequest request) {
         var user = userRepository.getReferenceById(request.getUserId());
         userMerger.merge(user, request);
         userRepository.save(user);
@@ -52,9 +54,17 @@ public class UserDomainService {
 
     public String changePWD(UserChangePWDRequest request) {
         var user = userRepository.findUserByLogin(request.getLogin())
-                .orElseThrow(()->new RuntimeException("Пользователь с заданным логином не найден"));
+                .orElseThrow(() -> new RuntimeException("Пользователь с заданным логином не найден"));
         user.setPassword(request.getPassword());
         userRepository.save(user);
         return "Пароль успешно изменен";
+    }
+
+    public boolean checkEmail(UserCheckEmailRequest request) {
+        return userRepository.existsUsersByEmail(request.getEmail());
+    }
+
+    public boolean checkLogin(UserCheckLoginRequest request) {
+        return userRepository.existsUsersByLogin(request.getLogin());
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="ADD-EMAIL-CODE-USER-001" author="petrushin_ss">
+        <addColumn tableName="USERS">
+            <column name="EMAIL_CODE" type="VARCHAR(50)" value="no email_code"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="ADD-PWD-CODE-USER-002" author="petrushin_ss">
+        <addColumn tableName="USERS">
+            <column name="PWD_CODE" type="VARCHAR(50)" value="no pwd_code"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
