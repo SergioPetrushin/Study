@@ -30,6 +30,7 @@ public class UserController {
     private static final String MAIL_SENDER = "/api/v1/user/mail-sender";
     private static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
     private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
+    private static final String USER_LOGIN = "/api/v1/user/login";
 
     @PostMapping(
             value = USER_ADD,
@@ -106,6 +107,14 @@ public class UserController {
             produces = APPLICATION_JSON_VALUE)
     public String userCheckLogin(@RequestBody UserCheckLoginRequest request) {
         return service.userCheckLogin(request);
+    }
+
+    @PostMapping(
+            value = USER_LOGIN,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String userLogin(@RequestBody UserLoginRequest request) {
+        return service.userLogin(request);
     }
 
 }

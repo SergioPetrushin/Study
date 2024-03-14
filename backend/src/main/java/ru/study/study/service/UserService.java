@@ -21,8 +21,14 @@ public class UserService {
 
 
     public UserResponse addUser(UserAddRequest request) {
-        var id = userDomainService.addUser(request);
-        return userDomainService.getUser(id);
+        if (verification(null, request.getMail())) {
+            var id = userDomainService.addUser(request);
+            return userDomainService.getUser(id);
+        } else {
+            System.out.println("Такой e-mail уже существует!");
+            return null;
+        }
+
     }
 
     public UserResponse getUser(UserRequest request) {
@@ -48,9 +54,8 @@ public class UserService {
     }
 
     public String changePWD(UserChangePWDRequest request) {
-        String reg = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
-
-        if (request.getPassword().matches(reg)) {
+//(request.getPassword().matches(reg))
+        if (verification(request.getPassword(), null)) {
             return userDomainService.changePWD(request);
         } else {
             return "Пароль не подходит. Пароль должен содержать не " +
@@ -58,22 +63,51 @@ public class UserService {
         }
     }
 
-    public String userCheckEmail(UserCheckEmailRequest request){
+    private boolean verification(String pwd, String mail) {
+        //Проверка почты и пароля на валидность
+        String pwdReg = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
+        String mailRed = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
+        boolean result = false;
+        if (mail == null) {
+            if (pwd.matches(pwdReg)) {
+                result = true;
+            } else {
+                result = false;
+            }
+        }
+
+        if (pwd == null) {
+            if (mail.matches(mailRed)) {
+                result = true;
+            }
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+
+    public String userCheckEmail(UserCheckEmailRequest request) {
         boolean result = userDomainService.checkEmail(request);
-        if (result==true){
+        if (result == true) {
             return "Такая почта имеется";
         } else {
             return "Такая почта отсутствует";
         }
     }
 
-    public String userCheckLogin(UserCheckLoginRequest request){
+    public String userCheckLogin(UserCheckLoginRequest request) {
         boolean result = userDomainService.checkLogin(request);
-        if (result==true){
+        if (result == true) {
             return "Такой логин имеется";
         } else {
             return "Такой логин отсутствует";
         }
+    }
+
+    public String userLogin(UserLoginRequest request) {
+        String message = userDomainService.userLogin(request);
+        return message;
     }
 
 }

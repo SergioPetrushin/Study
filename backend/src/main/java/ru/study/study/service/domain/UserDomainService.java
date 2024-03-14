@@ -3,10 +3,7 @@ package ru.study.study.service.domain;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.study.study.dto.request.user.UserAddRequest;
-import ru.study.study.dto.request.user.UserChangePWDRequest;
-import ru.study.study.dto.request.user.UserCheckEmailRequest;
-import ru.study.study.dto.request.user.UserCheckLoginRequest;
+import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.mapper.user.UserMapper;
 import ru.study.study.mapper.user.UserMerger;
@@ -66,5 +63,19 @@ public class UserDomainService {
 
     public boolean checkLogin(UserCheckLoginRequest request) {
         return userRepository.existsUsersByLogin(request.getLogin());
+    }
+
+    public String userLogin(UserLoginRequest request) {
+        boolean login = userRepository.existsUsersByLogin(request.getLogin());
+        String pswd = userRepository.findPasswordByLogin(request.getLogin());
+        String message = null;
+        if(login&&(pswd.equals(request.getPswd()))){
+            System.out.println();
+            message = "Пароль соответствует логину";
+
+        } else {
+            message = "Такой логин не существует или пароль не соответствует логину";
+        }
+        return message;
     }
 }
