@@ -54,7 +54,6 @@ public class UserService {
     }
 
     public String changePWD(UserChangePWDRequest request) {
-//(request.getPassword().matches(reg))
         if (verification(request.getPassword(), null)) {
             return userDomainService.changePWD(request);
         } else {
@@ -90,18 +89,20 @@ public class UserService {
     public String userCheckEmail(UserCheckEmailRequest request) {
         boolean result = userDomainService.checkEmail(request);
         if (result == true) {
-            return "Такая почта имеется";
+            return "Извините, эта почта уже занята. " +
+                    "Вам нужно выбрать другой адрес электронной почты";
         } else {
-            return "Такая почта отсутствует";
+            return "Такая почта свободна";
         }
     }
 
     public String userCheckLogin(UserCheckLoginRequest request) {
         boolean result = userDomainService.checkLogin(request);
         if (result == true) {
-            return "Такой логин имеется";
+            return "Ошибка: Пользователь с таким логином уже существует. " +
+                    "Пожалуйста, выберите другой логин для регистрации.";
         } else {
-            return "Такой логин отсутствует";
+            return "Поздравляем! Логин " + request.getLogin() + " доступен для регистрации";
         }
     }
 

@@ -6,12 +6,12 @@
 
     <changeSet id="ADD-EMAIL-CODE-USER-001" author="petrushin_ss">
         <addColumn tableName="USERS">
-            <column name="EMAIL_CODE" type="VARCHAR(50)" value="no email_code"/>
+            <column name="EMAIL_CODE" type="UUID" value="null"/>
         </addColumn>
     </changeSet>
     <changeSet id="ADD-PWD-CODE-USER-002" author="petrushin_ss">
         <addColumn tableName="USERS">
-            <column name="PWD_CODE" type="VARCHAR(50)" value="no pwd_code"/>
+            <column name="PWD_CODE" type="UUID"/>
         </addColumn>
     </changeSet>
 
