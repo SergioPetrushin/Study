@@ -37,10 +37,10 @@ public class MailService {
         }
 
         for (Pair<String, File> file : request.getFiles()) {
-            long fileSizeInMb = file.getR().length() / (1024 * 1024); // Размер файла в МБ
+            long fileSizeInMb = file.getR().length() / (1024 * 1024);
             if (fileSizeInMb > 15) {
                 System.out.println("Файл " + file.getL() + " превышает максимально допустимый размер (15 МБ). Отправка отменена.");
-                return; // Прерываем отправку письма
+                return;
             }
         }
 
