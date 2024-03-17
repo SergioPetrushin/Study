@@ -7,6 +7,10 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import ru.study.study.config.MailSenderFactory;
 import ru.study.study.dto.inner.EmailRequest;
+import ru.study.study.utils.Pair;
+
+import java.io.File;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +23,28 @@ public class MailService {
 
 
     public void sendMail(EmailRequest request) {
+
+        if (!mailValidator(from)) {
+            System.out.println("email отправителя введен не корректно! Проверьте");
+        }
+
+        if(subjectChecker(request.getSubject())){
+            System.out.println("Тема письма не заполнена. Проверьте");
+        }
+
+        if(notEmptyDestinationChecker(request.getTo())){
+            System.out.println("Отсутствует адрес для отправки. Проверьте");
+        }
+
+        for (Pair<String, File> file : request.getFiles()) {
+            long fileSizeInMb = file.getR().length() / (1024 * 1024); // Размер файла в МБ
+            if (fileSizeInMb > 15) {
+                System.out.println("Файл " + file.getL() + " превышает максимально допустимый размер (15 МБ). Отправка отменена.");
+                return; // Прерываем отправку письма
+            }
+        }
+
+
 
         try {
             var sender = mailSenderFactory.getJavaMailSender();
@@ -39,6 +65,7 @@ public class MailService {
 
             request.getFiles().forEach(file -> {
 
+
                 try {
                     message.addAttachment(file.getL(), file.getR());
                 } catch (MessagingException ignored) {
@@ -50,9 +77,31 @@ public class MailService {
         } catch (Exception ex) {
             throw new RuntimeException("Произошла ошибка при отправке почты: " + ex.getMessage());
         }
-
-
     }
 
+    public boolean mailValidator(String mailUnderChecking) {
+        String mail = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
+        boolean flag = false;
 
+        if (mailUnderChecking.matches(mail)) {
+            flag = true;
+        }
+        return flag;
+    }
+
+    public boolean subjectChecker(String subj){
+        boolean flag = true;
+        if(subj.isEmpty()){
+            flag = false;
+        }
+        return flag;
+    }
+
+    public boolean notEmptyDestinationChecker(List<String> list){
+        boolean flag = false;
+        if(list.isEmpty()){
+            flag = true;
+        }
+        return flag;
+    }
 }
