@@ -16,6 +16,7 @@ import ru.study.study.entity.BaseEntity;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity(name = "USERS")
 @Getter
@@ -45,6 +46,12 @@ public class User extends BaseEntity {
 
     @Column(name = "EMAIL")
     private String email;
+
+    @Column(name = "EMAIL_CODE")
+    private UUID emailCode;
+
+    @Column(name = "PWD_CODE")
+    private UUID pwdCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_TYPE_ID")

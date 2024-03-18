@@ -1,17 +1,22 @@
 package ru.study.study.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.study.study.dto.inner.EmailRequest;
-import ru.study.study.dto.request.user.*;
+import ru.study.study.dto.request.user.UserAddRequest;
+import ru.study.study.dto.request.user.UserChangePWDRequest;
+import ru.study.study.dto.request.user.UserCheckEmailRequest;
+import ru.study.study.dto.request.user.UserCheckLoginRequest;
+import ru.study.study.dto.request.user.UserLoginRequest;
+import ru.study.study.dto.request.user.UserRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
-import ru.study.study.service.utils.MailService;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -20,17 +25,16 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class UserController {
 
     private final UserService service;
-    private final MailService mailService;
     private static final String USER_ADD = "/api/v1/user/add";
     private static final String USER_GET = "/api/v1/user/get";
     private static final String USER_GET_ALL = "/api/v1/user/get-all";
     private static final String USER_EDIT = "/api/v1/user/edit";
     private static final String USER_DELETE = "/api/v1/user/delete";
     private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
-    private static final String MAIL_SENDER = "/api/v1/user/mail-sender";
     private static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
     private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
     private static final String USER_LOGIN = "/api/v1/user/login";
+    private static final String USER_CONFIRM = "/api/v1/user/confirm-email/{code}";
 
     @PostMapping(
             value = USER_ADD,
@@ -84,16 +88,6 @@ public class UserController {
     }
 
     @PostMapping(
-            value = MAIL_SENDER,
-            consumes = APPLICATION_JSON_VALUE,
-            produces = APPLICATION_JSON_VALUE)
-    public String mailSender() {
-        mailService.sendMail(new EmailRequest().setTo(Collections.singletonList("vainsergey@yandex.ru"))
-                .setSubject("Тестовая тема").setText("Тестовый тест"));
-        return "User успешно удален";
-    }
-
-    @PostMapping(
             value = USER_CHECK_EMAIL,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
@@ -109,12 +103,19 @@ public class UserController {
         return service.userCheckLogin(request);
     }
 
-    @PostMapping(
+
+    @GetMapping(
             value = USER_LOGIN,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public String userLogin(@RequestBody UserLoginRequest request) {
         return service.userLogin(request);
     }
+
+    @GetMapping(value = USER_CONFIRM)
+    public String confirmMail(@PathVariable UUID code) {
+        return service.confirmMail(code);
+    }
+
 
 }

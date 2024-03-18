@@ -11,6 +11,7 @@ import ru.study.study.mapper.user.UserResponseMapper;
 import ru.study.study.repository.UserRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -22,9 +23,10 @@ public class UserDomainService {
     private final UserMerger userMerger;
 
     @Transactional
-    public Long addUser(UserAddRequest request) {
-
-        return userRepository.save(userMapper.from(request)).getId();
+    public Long addUser(UserAddRequest request, UUID emailCode) {
+        var user = userMapper.from(request);
+        user.setEmailCode(emailCode);
+        return userRepository.save(user).getId();
     }
 
     @Transactional
@@ -57,16 +59,16 @@ public class UserDomainService {
         return "Пароль успешно изменен";
     }
 
-    public boolean checkEmail(UserCheckEmailRequest request) {
-        return userRepository.existsUsersByEmail(request.getEmail());
+    public boolean checkEmail(String email) {
+        return userRepository.existsUsersByEmail(email);
     }
 
-    public boolean checkLogin(UserCheckLoginRequest request) {
-        return userRepository.existsUsersByLogin(request.getLogin());
+    public boolean checkLogin(String login) {
+        return userRepository.existsUsersByLogin(login);
     }
 
     public String userLogin(UserLoginRequest request) {
-        boolean login = userRepository.existsUsersByLogin(request.getLogin());
+    /*    boolean login = userRepository.existsUsersByLogin(request.getLogin());
         String pswd = userRepository.findPasswordByLogin(request.getLogin());
         String message = null;
         if(login&&(pswd.equals(request.getPswd()))){
@@ -76,6 +78,22 @@ public class UserDomainService {
         } else {
             message = "Такой логин не существует или пароль не соответствует логину";
         }
-        return message;
+        return message;*/
+
+        //TODO
+        return null;
+    }
+
+    public boolean confirmMail(UUID code) {
+
+        var result = userRepository.findUserByEmailCode(code);
+
+        if (result.isPresent()){
+          var user = result.get().setEmailCode(null);
+          userRepository.save(user);
+          return true;
+        }
+
+        else return false;
     }
 }
