@@ -9,13 +9,6 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 @Accessors(chain = true)
-public class UserAddRequest {
-    private Long userId;
+public class UserCheckLoginRequest {
     private String login;
-    private String password;
-    private String fullName;
-    private Long typeId;
-    private Long statusId;
-    private String mail;
-
 }
