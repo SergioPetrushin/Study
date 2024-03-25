@@ -29,7 +29,6 @@ public class UserController {
     private static final String USER_EDIT = "/api/v1/user/edit";
     private static final String USER_DELETE = "/api/v1/user/delete";
     private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
-    private static final String MAIL_SENDER = "/api/v1/user/mail-sender";
 
     @PostMapping(
             value = USER_ADD,
@@ -82,13 +81,5 @@ public class UserController {
         return service.changePWD(request);
     }
 
-    @PostMapping(
-            value = MAIL_SENDER,
-            consumes = APPLICATION_JSON_VALUE,
-            produces = APPLICATION_JSON_VALUE)
-    public String mailSender() {
-        mailService.sendMail(new EmailRequest().setTo(Collections.singletonList("vainsergey@yandex.ru"))
-                .setSubject("Тестовая тема").setText("Тестовый тест"));
-        return "User успешно удален";
-    }
+
 }

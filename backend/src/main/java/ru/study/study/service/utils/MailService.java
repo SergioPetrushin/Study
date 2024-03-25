@@ -23,7 +23,6 @@ public class MailService {
 
 
     public void sendMail(EmailRequest request) {
-
         if (!mailValidator(from)) {
             System.out.println("email отправителя введен не корректно! Проверьте");
         }
@@ -36,6 +35,17 @@ public class MailService {
             System.out.println("Отсутствует адрес для отправки. Проверьте");
         }
 
+        if(notEmptyBccChecker(request.getBcc())){
+            System.out.println("Отсутствует скрытая копия. Проверьте");
+        }
+
+        if (notEmptyСcChecker(request.getCc())){
+            System.out.println("Отсутствует вторичный получатель. Проверьте");
+        }
+
+        if (DestinationValidator(request.getTo())){
+            System.out.println("Почта одного или нескольких получателей введены неправильно. Проверьте");
+        }
         for (Pair<String, File> file : request.getFiles()) {
             long fileSizeInMb = file.getR().length() / (1024 * 1024);
             if (fileSizeInMb > 15) {
@@ -81,27 +91,34 @@ public class MailService {
 
     public boolean mailValidator(String mailUnderChecking) {
         String mail = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
-        boolean flag = false;
-
-        if (mailUnderChecking.matches(mail)) {
-            flag = true;
-        }
-        return flag;
+        return mailUnderChecking.matches(mail);
     }
 
     public boolean subjectChecker(String subj){
-        boolean flag = true;
-        if(subj.isEmpty()){
-            flag = false;
-        }
-        return flag;
+        return !subj.isEmpty();
     }
 
     public boolean notEmptyDestinationChecker(List<String> list){
-        boolean flag = false;
-        if(list.isEmpty()){
-            flag = true;
+        return list.isEmpty();
+    }
+
+    public boolean notEmptyBccChecker(List<String> list){
+        return list.isEmpty();
+    }
+    public boolean notEmptyСcChecker(List<String> list){
+        return list.isEmpty();
+    }
+
+    public boolean DestinationValidator(List<String> list){
+        int notValidDestinationCounter = 0;
+        for (String str:list){
+            if(!mailValidator(str)){
+                notValidDestinationCounter++;
+            }
         }
-        return flag;
+        if (notValidDestinationCounter>0){
+            return false;
+        }
+        return true;
     }
 }

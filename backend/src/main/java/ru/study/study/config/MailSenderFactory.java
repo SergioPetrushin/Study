@@ -10,7 +10,6 @@ import java.util.Properties;
 @Component
 public class MailSenderFactory {
 
-    // btzroofslvikopsl
 
 
     @Value("${spring.mail.protocol}")
