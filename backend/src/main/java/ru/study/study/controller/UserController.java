@@ -1,5 +1,7 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Управление пользователями")
 public class UserController {
 
     private final UserService service;
@@ -26,6 +29,7 @@ public class UserController {
     private static final String USER_DELETE = "/api/v1/user/delete";
     private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
 
+    @Operation(summary = "Добавление нового пользователя")
     @PostMapping(
             value = USER_ADD,
             consumes = APPLICATION_JSON_VALUE,
