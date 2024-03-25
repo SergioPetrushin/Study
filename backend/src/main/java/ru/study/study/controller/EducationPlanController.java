@@ -15,14 +15,12 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequiredArgsConstructor
-
 public class EducationPlanController {
     private static final String EDUCATION_PLAN_GET = "/api/v1/education-plan/get";
     private static final String EDUCATION_PLAN_GET_ALL = "/api/v1/education-plan/get-all";
     private static final String EDUCATION_PLAN_ADD = "/api/v1/education-plan/add";
     private static final String EDUCATION_PLAN_DELETE = "/api/v1/education-plan/delete";
     private static final String EDUCATION_PLAN_EDIT = "/api/v1/education-plan/edit";
-
 
     private final EducationPlanService service;
     @PostMapping(
