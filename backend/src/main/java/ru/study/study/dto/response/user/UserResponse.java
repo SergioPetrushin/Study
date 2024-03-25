@@ -11,6 +11,7 @@ import ru.study.study.dto.response.userstatus.UserStatusResponse;
 @ToString
 @EqualsAndHashCode
 @Accessors(chain = true)
+@Schema(name = "ДТО пользовательского ответ")
 public class UserResponse {
 
     @Schema(description = "ID пользователя")
