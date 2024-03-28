@@ -60,6 +60,7 @@ public class UserTypeController {
         return "UserType успешно удален";
     }
     @Operation(summary = "Изменение типа пользователя")
+    //Отослал коммит без интернета((
     @PostMapping(
             value = USER_TYPE_EDIT,
             consumes = APPLICATION_JSON_VALUE,
