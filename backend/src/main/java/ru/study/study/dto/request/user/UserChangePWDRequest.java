@@ -10,8 +10,9 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 @Accessors(chain = true)
-@Schema(name = "ДТО запроса смены пароля")
 public class UserChangePWDRequest {
+    @Schema(description = "Изменение логина пользователя")
     private String login;
+    @Schema(description = "Изменение пароля пользовател")
     private String password;
 }

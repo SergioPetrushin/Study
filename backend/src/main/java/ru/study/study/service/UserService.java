@@ -22,7 +22,7 @@ public class UserService {
     private final UserDomainService userDomainService;
     private final UserTypeDomainService userTypeDomainService;
 
-    @Operation()
+    @Operation(summary = "Ввести значение")
     public UserResponse addUser(UserAddRequest request) {
         var id = userDomainService.addUser(request);
         return userDomainService.getUser(id);

@@ -1,5 +1,6 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class MessageStatusController {
     private static final String MESSAGE_STATUS_GET = "/api/v1/message-status/get";
     private static final String MESSAGE_STATUS_EDIT = "/api/v1/message-status/egit";
     private static final String MESSAGE_STATUS_GET_ALL = "/api/v1/message-status/get-all";
-
+    @Operation(summary = "Получение статуса сообщения")
     @PostMapping(
             value = MESSAGE_STATUS_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -35,7 +36,7 @@ public class MessageStatusController {
 
         return messageStatusService.getMessageStatus(request);
     }
-
+    @Operation(summary = "Получение всех статусов сообщения")
     @PostMapping(
             value = MESSAGE_STATUS_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
@@ -44,7 +45,7 @@ public class MessageStatusController {
 
         return messageStatusService.getAllMessageStatus();
     }
-
+    @Operation(summary = "Изменение статуса сообщения")
     @PostMapping(
             value = MESSAGE_STATUS_EDIT,
             consumes = APPLICATION_JSON_VALUE,

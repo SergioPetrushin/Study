@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 @Accessors(chain = true)
-@Schema(name = "ДТО пользовательского запроса")
 public class UserRequest {
+    @Schema(description = "ID пользователя")
     private Long userId;
 }

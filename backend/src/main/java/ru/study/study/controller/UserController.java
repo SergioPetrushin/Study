@@ -38,7 +38,7 @@ public class UserController {
 
         return service.addUser(request);
     }
-
+    @Operation(summary = "Получение пользователя")
     @PostMapping(
             value = USER_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -47,7 +47,7 @@ public class UserController {
 
         return service.getUser(request);
     }
-
+    @Operation(summary = "Получение всех пользователя")
     @PostMapping(
             value = USER_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
@@ -55,7 +55,7 @@ public class UserController {
     public List<UserResponse> getAllUser() {
         return service.getAllUser();
     }
-
+    @Operation(summary = "Изменение пользователя")
     @PostMapping(
             value = USER_EDIT,
             consumes = APPLICATION_JSON_VALUE,
@@ -63,7 +63,7 @@ public class UserController {
     public UserResponse editUser(@RequestBody UserAddRequest request) {
         return service.editUser(request);
     }
-
+    @Operation(summary = "Удаление пользователя")
     @PostMapping(
             value = USER_DELETE,
             consumes = APPLICATION_JSON_VALUE,
@@ -72,7 +72,7 @@ public class UserController {
         service.deleteUser(request);
         return "User успешно удален";
     }
-
+    @Operation(summary = "Изменение пароля пользователя")
     @PostMapping(
             value = USER_CHANGE_PWD,
             consumes = APPLICATION_JSON_VALUE,

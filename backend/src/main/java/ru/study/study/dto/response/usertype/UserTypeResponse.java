@@ -12,11 +12,15 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО пользовательских типов ответ")
 public class UserTypeResponse {
+    @Schema(description = "ID типа пользователя ответ")
     private Long id;
+    @Schema(description = "Имя типа пользователя ответ")
     private String name;
+    @Schema(description = "Описание типа пользователя ответ")
     private String description;
+    @Schema(description = "Время создания типа пользователя ответ")
     private LocalDateTime created;
+    @Schema(description = "Время изменения типа пользователя ответ")
     private LocalDateTime modified;
 }

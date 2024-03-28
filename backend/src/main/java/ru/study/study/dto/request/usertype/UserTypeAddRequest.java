@@ -10,9 +10,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО пользовательского типа добавления запроса")
 public class UserTypeAddRequest {
+    @Schema(description = "ID типа пользователя")
     private Long typeId;
+    @Schema(description = "Имя типа пользователя")
     private String name;
+    @Schema(description = "Описание типа пользователя")
     private String description;
 }

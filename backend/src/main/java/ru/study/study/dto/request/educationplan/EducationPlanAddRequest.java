@@ -10,9 +10,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО обучающего плана добавления запроса")
 public class EducationPlanAddRequest {
+    @Schema(description = "Имя плана")
     private String name;
+    @Schema(description = "ID плана")
     private Long planId;
+    @Schema(description = "Описание плана")
     private String description;
 }

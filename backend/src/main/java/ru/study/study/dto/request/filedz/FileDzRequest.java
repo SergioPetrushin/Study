@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО файлов ДЗ запроса")
 public class FileDzRequest {
+    @Schema(description = "ID файла")
     private Long fileId;
 }

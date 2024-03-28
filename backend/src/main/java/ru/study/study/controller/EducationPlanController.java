@@ -1,5 +1,6 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class EducationPlanController {
 
 
     private final EducationPlanService service;
+    @Operation(summary = "Получение ответа плана обучения")
     @PostMapping(
             value = EDUCATION_PLAN_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -33,7 +35,7 @@ public class EducationPlanController {
     public EducationPlanResponse getEducationPlan(@RequestBody EducationPlanRequest request) {
         return service.getEducationPlan(request);
     }
-
+    @Operation(summary = "Получение ответа всех планов обучения")
     @PostMapping(
             value = EDUCATION_PLAN_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
@@ -41,7 +43,7 @@ public class EducationPlanController {
     public List<EducationPlanResponse> getAllEducationPlan() {
         return service.getAllEducationPlan();
     }
-
+    @Operation(summary = "Добавление плана обучения")
     @PostMapping(
             value = EDUCATION_PLAN_ADD,
             consumes = APPLICATION_JSON_VALUE,
@@ -49,7 +51,7 @@ public class EducationPlanController {
     public EducationPlanResponse addEducationPlan(@RequestBody EducationPlanAddRequest request) {
         return service.addEducationPlan(request);
     }
-
+    @Operation(summary = "Удаление плана обучения")
     @PostMapping(
             value = EDUCATION_PLAN_DELETE,
             consumes = APPLICATION_JSON_VALUE,
@@ -58,7 +60,7 @@ public class EducationPlanController {
         service.deleteEducationPlan(request);
         return "EducationPlan успешно удален";
     }
-
+    @Operation(summary = "Изменение плана обучения")
     @PostMapping(
             value = EDUCATION_PLAN_EDIT,
             consumes = APPLICATION_JSON_VALUE,

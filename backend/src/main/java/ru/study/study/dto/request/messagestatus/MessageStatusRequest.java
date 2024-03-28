@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО статусов сообщений запрос")
 public class MessageStatusRequest {
+    @Schema(description = "ID стутса сообщения")
     private Long messageStatusId;
 }

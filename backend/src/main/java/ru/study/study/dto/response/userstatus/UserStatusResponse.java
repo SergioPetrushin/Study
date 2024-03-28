@@ -12,13 +12,16 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО пользовательских статусов ответ")
 public class UserStatusResponse {
-
+    @Schema(description = "ID статуса пользователя ответа")
     private Long userStatusId;
+    @Schema(description = "Имя пользователя ответа")
     private String name;
+    @Schema(description = "Описание пользователя ответа")
     private String description;
+    @Schema(description = "Время создания пользователя ответа")
     private LocalDateTime created;
+    @Schema(description = "Время изменения пользователя ответа")
     private LocalDateTime modified;
 
 }

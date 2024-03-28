@@ -10,10 +10,13 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО задач добавления запроса")
 public class TaskAddRequest {
+    @Schema(description = "ID задачи")
     private Long taskId;
+    @Schema(description = "ID плана")
     private Long planId;
+    @Schema(description = "Имя задачи")
     private String name;
+    @Schema(description = "Описание задачи")
     private String description;
 }

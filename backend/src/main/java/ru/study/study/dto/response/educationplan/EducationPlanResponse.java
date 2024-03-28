@@ -13,14 +13,18 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-@Schema(name = "ДТО обучающего плана ответ")
-
 public class EducationPlanResponse {
+    @Schema(description = "ID плана ответа")
     private Long planId;
+    @Schema(description = "Имя плана ответа")
     private String name;
+    @Schema(description = "Описание плана ответа")
     private String description;
+    @Schema(description = "Объект пользователя")
     private UserResponse user;
+    @Schema(description = "Время создания")
     private LocalDateTime created;
+    @Schema(description = "Время изменения")
     private LocalDateTime modified;
 
 }

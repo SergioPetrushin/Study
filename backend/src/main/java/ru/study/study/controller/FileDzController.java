@@ -1,5 +1,6 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class FileDzController {
     private static final String FILE_DZ_ADD = "/api/v1/file-dz/add";
     private static final String FILE_DZ_DELETE = "/api/v1/file-dz/delete";
 
-
+    @Operation(summary = "Получение файла ДЗ")
     @PostMapping(
             value = FILE_DZ_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -30,7 +31,7 @@ public class FileDzController {
     public FileDzResponse getFileDz(@RequestBody FileDzRequest request) {
         return fileDzService.getFileDz(request);
     }
-
+    @Operation(summary = "Добавление файла ДЗ")
     @PostMapping(
             value = FILE_DZ_ADD,
             consumes = APPLICATION_JSON_VALUE,
@@ -38,7 +39,7 @@ public class FileDzController {
     public FileDzResponse addFileDz(@RequestBody FileDzAddRequest request) {
         return fileDzService.addFileDz(request);
     }
-
+    @Operation(summary = "Удаление файла ДЗ")
     @PostMapping(
             value = FILE_DZ_DELETE,
             consumes = APPLICATION_JSON_VALUE,
