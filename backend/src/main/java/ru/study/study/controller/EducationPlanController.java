@@ -25,7 +25,6 @@ public class EducationPlanController {
     private static final String EDUCATION_PLAN_DELETE = "/api/v1/education-plan/delete";
     private static final String EDUCATION_PLAN_EDIT = "/api/v1/education-plan/edit";
 
-
     private final EducationPlanService service;
     @Operation(summary = "Получение ответа плана обучения")
     @PostMapping(
