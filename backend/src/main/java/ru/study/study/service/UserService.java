@@ -1,5 +1,6 @@
 package ru.study.study.service;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.UserAddRequest;
@@ -21,7 +22,7 @@ public class UserService {
     private final UserDomainService userDomainService;
     private final UserTypeDomainService userTypeDomainService;
 
-
+    @Operation(summary = "Ввести значение")
     public UserResponse addUser(UserAddRequest request) {
         var id = userDomainService.addUser(request);
         return userDomainService.getUser(id);

@@ -1,5 +1,6 @@
 package ru.study.study.dto.request.educationplan;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,7 +11,10 @@ import lombok.experimental.Accessors;
 @ToString
 @EqualsAndHashCode
 public class EducationPlanAddRequest {
+    @Schema(description = "Имя плана")
     private String name;
+    @Schema(description = "ID плана")
     private Long planId;
+    @Schema(description = "Описание плана")
     private String description;
 }

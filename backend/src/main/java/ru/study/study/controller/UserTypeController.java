@@ -1,5 +1,7 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Управление типами пользователей")
 public class UserTypeController {
     private final UserTypeService userTypeService;
 
@@ -23,6 +26,7 @@ public class UserTypeController {
     private static final String USER_TYPE_GET = "/api/v1/user-type/get";
     private static final String USER_TYPE_DELETE = "/api/v1/user-type/delete";
     private static final String USER_TYPE_EDIT = "/api/v1/user-type/edit";
+    @Operation(summary = "Добавление типа пользователя")
     @PostMapping(
             value = USER_TYPE_ADD,
             consumes = APPLICATION_JSON_VALUE,
@@ -30,7 +34,7 @@ public class UserTypeController {
     public UserTypeResponse addUserType(@RequestBody UserTypeAddRequest request) {
         return userTypeService.addUserType(request);
     }
-
+    @Operation(summary = "Получение всех типов пользователя")
     @PostMapping(
             value = USER_TYPE_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
@@ -38,7 +42,7 @@ public class UserTypeController {
     public List<UserTypeResponse> getAllUserType() {
         return userTypeService.getAllUserType();
     }
-
+    @Operation(summary = "Получение типа пользователя")
     @PostMapping(
             value = USER_TYPE_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -46,7 +50,7 @@ public class UserTypeController {
     public UserTypeResponse getUserType(@RequestBody UserTypeRequest request) {
         return userTypeService.getUserType(request);
     }
-
+    @Operation(summary = "Удаление типа пользователя")
     @PostMapping(
             value = USER_TYPE_DELETE,
             consumes = APPLICATION_JSON_VALUE,
@@ -55,7 +59,7 @@ public class UserTypeController {
         userTypeService.deleteUserType(request);
         return "UserType успешно удален";
     }
-
+    @Operation(summary = "Изменение типа пользователя")
     @PostMapping(
             value = USER_TYPE_EDIT,
             consumes = APPLICATION_JSON_VALUE,

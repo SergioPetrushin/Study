@@ -1,5 +1,7 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Управление статусами пользователей")
 public class UserStatusController {
 
     private static final String USER_STATUS_ADD = "/api/v1/user-status/add";
@@ -22,7 +25,7 @@ public class UserStatusController {
 
 
     private final UserStatusService service;
-
+    @Operation(summary = "Добавление статуса пользователя")
     @PostMapping(
             value = USER_STATUS_ADD,
             consumes = APPLICATION_JSON_VALUE,
@@ -31,7 +34,7 @@ public class UserStatusController {
         return service.addStatus(request);
     }
 
-
+    @Operation(summary = "Изменение статуса пользователя")
     @PostMapping(
             value = USER_STATUS_EDIT,
             consumes = APPLICATION_JSON_VALUE,
@@ -40,7 +43,7 @@ public class UserStatusController {
         return service.editStatus(request);
     }
 
-
+    @Operation(summary = "Получение статуса пользователя")
     @PostMapping(
             value = USER_STATUS_GET_ALL,
             consumes = APPLICATION_JSON_VALUE,
