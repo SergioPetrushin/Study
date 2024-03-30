@@ -1,5 +1,6 @@
 package ru.study.study.service;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.inner.EmailRequest;
@@ -33,7 +34,7 @@ public class UserService {
     private static final String REG_PWD = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
     private static final String REG_MAIL = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
 
-
+    @Operation(summary = "Ввести значение")
     public UserResponse addUser(UserAddRequest request) {
 
         if (!verification(request.getPassword(), REG_PWD))

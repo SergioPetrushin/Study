@@ -1,5 +1,7 @@
 package ru.study.study.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Управление пользователями")
 public class UserController {
 
     private final UserService service;
@@ -36,6 +39,7 @@ public class UserController {
     private static final String USER_LOGIN = "/api/v1/user/login";
     private static final String USER_CONFIRM = "/api/v1/user/confirm-email/{code}";
 
+    @Operation(summary = "Добавление нового пользователя")
     @PostMapping(
             value = USER_ADD,
             consumes = APPLICATION_JSON_VALUE,
@@ -44,7 +48,7 @@ public class UserController {
 
         return service.addUser(request);
     }
-
+    @Operation(summary = "Получение пользователя")
     @PostMapping(
             value = USER_GET,
             consumes = APPLICATION_JSON_VALUE,
@@ -53,7 +57,7 @@ public class UserController {
 
         return service.getUser(request);
     }
-
+    @Operation(summary = "Получение всех пользователя")
     @PostMapping(
             value = USER_GET_ALL,
 
@@ -61,7 +65,7 @@ public class UserController {
     public List<UserResponse> getAllUser() {
         return service.getAllUser();
     }
-
+    @Operation(summary = "Изменение пользователя")
     @PostMapping(
             value = USER_EDIT,
             consumes = APPLICATION_JSON_VALUE,
@@ -69,7 +73,7 @@ public class UserController {
     public UserResponse editUser(@RequestBody UserAddRequest request) {
         return service.editUser(request);
     }
-
+    @Operation(summary = "Удаление пользователя")
     @PostMapping(
             value = USER_DELETE,
             consumes = APPLICATION_JSON_VALUE,
@@ -78,7 +82,7 @@ public class UserController {
         service.deleteUser(request);
         return "User успешно удален";
     }
-
+    @Operation(summary = "Изменение пароля пользователя")
     @PostMapping(
             value = USER_CHANGE_PWD,
             consumes = APPLICATION_JSON_VALUE,
@@ -116,6 +120,5 @@ public class UserController {
     public String confirmMail(@PathVariable UUID code) {
         return service.confirmMail(code);
     }
-
 
 }

@@ -1,5 +1,6 @@
 package ru.study.study.dto.response.educationplan;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -12,14 +13,18 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @ToString
 @EqualsAndHashCode
-
-
 public class EducationPlanResponse {
+    @Schema(description = "ID плана ответа")
     private Long planId;
+    @Schema(description = "Имя плана ответа")
     private String name;
+    @Schema(description = "Описание плана ответа")
     private String description;
+    @Schema(description = "Объект пользователя")
     private UserResponse user;
+    @Schema(description = "Время создания")
     private LocalDateTime created;
+    @Schema(description = "Время изменения")
     private LocalDateTime modified;
 
 }

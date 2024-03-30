@@ -14,7 +14,7 @@ import java.util.List;
 public class EmailRequest {
 
     private String subject;
-    private String text;
+    private String text = "";
 
     private List<String> to = Collections.emptyList();
     private List<String> cc = Collections.emptyList();
