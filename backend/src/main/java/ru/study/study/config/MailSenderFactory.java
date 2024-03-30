@@ -10,8 +10,6 @@ import java.util.Properties;
 @Component
 public class MailSenderFactory {
 
-
-
     @Value("${spring.mail.protocol}")
     private String protocol;
 

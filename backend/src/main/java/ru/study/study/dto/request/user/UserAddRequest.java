@@ -23,5 +23,6 @@ public class UserAddRequest {
     private Long typeId;
     @Schema(description = "Статус ID")
     private Long statusId;
+    private String mail;
 
 }
