@@ -5,12 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.response.user.UserResponse;
+import ru.study.study.entity.user.User;
 import ru.study.study.mapper.user.UserMapper;
 import ru.study.study.mapper.user.UserMerger;
 import ru.study.study.mapper.user.UserResponseMapper;
 import ru.study.study.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -88,12 +90,51 @@ public class UserDomainService {
 
         var result = userRepository.findUserByEmailCode(code);
 
-        if (result.isPresent()){
-          var user = result.get().setEmailCode(null);
-          userRepository.save(user);
-          return true;
-        }
+        if (result.isPresent()) {
+            var user = result.get().setEmailCode(null);
+            userRepository.save(user);
+            return true;
+        } else return false;
+    }
 
-        else return false;
+    public boolean checkUserByEmail(UserForgetPasswordMailRequest request) {
+        boolean result = userRepository.findUserByEmail(request.getMail());
+        return result;
+    }
+
+    public User getUserByEmail(UserForgetPasswordMailRequest request) {
+        Optional<User> result = userRepository.getUserByEmail(request.getMail());
+        return result.get();
+    }
+
+    public boolean getUserForgetPassword(UserForgetPasswordMailRequest request) {
+        boolean result = checkUserByEmail(request);
+        if (result) {
+            var emailCode = UUID.randomUUID();
+            User user = getUserByEmail(request);
+            user.setEmailCode(emailCode);
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean pwdCodeWriter(UserForgetPasswordMailRequest request) {
+        //Метод по 3му пункту ДЗ
+        boolean result = checkUserByEmail(request);
+        if (result) {
+            User user = getUserByEmail(request);
+            user.setPwdCode(request.getCode());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public User resetPassword(UserForgetPasswordMailRequest request) {
+        Optional<User> user = userRepository.getUserByEmailCode(request.getCode());
+        User user1 = user.get();
+        return user1;
+
     }
 }

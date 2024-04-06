@@ -4,15 +4,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.inner.EmailRequest;
-import ru.study.study.dto.request.user.UserAddRequest;
-import ru.study.study.dto.request.user.UserChangePWDRequest;
-import ru.study.study.dto.request.user.UserCheckEmailRequest;
-import ru.study.study.dto.request.user.UserCheckLoginRequest;
-import ru.study.study.dto.request.user.UserLoginRequest;
-import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
+import ru.study.study.entity.user.User;
 import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.domain.UserTypeDomainService;
 import ru.study.study.service.utils.MailService;
@@ -20,6 +16,7 @@ import ru.study.study.service.utils.MailService;
 import java.security.InvalidParameterException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -129,5 +126,35 @@ public class UserService {
     public String confirmMail(UUID code) {
         if (userDomainService.confirmMail(code)) return "Почта потверждена успешно!";
         else return "Код не найден! Возможно почта была потверждена ранее";
+    }
+
+    public String getUserForgetPassword(UserForgetPasswordMailRequest request) {
+        boolean checkResult = userDomainService.getUserForgetPassword(request);
+        if (checkResult) {
+            mailService.sendMail(new EmailRequest()
+                    .setTo(Collections.singletonList(request.getMail()))
+                    .setSubject("Забыли свой пароль?")
+                    .setText(String.format(" Здравствуйте, %s! \n" +
+                            "Это письмо направлено вам по запросу для смены пароля. Пройдите по ссылке и смените его. Если Вы не запрашивали смену пароля, " +
+                            "то проигнорируйте это письмо \n" +
+                            request.getUrl()))
+            );
+            return "Письмо с запросом на смену пароля отправлено";
+        }
+        return "такой почты нет в базе данных! Проверьте правильность написания почты или зарегистрируйтесь вновь.";
+    }
+
+
+    public String resetPassword(UserForgetPasswordMailRequest request) {
+        User user = userDomainService.resetPassword(request);
+        String pwd = request.getPwd();
+        if(!(user==null)&&(pwd.matches(REG_PWD))){
+            user.setPassword(pwd);
+            return "Успешная смена пароля";
+        } else if(pwd.matches(REG_PWD)){
+            return "Пароль не подходит! Смените.";
+        } else {
+            return "Код не действителен!";
+        }
     }
 }

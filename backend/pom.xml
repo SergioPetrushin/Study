@@ -23,8 +23,9 @@
         <spring-security-version>6.1.4</spring-security-version>
         <lombok-version>1.18.30</lombok-version>
         <postgresql-version>42.6.0</postgresql-version>
-        <springdoc-openapi-ui.version>1.6.13</springdoc-openapi-ui.version>
         <mail>1.4.7</mail>
+        <springdoc-openapi-ui.version>1.8.0</springdoc-openapi-ui.version>
+
     </properties>
 
 
@@ -66,6 +67,13 @@
             <version>${postgresql-version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -99,12 +107,6 @@
 
     </dependencies>
 
-    <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.2.0</version>
-    </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>

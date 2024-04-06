@@ -8,12 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.study.study.dto.request.user.UserAddRequest;
-import ru.study.study.dto.request.user.UserChangePWDRequest;
-import ru.study.study.dto.request.user.UserCheckEmailRequest;
-import ru.study.study.dto.request.user.UserCheckLoginRequest;
-import ru.study.study.dto.request.user.UserLoginRequest;
-import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
 
@@ -35,9 +30,11 @@ public class UserController {
     private static final String USER_DELETE = "/api/v1/user/delete";
     private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
     private static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
-    private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
+    //private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
     private static final String USER_LOGIN = "/api/v1/user/login";
     private static final String USER_CONFIRM = "/api/v1/user/confirm-email/{code}";
+    private static final String USER_FORGET_PASSWORD = "/api/v1/user/forget-password";
+    private static final String USER_RESET_PASSWORD = "/api/v1/user/reset-password";
 
     @Operation(summary = "Добавление нового пользователя")
     @PostMapping(
@@ -48,6 +45,7 @@ public class UserController {
 
         return service.addUser(request);
     }
+
     @Operation(summary = "Получение пользователя")
     @PostMapping(
             value = USER_GET,
@@ -57,6 +55,7 @@ public class UserController {
 
         return service.getUser(request);
     }
+
     @Operation(summary = "Получение всех пользователя")
     @PostMapping(
             value = USER_GET_ALL,
@@ -65,6 +64,7 @@ public class UserController {
     public List<UserResponse> getAllUser() {
         return service.getAllUser();
     }
+
     @Operation(summary = "Изменение пользователя")
     @PostMapping(
             value = USER_EDIT,
@@ -73,6 +73,7 @@ public class UserController {
     public UserResponse editUser(@RequestBody UserAddRequest request) {
         return service.editUser(request);
     }
+
     @Operation(summary = "Удаление пользователя")
     @PostMapping(
             value = USER_DELETE,
@@ -82,6 +83,7 @@ public class UserController {
         service.deleteUser(request);
         return "User успешно удален";
     }
+
     @Operation(summary = "Изменение пароля пользователя")
     @PostMapping(
             value = USER_CHANGE_PWD,
@@ -99,13 +101,13 @@ public class UserController {
         return service.userCheckEmail(request);
     }
 
-    @PostMapping(
-            value = USER_CHECK_LOGIN,
-            consumes = APPLICATION_JSON_VALUE,
-            produces = APPLICATION_JSON_VALUE)
-    public String userCheckLogin(@RequestBody UserCheckLoginRequest request) {
-        return service.userCheckLogin(request);
-    }
+//    @PostMapping(
+//            value = USER_CHECK_LOGIN,
+//            consumes = APPLICATION_JSON_VALUE,
+//            produces = APPLICATION_JSON_VALUE)
+//    public String userCheckLogin(@RequestBody UserCheckLoginRequest request) {
+//        return service.userCheckLogin(request);
+//    }
 
 
     @GetMapping(
@@ -121,4 +123,21 @@ public class UserController {
         return service.confirmMail(code);
     }
 
+    @PostMapping(
+            value = USER_FORGET_PASSWORD,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String getUserForgetPassword(@RequestBody UserForgetPasswordMailRequest request) {
+        String result = service.getUserForgetPassword(request);
+        return result;
+    }
+
+    //resetPassword
+    @PostMapping(
+            value = USER_RESET_PASSWORD,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    public String resetPassword(@RequestBody UserForgetPasswordMailRequest request) {
+        return service.resetPassword(request);
+    }
 }
