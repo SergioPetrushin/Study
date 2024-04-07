@@ -79,5 +79,4 @@ public class User extends BaseEntity {
         this.modified = modified;
         return this;
     }
-
 }

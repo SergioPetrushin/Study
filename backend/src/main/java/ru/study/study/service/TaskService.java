@@ -6,6 +6,7 @@ import ru.study.study.dto.request.task.TaskAddRequest;
 import ru.study.study.dto.response.task.TaskRequest;
 import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.service.domain.TaskDomainService;
+import ru.study.study.service.domain.UserDomainService;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskService {
     private final TaskDomainService taskDomainService;
+    private final UserDomainService userDomainService;
 
     public TaskResponse addTask(TaskAddRequest request) {
         var id = taskDomainService.addTask(request);

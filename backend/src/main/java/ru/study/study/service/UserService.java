@@ -8,8 +8,10 @@ import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserCheckEmailRequest;
 import ru.study.study.dto.request.user.UserCheckLoginRequest;
+import ru.study.study.dto.request.user.UserForgetPasswordMailRequest;
 import ru.study.study.dto.request.user.UserLoginRequest;
 import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.UserResetPasswordRequest;
 import ru.study.study.dto.request.usertype.UserTypeRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
@@ -89,7 +91,7 @@ public class UserService {
 
     public String changePWD(UserChangePWDRequest request) {
         if (verification(request.getPassword(), REG_PWD))
-            return userDomainService.changePWD(request);
+            return userDomainService.changePWD(request.getLogin(), request.getPassword());
         else
             return "Пароль не подходит. Пароль должен содержать не " +
                     "менее 6 символов, спец символы, большие и маленькие буквы.";
@@ -129,5 +131,34 @@ public class UserService {
     public String confirmMail(UUID code) {
         if (userDomainService.confirmMail(code)) return "Почта потверждена успешно!";
         else return "Код не найден! Возможно почта была потверждена ранее";
+    }
+
+    public String resetForgetPassword(UserForgetPasswordMailRequest request) {
+
+        var user = userDomainService.getUserByEmail(request.getMail());
+        var code = userDomainService.getPasswordCode(user.getUserId());
+
+        mailService.sendMail(new EmailRequest()
+                .setTo(Collections.singletonList(request.getMail()))
+                .setSubject("Забыли свой пароль?")
+                .setText(String.format(" Здравствуйте, %s! \n" +
+                        "Это письмо направлено вам по запросу для смены пароля. \n" +
+                        " Пройдите по ссылке и смените его. Если Вы не запрашивали смену пароля, то проигнорируйте это письмо \n" +
+                        " Код для сброса пароля: %s \n" +
+                        " Ссылка на сброс пароля: %s", user.getFullName(), code, "http://localhost:9000/"))
+        );
+        return "Письмо с запросом на смену пароля отправлено";
+    }
+
+
+    public String resetPassword(UserResetPasswordRequest request) {
+
+        if (!verification(request.getPassword(), REG_PWD))
+            throw new InvalidParameterException("Пароль не подходит. Пароль должен содержать не " +
+                    "менее 6 символов, спец символы, большие и маленькие буквы.");
+        var user = userDomainService.getUserByPwdCode(request.getCode());
+        userDomainService.changePWD(user.getLogin(), request.getPassword());
+        return "Пароль успешно изменен!";
+
     }
 }
