@@ -30,7 +30,7 @@ public class MailService {
 
     public void sendMail(EmailRequest request) {
 
-        if (!sendMail) throw new MessageSendException("Отправка почты выключена. Письмо не отправлено!");
+        if (!sendMail) System.out.println("Отправка почты выключена. Письмо не отправлено!");
 
         subjectChecker(request.getSubject());
         destinationValidator(request);

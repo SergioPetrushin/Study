@@ -8,7 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.study.study.dto.request.user.*;
+import ru.study.study.dto.request.user.UserAddRequest;
+import ru.study.study.dto.request.user.UserChangePWDRequest;
+import ru.study.study.dto.request.user.UserCheckEmailRequest;
+import ru.study.study.dto.request.user.UserForgetPasswordMailRequest;
+import ru.study.study.dto.request.user.UserLoginRequest;
+import ru.study.study.dto.request.user.UserRequest;
+import ru.study.study.dto.request.user.UserResetPasswordRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
 
@@ -128,16 +134,22 @@ public class UserController {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public String getUserForgetPassword(@RequestBody UserForgetPasswordMailRequest request) {
-        String result = service.getUserForgetPassword(request);
-        return result;
+        try {
+            return service.resetForgetPassword(request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
     }
 
-    //resetPassword
     @PostMapping(
             value = USER_RESET_PASSWORD,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
-    public String resetPassword(@RequestBody UserForgetPasswordMailRequest request) {
-        return service.resetPassword(request);
+    public String resetPassword(@RequestBody UserResetPasswordRequest request) {
+        try {
+            return service.resetPassword(request);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
     }
 }

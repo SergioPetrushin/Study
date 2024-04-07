@@ -13,7 +13,4 @@ import java.util.UUID;
 @Accessors(chain = true)
 public class UserForgetPasswordMailRequest {
     private String mail;
-    private String url;
-    private UUID code;
-    private String pwd;
 }
