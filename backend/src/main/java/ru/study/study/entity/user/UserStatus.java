@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public class UserStatus extends EntityWithName {
     @Serial
     private static final long serialVersionUID = 1L;
-    public UserStatus(long id) {
+    public UserStatus(Long id) {
         this.id = id;
     }
 

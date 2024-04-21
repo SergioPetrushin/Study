@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -58,7 +59,7 @@ class UserDomainServiceTest {
         when(userMapper.from((UserAddRequest) any())).thenReturn(getUser());
         when(repository.save(any())).thenReturn(getUser());
 
-        var result = service.addUser(new UserAddRequest());
+        var result = service.addUser(new UserAddRequest(), UUID.randomUUID());
 
         assertThat(result).isEqualTo(ID);
 

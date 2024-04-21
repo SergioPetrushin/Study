@@ -16,7 +16,7 @@ public class FileDzTest extends BaseEntityTest{
 
     @BeforeAll
     void init() throws ClassNotFoundException {
-        super.checkCountFields(4);
+        super.checkCountFields(6);
     }
 
     @Test
