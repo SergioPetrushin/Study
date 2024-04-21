@@ -59,7 +59,4 @@ public abstract class BaseEntityTest {
         }
         return fields;
     }
-
-
-
 }
