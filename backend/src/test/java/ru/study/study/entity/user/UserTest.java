@@ -24,7 +24,7 @@ class UserTest extends BaseEntityTest {
 
     @BeforeAll
     void init() throws ClassNotFoundException {
-        super.checkCountFields(8);
+        super.checkCountFields(11);
     }
 
     @Test

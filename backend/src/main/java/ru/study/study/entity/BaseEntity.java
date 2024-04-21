@@ -42,7 +42,7 @@ public abstract class BaseEntity implements Serializable {
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @Parameter(name = INCREMENT_PARAM, value = "1"),
-            @Parameter(name = CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_SEQ")
+                    @Parameter(name = CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_SEQ")
             })
     @ToString.Include
     @EqualsAndHashCode.Include

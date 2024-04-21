@@ -50,21 +50,16 @@ class UserServiceTest {
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
         var response = service.addUser(getUserAddRequest());
-/*
-        assertEquals(ID, response.getUserId());
-        assertEquals(NAME, response.getFullName());
-        assertEquals(NAME, response.getLogin());
-        assertEquals(ID, response.getStatus().getUserStatusId());
-        */
 
         assertThat(response.getUserId()).isEqualTo(ID);
         assertThat(response.getFullName()).isEqualTo(NAME);
         assertThat(response.getLogin()).isEqualTo(NAME);
         assertThat(response.getStatus().getUserStatusId()).isEqualTo(ID);
 
-
         verify(userDomainService).addUser(any(), any());
         verify(userDomainService).getUser(any());
+        verify(userDomainService).checkEmail(any());
+        verify(userDomainService).checkLogin(any());
         verifyNoMoreInteractions(userDomainService);
     }
 
@@ -81,8 +76,6 @@ class UserServiceTest {
         assertEquals(NAME, response.getLogin());
         assertEquals(ID, response.getStatus().getUserStatusId());
 
-        verify(userDomainService).checkLogin(any());
-        verify(userDomainService).checkEmail(any());
         verify(userDomainService).getUser(any());
         verifyNoMoreInteractions(userDomainService);
 
