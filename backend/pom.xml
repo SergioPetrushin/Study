@@ -97,8 +97,6 @@
             <version>${spring-boot-version}</version>
         </dependency>
 
-    </dependencies>
-
     <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

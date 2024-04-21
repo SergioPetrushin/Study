@@ -108,7 +108,7 @@ public class UserController {
     }
 
 
-    @GetMapping(
+    @PostMapping(
             value = USER_LOGIN,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)

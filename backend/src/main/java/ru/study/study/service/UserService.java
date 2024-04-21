@@ -2,6 +2,9 @@ package ru.study.study.service;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.inner.EmailRequest;
 import ru.study.study.dto.request.user.UserAddRequest;
@@ -31,6 +34,10 @@ public class UserService {
     private final UserTypeDomainService userTypeDomainService;
     private final MailService mailService;
 
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+
+
     private static final String REG_PWD = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
     private static final String REG_MAIL = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
 
@@ -52,6 +59,7 @@ public class UserService {
         }
 
         var emailCode = UUID.randomUUID();
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
         var id = userDomainService.addUser(request, emailCode);
 
         mailService.sendMail(new EmailRequest()
@@ -123,7 +131,14 @@ public class UserService {
     }
 
     public String userLogin(UserLoginRequest request) {
-        return userDomainService.userLogin(request);
+
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getLogin(),request.getPswd()
+                )
+        );
+
+        return "token";
     }
 
     public String confirmMail(UUID code) {
