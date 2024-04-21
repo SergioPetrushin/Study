@@ -19,6 +19,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import static org.assertj.core.api.Assertions.*;
+
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
@@ -39,11 +41,20 @@ class UserServiceTest {
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
         var response = service.addUser(new UserAddRequest());
-
+/*
         assertEquals(ID, response.getUserId());
         assertEquals(NAME, response.getFullName());
         assertEquals(NAME, response.getLogin());
         assertEquals(ID, response.getStatus().getUserStatusId());
+        */
+
+        assertThat(response.getUserId()).isEqualTo(ID);
+        assertThat(response.getFullName()).isEqualTo(NAME);
+        assertThat(response.getLogin()).isEqualTo(NAME);
+        assertThat(response.getStatus().getUserStatusId()).isEqualTo(ID);
+
+
+
 
         verify(userDomainService).addUser(any());
         verify(userDomainService).getUser(any());

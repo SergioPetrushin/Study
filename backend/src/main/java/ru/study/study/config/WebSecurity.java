@@ -30,15 +30,13 @@ public class WebSecurity implements WebMvcConfigurer {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 
         http.csrf(csrfConfigurer ->
-                csrfConfigurer.ignoringRequestMatchers(mvcMatcherBuilder.pattern(API_URL_PATTERN),
-                        PathRequest.toH2Console()));
+                csrfConfigurer.ignoringRequestMatchers(mvcMatcherBuilder.pattern(API_URL_PATTERN)));
 
         http.headers(headersConfigurer ->
                 headersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         http.authorizeHttpRequests(auth ->
                 auth
-                        .requestMatchers(PathRequest.toH2Console()).permitAll()
                         .anyRequest().permitAll()
         );
 

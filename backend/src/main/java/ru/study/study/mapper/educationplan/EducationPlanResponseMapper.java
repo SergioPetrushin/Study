@@ -18,7 +18,7 @@ public class EducationPlanResponseMapper implements Mapper<EducationPlanResponse
                 .setName(source.getName())
                 .setDescription(source.getDescription())
                 .setCreated(source.getCreated())
-                .setModified(source.getModified())
-                .setUser(userMapper.from(source.getUser()));
+                .setModified(source.getModified());
+                //.setUser(userMapper.from(source.getUser()));
     }
 }

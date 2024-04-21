@@ -23,6 +23,8 @@
         <spring-security-version>6.1.4</spring-security-version>
         <lombok-version>1.18.30</lombok-version>
         <postgresql-version>42.6.0</postgresql-version>
+        <springdoc-openapi-ui.version>1.6.13</springdoc-openapi-ui.version>
+        <mail>1.4.7</mail>
     </properties>
 
 
@@ -88,8 +90,21 @@
             <version>${spring-security-version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+
     </dependencies>
 
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.2.0</version>
+    </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

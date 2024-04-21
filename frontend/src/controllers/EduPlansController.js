@@ -20,6 +20,7 @@ export default {
                 }
             }
         )
+
     },
 
 
@@ -38,9 +39,33 @@ export default {
         )
     },
 
+    edit(plan) {
 
+        return axios.post(
+            HOST + API + 'edit',
+            plan,
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
 
+    },
 
+    add(plan) {
+
+        return axios.post(
+            HOST + API + 'add',
+            plan,
+            {
+                headers: {
+                    'Content-Type': "application/json;charset=utf-8"
+                }
+            }
+        )
+
+    }
 
 
 }

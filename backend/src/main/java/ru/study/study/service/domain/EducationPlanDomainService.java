@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.educationplan.EducationPlanAddRequest;
 import ru.study.study.dto.response.educationplan.EducationPlanResponse;
+import ru.study.study.entity.user.User;
 import ru.study.study.mapper.educationplan.EducationPlanMapper;
 import ru.study.study.mapper.educationplan.EducationPlanMerger;
 import ru.study.study.mapper.educationplan.EducationPlanResponseMapper;
@@ -22,7 +23,7 @@ public class EducationPlanDomainService {
 
     @Transactional
     public void editEducationPlan(EducationPlanAddRequest request) {
-        var plan = repository.getReferenceById(request.getUserId());
+        var plan = repository.getReferenceById(request.getPlanId());
         educationPlanMerger.merge(plan, request);
         repository.save(plan);
     }
@@ -30,6 +31,7 @@ public class EducationPlanDomainService {
     @Transactional
     public Long addEducationPlan(EducationPlanAddRequest request) {
         var plan = educationPlanMapper.from(request);
+        plan.setUser(new User(1L));
         return repository.save(plan).getId();
 
     }

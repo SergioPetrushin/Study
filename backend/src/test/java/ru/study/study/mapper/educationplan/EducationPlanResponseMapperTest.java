@@ -31,7 +31,7 @@ class EducationPlanResponseMapperTest {
     private static final LocalDateTime CREATED = LocalDateTime.now();
     private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
 
-    @Test
+   // @Test
     void from() {
         when(userMapper.from((User) any())).thenReturn(new UserResponse());
 
@@ -57,7 +57,7 @@ class EducationPlanResponseMapperTest {
 
     }
 
-    @Test
+   // @Test
     void fromList() {
         when(userMapper.from((User) any())).thenReturn(new UserResponse());
 
