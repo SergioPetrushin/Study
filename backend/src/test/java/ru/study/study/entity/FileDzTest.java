@@ -1,15 +1,14 @@
-package ru.study.study.entity.user;
+package ru.study.study.entity;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.study.study.entity.BaseEntityTest;
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserTypeTest extends BaseEntityTest {
+public class FileDzTest extends BaseEntityTest{
     private final static Long ID = 1L;
     private final static String NAME = "NAME";
     private static final LocalDateTime CREATED = LocalDateTime.now();
@@ -22,23 +21,23 @@ public class UserTypeTest extends BaseEntityTest {
 
     @Test
     void testNoArgsConstructor() {
-        var userType = getUserType();
-        var userType2 = new UserType(-ID);
+        var fileDz = getFileDz();
+        var fileDz2 = new FileDz(-ID);
 
-        assertEquals(ID, userType.getId());
-        assertEquals(CREATED, userType.getCreated());
-        assertEquals(MODIFIED, userType.getModified());
-        assertEquals(NAME, userType.getName());
+        assertEquals(ID, fileDz.getId());
+        assertEquals(CREATED, fileDz.getCreated());
+        assertEquals(MODIFIED, fileDz.getModified());
+        assertEquals(NAME, fileDz.getName());
 
-        assertThat(userType2.getId()).isEqualTo(-ID);
+        assertThat(fileDz2.getId()).isEqualTo(-ID);
     }
-
-    private UserType getUserType() {
-        return new UserType()
+    
+    private FileDz getFileDz(){
+        return new FileDz()
                 .setId(ID)
+                .setName(NAME)
                 .setCreated(CREATED)
-                .setModified(MODIFIED)
-                .setName(NAME);
-
+                .setModified(MODIFIED);
     }
+
 }

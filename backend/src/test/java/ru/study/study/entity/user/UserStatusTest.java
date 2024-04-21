@@ -13,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserStatusTest extends BaseEntityTest {
     private final static Long ID = 1L;
     private final static String NAME = "NAME";
-    private static final String PASSWORD = "PWD";
-    private static final String LOGIN = "LOGIN";
     private static final LocalDateTime CREATED = LocalDateTime.now();
     private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
 
