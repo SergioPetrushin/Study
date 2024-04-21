@@ -11,8 +11,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode
 @Accessors(chain = true)
 public class UserAddRequest {
-    @Schema(description = "ID пользователя")
-    private Long userId;
     @Schema(description = "Логин пользователя")
     private String login;
     @Schema(description = "Пароль пользователя")

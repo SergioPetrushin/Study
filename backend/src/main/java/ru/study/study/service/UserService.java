@@ -65,9 +65,9 @@ public class UserService {
         return userDomainService.getUser(id);
     }
 
-    public UserResponse getUser(UserRequest request) {
+    public UserResponse getUser(Long id) {
 
-        return userDomainService.getUser(request.getUserId());
+        return userDomainService.getUser(id);
     }
 
     public UserTypeResponse getUserType(UserTypeRequest request) {
@@ -78,13 +78,13 @@ public class UserService {
         return userDomainService.getAllUser();
     }
 
-    public void deleteUser(UserRequest request) {
-        userDomainService.deleteUser(request.getUserId());
+    public void deleteUser(Long id) {
+        userDomainService.deleteUser(id);
     }
 
-    public UserResponse editUser(UserAddRequest request) {
-        userDomainService.editUser(request);
-        return userDomainService.getUser(request.getUserId());
+    public UserResponse editUser(Long id, UserAddRequest request) {
+        userDomainService.editUser(id, request);
+        return userDomainService.getUser(id);
     }
 
     public String changePWD(UserChangePWDRequest request) {
