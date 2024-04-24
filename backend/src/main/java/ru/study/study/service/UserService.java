@@ -18,6 +18,7 @@ import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
 import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.domain.UserTypeDomainService;
+import ru.study.study.service.security.JwtService;
 import ru.study.study.service.utils.MailService;
 
 import java.security.InvalidParameterException;
@@ -33,6 +34,7 @@ public class UserService {
     private final UserDomainService userDomainService;
     private final UserTypeDomainService userTypeDomainService;
     private final MailService mailService;
+    private final JwtService jwtService;
 
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -138,7 +140,9 @@ public class UserService {
                 )
         );
 
-        return "token";
+        var user = userDomainService.getUserByLogin(request.getLogin());
+
+        return jwtService.generateToken(user);
     }
 
     public String confirmMail(UUID code) {

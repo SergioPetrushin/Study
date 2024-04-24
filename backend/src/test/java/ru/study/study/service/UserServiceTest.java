@@ -12,14 +12,12 @@ import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.domain.UserDomainService;
 
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-
-import static org.assertj.core.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -37,12 +35,12 @@ class UserServiceTest {
     @Test
     void addUserTest() {
 
-        when(userDomainService.addUser(any())).thenReturn(ID);
+        when(userDomainService.addUser(any(),any())).thenReturn(ID);
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
         var response = service.addUser(new UserAddRequest());
-/*
-        assertEquals(ID, response.getUserId());
+
+        /*assertEquals(ID, response.getUserId());
         assertEquals(NAME, response.getFullName());
         assertEquals(NAME, response.getLogin());
         assertEquals(ID, response.getStatus().getUserStatusId());
@@ -56,7 +54,7 @@ class UserServiceTest {
 
 
 
-        verify(userDomainService).addUser(any());
+        verify(userDomainService).addUser(any(),any());
         verify(userDomainService).getUser(any());
         verifyNoMoreInteractions(userDomainService);
     }
