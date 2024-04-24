@@ -40,15 +40,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="EXPIRIED" type="TIMESTAMP" defaultValue="NOW">
+            <column name="EXPIRIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="CREATED" type="TIMESTAMP" defaultValue="NOW">
+            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="MODIFIED" type="TIMESTAMP" defaultValue="NOW">
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="false"/>
             </column>
 

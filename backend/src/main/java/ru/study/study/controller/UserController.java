@@ -30,6 +30,7 @@ public class UserController {
 
     private final UserService service;
 
+
     private static final String USER = "/api/v1/user/{id}";
     private static final String USERS = "/api/v1/users";
 
@@ -113,7 +114,7 @@ public class UserController {
     }
 
 
-    @GetMapping(
+    @PostMapping(
             value = USER_LOGIN,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)

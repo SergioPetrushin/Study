@@ -2,6 +2,9 @@ package ru.study.study.service;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.inner.EmailRequest;
 import ru.study.study.dto.request.user.UserAddRequest;
@@ -15,6 +18,7 @@ import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.usertype.UserTypeResponse;
 import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.domain.UserTypeDomainService;
+import ru.study.study.service.security.JwtService;
 import ru.study.study.service.utils.MailService;
 
 import java.security.InvalidParameterException;
@@ -30,6 +34,11 @@ public class UserService {
     private final UserDomainService userDomainService;
     private final UserTypeDomainService userTypeDomainService;
     private final MailService mailService;
+    private final JwtService jwtService;
+
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+
 
     private static final String REG_PWD = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$)(?=.*[!@#$%^&+=]).{6,}";
     private static final String REG_MAIL = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
@@ -52,6 +61,7 @@ public class UserService {
         }
 
         var emailCode = UUID.randomUUID();
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
         var id = userDomainService.addUser(request, emailCode);
 
         mailService.sendMail(new EmailRequest()
@@ -123,7 +133,16 @@ public class UserService {
     }
 
     public String userLogin(UserLoginRequest request) {
-        return userDomainService.userLogin(request);
+
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getLogin(),request.getPswd()
+                )
+        );
+
+        var user = userDomainService.getUserByLogin(request.getLogin());
+
+        return jwtService.generateToken(user);
     }
 
     public String confirmMail(UUID code) {

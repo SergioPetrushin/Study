@@ -2,9 +2,11 @@ package ru.study.study.service.domain;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.user.*;
 import ru.study.study.dto.response.user.UserResponse;
+import ru.study.study.entity.user.User;
 import ru.study.study.mapper.user.UserMapper;
 import ru.study.study.mapper.user.UserMerger;
 import ru.study.study.mapper.user.UserResponseMapper;
@@ -96,4 +98,14 @@ public class UserDomainService {
 
         else return false;
     }
+
+    @Transactional
+    public User getUserByLogin(String login){
+        return userRepository.findUserByLogin(login).orElseThrow();
+    }
+
+    public UserDetailsService userDetailsService() {
+        return this::getUserByLogin;
+    }
+
 }
