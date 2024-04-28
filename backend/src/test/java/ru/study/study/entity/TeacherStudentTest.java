@@ -8,11 +8,8 @@ import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TeacherStudentTest extends BaseEntityTest{
+public class TeacherStudentTest extends BaseEntityTest {
     private final static Long ID = 1L;
-    private final static String NAME = "NAME";
-    private static final String PASSWORD = "PWD";
-    private static final String LOGIN = "LOGIN";
     private static final LocalDateTime CREATED = LocalDateTime.now();
     private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
 
@@ -22,7 +19,7 @@ public class TeacherStudentTest extends BaseEntityTest{
     }
 
     @Test
-    void testNoArgsConstructor(){
+    void testNoArgsConstructor() {
 
         var teacherStudent = getTeacherStudent();
         var teacherStudent2 = new TeacherStudent(-ID);
@@ -31,12 +28,11 @@ public class TeacherStudentTest extends BaseEntityTest{
         assertEquals(CREATED, teacherStudent.getCreated());
         assertEquals(MODIFIED, teacherStudent.getModified());
 
-        // assertEquals(-ID, teacherStudent2.getId());
         assertThat(teacherStudent2.getId()).isEqualTo(-ID);
 
     }
-    
-    private TeacherStudent getTeacherStudent(){
+
+    private TeacherStudent getTeacherStudent() {
         return new TeacherStudent()
                 .setId(ID)
                 .setCreated(CREATED)

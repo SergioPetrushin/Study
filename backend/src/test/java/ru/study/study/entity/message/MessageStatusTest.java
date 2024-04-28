@@ -13,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MessageStatusTest extends BaseEntityTest {
     private final static Long ID = 1L;
     private final static String NAME = "NAME";
-    private static final String PASSWORD = "PWD";
-    private static final String LOGIN = "LOGIN";
     private static final LocalDateTime CREATED = LocalDateTime.now();
     private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
 
@@ -29,12 +27,12 @@ public class MessageStatusTest extends BaseEntityTest {
         var messageStatus = getMessageStatus();
         var messageStatus2  = new MessageStatus(-ID);
 
-        assertEquals(ID, messageStatus.getId());
-        assertEquals(NAME, messageStatus.getName());
-        assertEquals(CREATED, messageStatus.getCreated());
-        assertEquals(MODIFIED, messageStatus.getModified());
-
         assertThat(messageStatus2.getId()).isEqualTo(-ID);
+
+        assertThat(messageStatus.getId()).isEqualTo(ID);
+        assertThat(messageStatus.getName()).isEqualTo(NAME);
+        assertThat(messageStatus.getCreated()).isEqualTo(CREATED);
+        assertThat(messageStatus.getModified()).isEqualTo(MODIFIED);
 
     }
 

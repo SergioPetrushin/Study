@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.study.study.entity.BaseEntityTest;
 import ru.study.study.entity.enothers.EducationPlan;
-import ru.study.study.entity.user.User;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +24,7 @@ public class TaskTest extends BaseEntityTest {
     }
 
     @Test
-    void testNoArgsConstructor(){
+    void testNoArgsConstructor() {
 
         var task = getTask();
         var task2 = new Task(-ID);
@@ -39,7 +38,7 @@ public class TaskTest extends BaseEntityTest {
 
     }
 
-    private Task getTask(){
+    private Task getTask() {
         return new Task()
                 .setId(ID)
                 .setPlan(new EducationPlan())

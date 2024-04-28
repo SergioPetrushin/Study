@@ -42,7 +42,6 @@ class UserTest extends BaseEntityTest {
         assertEquals(CREATED, user.getCreated());
         assertEquals(MODIFIED, user.getModified());
 
-       // assertEquals(-ID, user2.getId());
         assertThat(user2.getId()).isEqualTo(-ID);
 
     }

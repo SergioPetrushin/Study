@@ -3,7 +3,6 @@ package ru.study.study.entity.task;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.study.study.entity.BaseEntityTest;
-import ru.study.study.entity.user.User;
 
 import java.time.LocalDateTime;
 
@@ -24,9 +23,9 @@ public class TaskStatusTest extends BaseEntityTest {
     }
 
     @Test
-    void testNoArgsConstructor(){
+    void testNoArgsConstructor() {
 
-        var taskStatus =  getTaskStatus();
+        var taskStatus = getTaskStatus();
         var taskStatus2 = new TaskStatus(-ID);
 
         assertEquals(ID, taskStatus.getId());
@@ -38,7 +37,7 @@ public class TaskStatusTest extends BaseEntityTest {
 
     }
 
-    private TaskStatus getTaskStatus(){
+    private TaskStatus getTaskStatus() {
         return new TaskStatus()
                 .setId(ID)
                 .setName(NAME)

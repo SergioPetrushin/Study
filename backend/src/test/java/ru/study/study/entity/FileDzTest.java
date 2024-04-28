@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FileDzTest extends BaseEntityTest{
+public class FileDzTest extends BaseEntityTest {
     private final static Long ID = 1L;
     private final static String NAME = "NAME";
     private static final LocalDateTime CREATED = LocalDateTime.now();
@@ -31,8 +31,8 @@ public class FileDzTest extends BaseEntityTest{
 
         assertThat(fileDz2.getId()).isEqualTo(-ID);
     }
-    
-    private FileDz getFileDz(){
+
+    private FileDz getFileDz() {
         return new FileDz()
                 .setId(ID)
                 .setName(NAME)
