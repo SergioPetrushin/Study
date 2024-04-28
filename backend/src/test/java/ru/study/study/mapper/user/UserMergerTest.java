@@ -11,12 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserMergerTest {
+class UserMergerTest {
     @InjectMocks
     private UserMerger merger;
     private final static Long ID = 1L;
-    private final static String NAME = "NAME";
-    private final static String DESCRIPTION = "DESCRIPTION";
     private final static String LOGIN = "kjhsdf";
     private final static String PASSWORD = "kjhsdf";
     private final static String FULLNAME = "kjhsdf";
@@ -39,7 +37,6 @@ public class UserMergerTest {
 
     private UserAddRequest getUserAddRequest() {
         return new UserAddRequest()
-                .setUserId(ID)
                 .setLogin(LOGIN)
                 .setPassword(PASSWORD)
                 .setFullName(FULLNAME)

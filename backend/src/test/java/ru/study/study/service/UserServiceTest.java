@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserRequest;
@@ -31,6 +32,9 @@ class UserServiceTest {
     private UserDomainService userDomainService;
     @Mock
     private MailService mailService;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UserService service;
@@ -69,7 +73,7 @@ class UserServiceTest {
 
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
-        var response = service.getUser(new UserRequest());
+        var response = service.getUser(ID);
 
         assertEquals(ID, response.getUserId());
         assertEquals(NAME, response.getFullName());

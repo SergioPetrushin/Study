@@ -138,7 +138,7 @@ class UserDomainServiceTest {
         when(userMerger.merge(any(),any())).thenReturn(getUser());
         when(repository.save(any())).thenReturn(getUser());
 
-        service.editUser(new UserAddRequest());
+        service.editUser(ID, new UserAddRequest());
 
         verify(repository).getReferenceById(any());
         verify(repository).save(any());

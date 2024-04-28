@@ -31,14 +31,14 @@ public class UserController {
     private final UserService service;
 
 
-    private static final String USER = "/api/v1/user/{id}";
-    private static final String USERS = "/api/v1/users";
+    public static final String USER = "/api/v1/user/{id}";
+    public static final String USERS = "/api/v1/users";
 
-    private static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
-    private static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
-    private static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
-    private static final String USER_LOGIN = "/api/v1/user/login";
-    private static final String USER_CONFIRM = "/api/v1/user/confirm-email/{code}";
+    public static final String USER_CHANGE_PWD = "/api/v1/user/change-pwd";
+    public static final String USER_CHECK_EMAIL = "/api/v1/user/check-email";
+    public static final String USER_CHECK_LOGIN = "/api/v1/user/check-login";
+    public static final String USER_LOGIN = "/api/v1/user/login";
+    public static final String USER_CONFIRM = "/api/v1/user/confirm-email/{code}";
 
 
     @Operation(summary = "Получение пользователя")

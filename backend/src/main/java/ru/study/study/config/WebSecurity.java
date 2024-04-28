@@ -25,8 +25,9 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.security.JwtAuthenticationFilter;
 
-import static ru.study.study.controller.UserController.USER_GET_ALL;
+import static ru.study.study.controller.UserController.USER;
 import static ru.study.study.controller.UserController.USER_LOGIN;
+
 
 @Slf4j
 @Configuration
@@ -52,7 +53,7 @@ public class WebSecurity implements WebMvcConfigurer {
         http.authorizeHttpRequests(auth ->
                 auth
                         .requestMatchers(mvcMatcherBuilder.pattern(USER_LOGIN)).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(USER_GET_ALL)).hasAnyAuthority("ADMIN", "STUDENT")
+                        .requestMatchers(mvcMatcherBuilder.pattern(USER)).hasAnyAuthority("ADMIN", "STUDENT")
                         .anyRequest().authenticated()
         );
 

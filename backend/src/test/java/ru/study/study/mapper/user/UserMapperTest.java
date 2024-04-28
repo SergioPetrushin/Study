@@ -13,12 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserMapperTest {
+class UserMapperTest {
     @InjectMocks
     private UserMapper mapper;
     private final static Long ID = 1L;
     private final static String NAME = "NAME";
-    private final static String DESCRIPTION = "DESCRIPTION";
     private final static String LOGIN = "lkjFFFds132";
     private final static String PASSWORD = "lkjFFFds132";
 
@@ -65,7 +64,6 @@ public class UserMapperTest {
 
     private UserAddRequest getUserAddRequest() {
         return new UserAddRequest()
-                .setUserId(ID)
                 .setLogin(LOGIN)
                 .setPassword(PASSWORD)
                 .setFullName(NAME)

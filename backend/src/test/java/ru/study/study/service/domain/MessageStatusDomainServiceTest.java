@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class MessageStatusDomainServiceTest {
+class MessageStatusDomainServiceTest {
     @Mock
     private MessageStatusRepository repository;
     @Mock
@@ -32,8 +32,6 @@ public class MessageStatusDomainServiceTest {
     private MessageStatusDomainService service;
 
     private static final Long ID = 1L;
-    private static final String LOGIN = "login";
-    private static final String PWD = "pwd";
     private static final String NAME = "name";
     private static final String DESCRIPTION = "DESCRIPTION";
     private static final LocalDateTime CREATED = LocalDateTime.now();
@@ -59,7 +57,7 @@ public class MessageStatusDomainServiceTest {
 
     @Test
     void getAllMessageStatusTest() {
-        when(messageStatusResponseMapper.from((List<MessageStatus>) any())).thenReturn(List.of(getMessageStatusResponse(),
+        when(messageStatusResponseMapper.from(any(List.class))).thenReturn(List.of(getMessageStatusResponse(),
                 getMessageStatusResponse(), getMessageStatusResponse()));
         when(repository.findAll()).thenReturn(List.of(getMessageStatus(),
                 getMessageStatus(), getMessageStatus()));
