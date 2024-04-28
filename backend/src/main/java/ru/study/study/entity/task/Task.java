@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @AttributeOverride(name = "id", column = @Column(name = "TASK_ID"))
 public class Task extends EntityWithName {
-    public Task(long id) {
+    public Task(Long id) {
 
         this.id = id;
     }

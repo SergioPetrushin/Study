@@ -26,7 +26,7 @@ public class MessageStatus extends EntityWithName {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public MessageStatus(long id) {
+    public MessageStatus(Long id) {
         this.id = id;
     }
 
