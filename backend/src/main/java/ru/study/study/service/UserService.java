@@ -51,7 +51,7 @@ public class UserService {
                     "менее 6 символов, спец символы, большие и маленькие буквы.");
 
         if (!verification(request.getMail(), REG_MAIL))
-            throw new InvalidParameterException("Такой e-mail уже существует!");
+            throw new InvalidParameterException("Указан не верный формат e-mail");
 
         if (userDomainService.checkLogin(request.getLogin()))
             throw new InvalidParameterException("Ошибка: Пользователь с таким логином уже существует.");

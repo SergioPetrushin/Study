@@ -23,7 +23,7 @@ import java.util.List;
 public class UserType extends EntityWithName {
     @Serial
     private static final long serialVersionUID = 1L;
-    public UserType(long id) {
+    public UserType(Long id) {
         this.id = id;
     }
 

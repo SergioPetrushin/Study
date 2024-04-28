@@ -31,7 +31,7 @@ public abstract class BaseEntityTest {
         try {
             longConstructor = clazz.getDeclaredConstructor(Long.class);
         } catch (NoSuchMethodException e) {
-           longConstructor = null;
+            longConstructor = null;
         }
         assertNotNull(longConstructor, "There is no constructor Long parameter in class " + clazz.getName());
     }
@@ -42,14 +42,14 @@ public abstract class BaseEntityTest {
     }
 
 
-    private List<Field> getAllClassFields(Class<?> clazz){
+    private List<Field> getAllClassFields(Class<?> clazz) {
 
         var fields = new LinkedList<Field>();
         var isSuperClass = new AtomicBoolean(false);
 
-        while (clazz.getSuperclass() != null){
+        while (clazz.getSuperclass() != null) {
             fields.addAll(Arrays.stream(clazz.getDeclaredFields())
-                    .filter(field -> !isSuperClass.get()|| (Modifier.isPublic(field.getModifiers()) || Modifier.isProtected(field.getModifiers())))
+                    .filter(field -> !isSuperClass.get() || (Modifier.isPublic(field.getModifiers()) || Modifier.isProtected(field.getModifiers())))
                     .filter(field -> !Modifier.isStatic(field.getModifiers()))
                     .toList()
             );
@@ -59,7 +59,4 @@ public abstract class BaseEntityTest {
         }
         return fields;
     }
-
-
-
 }

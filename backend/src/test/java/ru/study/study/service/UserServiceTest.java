@@ -5,31 +5,46 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.study.study.dto.request.user.UserAddRequest;
 import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserRequest;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.dto.response.userstatus.UserStatusResponse;
 import ru.study.study.service.domain.UserDomainService;
+import ru.study.study.service.utils.MailService;
 
-import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import static org.assertj.core.api.Assertions.*;
+
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
     @Mock
     private UserDomainService userDomainService;
+    @Mock
+    private MailService mailService;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UserService service;
 
     private static final Long ID = 1L;
-    private static final String NAME = "NAME";
+    private static final String LOGIN = "login";
+    private static final String PWD = "pwdPWD123@#$";
+    private static final String NAME = "name";
+    private static final LocalDateTime CREATED = LocalDateTime.now();
+    private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
 
 
     @Test
@@ -38,24 +53,17 @@ class UserServiceTest {
         when(userDomainService.addUser(any(),any())).thenReturn(ID);
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
-        var response = service.addUser(new UserAddRequest());
-
-        /*assertEquals(ID, response.getUserId());
-        assertEquals(NAME, response.getFullName());
-        assertEquals(NAME, response.getLogin());
-        assertEquals(ID, response.getStatus().getUserStatusId());
-        */
+        var response = service.addUser(getUserAddRequest());
 
         assertThat(response.getUserId()).isEqualTo(ID);
         assertThat(response.getFullName()).isEqualTo(NAME);
         assertThat(response.getLogin()).isEqualTo(NAME);
         assertThat(response.getStatus().getUserStatusId()).isEqualTo(ID);
 
-
-
-
         verify(userDomainService).addUser(any(),any());
         verify(userDomainService).getUser(any());
+        verify(userDomainService).checkEmail(any());
+        verify(userDomainService).checkLogin(any());
         verifyNoMoreInteractions(userDomainService);
     }
 
@@ -65,7 +73,7 @@ class UserServiceTest {
 
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
-        var response = service.getUser(new UserRequest());
+        var response = service.getUser(ID);
 
         assertEquals(ID, response.getUserId());
         assertEquals(NAME, response.getFullName());
@@ -117,4 +125,10 @@ class UserServiceTest {
                 .setPassword(pswd);
     }
 
+    private UserAddRequest getUserAddRequest() {
+        return new UserAddRequest()
+                .setStatusId(ID)
+                .setPassword(PWD)
+                .setMail("kjhads123@mail.ru");
+    }
 }
