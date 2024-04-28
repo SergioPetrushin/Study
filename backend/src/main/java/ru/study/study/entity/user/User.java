@@ -12,10 +12,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.study.study.entity.BaseEntity;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "USERS")
@@ -26,7 +32,7 @@ import java.util.UUID;
 @ToString(onlyExplicitlyIncluded = true, callSuper = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @AttributeOverride(name = "id", column = @Column(name = "USER_ID"))
-public class User extends BaseEntity {
+public class User extends BaseEntity implements UserDetails {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -80,4 +86,33 @@ public class User extends BaseEntity {
         return this;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(UserTypeEnum.getById(type.getId()).name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return  UserStatusEnum.getById(status.getId()).equals(UserStatusEnum.ACTIVE);
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserStatusEnum.getById(status.getId()).equals(UserStatusEnum.ACTIVE);
+    }
 }

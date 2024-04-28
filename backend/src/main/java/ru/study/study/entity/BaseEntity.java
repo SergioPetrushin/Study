@@ -58,5 +58,4 @@ public abstract class BaseEntity implements Serializable {
     protected LocalDateTime modified;
 
 
-
 }

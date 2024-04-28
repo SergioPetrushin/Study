@@ -46,7 +46,7 @@ class UserServiceTest {
     @Test
     void addUserTest() {
 
-        when(userDomainService.addUser(any(), any())).thenReturn(ID);
+        when(userDomainService.addUser(any(),any())).thenReturn(ID);
         when(userDomainService.getUser(any())).thenReturn(getUserResponse());
 
         var response = service.addUser(getUserAddRequest());
@@ -56,7 +56,7 @@ class UserServiceTest {
         assertThat(response.getLogin()).isEqualTo(NAME);
         assertThat(response.getStatus().getUserStatusId()).isEqualTo(ID);
 
-        verify(userDomainService).addUser(any(), any());
+        verify(userDomainService).addUser(any(),any());
         verify(userDomainService).getUser(any());
         verify(userDomainService).checkEmail(any());
         verify(userDomainService).checkLogin(any());
@@ -76,33 +76,34 @@ class UserServiceTest {
         assertEquals(NAME, response.getLogin());
         assertEquals(ID, response.getStatus().getUserStatusId());
 
+
         verify(userDomainService).getUser(any());
         verifyNoMoreInteractions(userDomainService);
 
     }
 
     @Test
-    void changePWDTest1() {
-        when(userDomainService.changePWD(any())).thenReturn("Пароль успешно изменен");
+   void changePWDTest1() {
+       when(userDomainService.changePWD(any())).thenReturn("Пароль успешно изменен");
 
-        var result = service.changePWD(getUserChangePWDRequest("asf123#$*FFF"));
+       var result = service.changePWD(getUserChangePWDRequest("asf123#$*FFF"));
 
-        assertEquals("Пароль успешно изменен", result);
+       assertEquals("Пароль успешно изменен", result);
 
-        verify(userDomainService).changePWD(any());
+      verify(userDomainService).changePWD(any());
 
-        verifyNoMoreInteractions(userDomainService);
+       verifyNoMoreInteractions(userDomainService);
     }
 
     @Test
-    void changePWDTest2() {
+   void changePWDTest2() {
 
-        var result = service.changePWD(getUserChangePWDRequest("asd123"));
+       var result = service.changePWD(getUserChangePWDRequest("asd123"));
 
-        assertEquals("Пароль не подходит. Пароль должен содержать не " +
-                "менее 6 символов, спец символы, большие и маленькие буквы.", result);
+       assertEquals("Пароль не подходит. Пароль должен содержать не " +
+               "менее 6 символов, спец символы, большие и маленькие буквы.", result);
 
-        verifyNoMoreInteractions(userDomainService);
+       verifyNoMoreInteractions(userDomainService);
     }
 
     private UserResponse getUserResponse() {
