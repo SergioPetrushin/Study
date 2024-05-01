@@ -8,7 +8,7 @@
     <changeSet id="USER-001" author="vyushin_aa">
         <preConditions>
             <not>
-                <sequenceExists schemaName="REPOSITORY" sequenceName="USER_SEQ"/>
+                <sequenceExists schemaName="REPOSITORY" sequenceName="USERS_SEQ"/>
             </not>
         </preConditions>
         <createSequence schemaName="REPOSITORY" sequenceName="USERS_SEQ" startValue="1" minValue="0"/>
@@ -24,7 +24,7 @@
         </preConditions>
 
         <createTable schemaName="REPOSITORY" tableName="USERS">
-            <column name="USER_ID" type="INT" defaultValueSequenceNext="USER_SEQ">
+            <column name="USER_ID" type="INT" defaultValueSequenceNext="USERS_SEQ">
                 <constraints primaryKey="true" primaryKeyName="USERS_PK"/>
             </column>
 
@@ -48,11 +48,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="CREATED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="CREATED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="MODIFIED" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+            <column name="MODIFIED" type="TIMESTAMP" defaultValue="NOW">
                 <constraints nullable="false"/>
             </column>
 

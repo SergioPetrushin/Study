@@ -13,6 +13,7 @@ public class TaskMerger implements Merger<Task, TaskAddRequest> {
     public Task merge(Task target, TaskAddRequest source) {
         return target.setName(source.getName())
                 .setPlan(new EducationPlan(source.getPlanId()))
-                .setDescription(source.getDescription());
+                .setDescription(source.getDescription())
+                .setOrdinal(source.getOrdinal());
     }
 }

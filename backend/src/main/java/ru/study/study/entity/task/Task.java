@@ -26,8 +26,7 @@ public class Task extends EntityWithName {
     @JoinColumn(name = "PLAN_ID")
     private EducationPlan plan;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDINAL")
+    @Column(name = "ORDINAL")
     private Integer ordinal;
 
     @Override

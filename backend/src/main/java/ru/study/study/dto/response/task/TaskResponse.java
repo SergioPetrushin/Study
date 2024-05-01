@@ -26,4 +26,6 @@ public class TaskResponse {
     private LocalDateTime created;
     @Schema(description = "Время изменения задачи ответ")
     private LocalDateTime modified;
+    @Schema(description = "Порядковый номер учебного плана")
+    private Integer ordinal;
 }

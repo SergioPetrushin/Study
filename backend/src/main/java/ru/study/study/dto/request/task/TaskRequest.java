@@ -1,4 +1,4 @@
-package ru.study.study.dto.response.task;
+package ru.study.study.dto.request.task;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

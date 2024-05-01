@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.study.study.dto.request.task.TaskAddRequest;
-import ru.study.study.dto.response.task.TaskRequest;
+import ru.study.study.dto.request.task.TaskRequest;
 import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.service.TaskService;
 

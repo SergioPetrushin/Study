@@ -17,7 +17,7 @@ public class TaskMapper implements Mapper<Task, TaskAddRequest> {
                 .setName(source.getName())
                 .setDescription(source.getDescription())
                 .setPlan(new EducationPlan(source.getPlanId()))
-                .setOrdinal();
+                .setOrdinal(source.getOrdinal());
 
     }
 }

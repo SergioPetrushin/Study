@@ -19,6 +19,7 @@ public class TaskResponseMapper implements Mapper<TaskResponse, Task> {
                 .setName(source.getName())
                 .setCreated(source.getCreated())
                 .setPlan(educationPlanResponseMapper.from(source.getPlan()))
-                .setModified(source.getModified());
+                .setModified(source.getModified())
+                .setOrdinal(source.getOrdinal());
     }
 }

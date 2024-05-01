@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskTest extends BaseEntityTest {
     private final static Long ID = 1L;
+    private final static Integer ORDINAL = 1;
     private final static String NAME = "NAME";
     private static final String PASSWORD = "PWD";
     private static final String LOGIN = "LOGIN";
@@ -33,7 +34,7 @@ public class TaskTest extends BaseEntityTest {
         assertEquals(NAME, task.getName());
         assertEquals(CREATED, task.getCreated());
         assertEquals(MODIFIED, task.getModified());
-        assertEquals(ID, task.getOrdinal());
+        assertEquals(ORDINAL, task.getOrdinal());
 
         assertThat(task2.getId()).isEqualTo(-ID);
 
@@ -46,6 +47,6 @@ public class TaskTest extends BaseEntityTest {
                 .setName(NAME)
                 .setCreated(CREATED)
                 .setModified(MODIFIED)
-                .setOrdinal(ID);
+                .setOrdinal(ORDINAL);
     }
 }

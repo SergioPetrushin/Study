@@ -3,7 +3,7 @@ package ru.study.study.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.request.task.TaskAddRequest;
-import ru.study.study.dto.response.task.TaskRequest;
+import ru.study.study.dto.request.task.TaskRequest;
 import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.service.domain.TaskDomainService;
 

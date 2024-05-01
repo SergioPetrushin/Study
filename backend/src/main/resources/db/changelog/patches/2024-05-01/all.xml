@@ -6,7 +6,9 @@
 
     <changeSet id="ADD-ORDINAL-TASK" author="petrushin_ss">
         <addColumn tableName="TASK">
-            <column name="ORDINAL" type="INT" value="no email"/>
+            <column name="ORDINAL" type="INT" value="-1">
+                <constraints nullable="false"/>
+            </column>
         </addColumn>
     </changeSet>
 </databaseChangeLog>
