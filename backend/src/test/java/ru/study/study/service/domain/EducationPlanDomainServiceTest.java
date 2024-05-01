@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class EducationPlanDomainServiceTest {
+class EducationPlanDomainServiceTest {
     @Mock
     private EducationPlanRepository repository;
     @Mock
@@ -50,7 +50,7 @@ public class EducationPlanDomainServiceTest {
         when(educationPlanMapper.from((EducationPlanAddRequest) any())).thenReturn(getEducationPlan());
         when(repository.save(any())).thenReturn(getEducationPlan());
 
-        var result = service.addEducationPlan(new EducationPlanAddRequest());
+        var result = service.addEducationPlan(new EducationPlanAddRequest(), any());
 
         assertEquals(ID, result);
 
@@ -68,7 +68,7 @@ public class EducationPlanDomainServiceTest {
         when(educationPlanMerger.merge(any(), any())).thenReturn(getEducationPlan());
         when(repository.save(any())).thenReturn(getEducationPlan());
 
-        service.editEducationPlan(new EducationPlanAddRequest());
+        service.editEducationPlan(ID, new EducationPlanAddRequest());
 
         verify(repository).getReferenceById(any());
         verify(repository).save(any());

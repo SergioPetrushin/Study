@@ -26,6 +26,7 @@ import ru.study.study.service.domain.UserDomainService;
 import ru.study.study.service.security.JwtAuthenticationFilter;
 
 import static ru.study.study.controller.UserController.USER;
+import static ru.study.study.controller.UserController.USERS;
 import static ru.study.study.controller.UserController.USER_LOGIN;
 
 
@@ -54,6 +55,7 @@ public class WebSecurity implements WebMvcConfigurer {
                 auth
                         .requestMatchers(mvcMatcherBuilder.pattern(USER_LOGIN)).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern(USER)).hasAnyAuthority("ADMIN", "STUDENT")
+                        .requestMatchers(mvcMatcherBuilder.pattern(USERS)).permitAll()
                         .anyRequest().authenticated()
         );
 

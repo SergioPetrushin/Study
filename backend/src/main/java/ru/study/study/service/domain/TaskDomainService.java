@@ -37,8 +37,13 @@ public class TaskDomainService {
     }
 
     @Transactional
-    public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
+    public List<TaskResponse> getTasksByPlanId(Long planId) {
+        return  taskResponseMapper.from(taskRepository.findAllByPlanId(planId));
+    }
+
+    @Transactional
+    public void deleteTasksByPlanId(Long planId) {
+        taskRepository.deleteAllByPlanId(planId);
     }
 
     @Transactional
