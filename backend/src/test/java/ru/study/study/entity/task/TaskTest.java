@@ -21,7 +21,7 @@ public class TaskTest extends BaseEntityTest {
 
     @BeforeAll
     void init() throws ClassNotFoundException {
-        super.checkCountFields(6);
+        super.checkCountFields(7);
     }
 
     @Test

@@ -15,6 +15,7 @@ class TaskMergerTest {
     @InjectMocks
     private TaskMerger merger;
     private final static Long ID = 1L;
+    private final static Integer ORDINAL = 1;
     private final static String NAME = "NAME";
     private final static String DESCRIPTION = "DESCRIPTION";
 
@@ -27,10 +28,12 @@ class TaskMergerTest {
         assertEquals(NAME, result.getName());
         assertEquals(DESCRIPTION, result.getDescription());
         assertEquals(ID, result.getPlan().getId());
+        assertEquals(ORDINAL, result.getOrdinal());
 
         verify(source).getPlanId();
         verify(source).getName();
         verify(source).getDescription();
+        verify(source).getOrdinal();
         verifyNoMoreInteractions(source);
     }
 
@@ -39,6 +42,7 @@ class TaskMergerTest {
                 .setTaskId(ID)
                 .setPlanId(ID)
                 .setName(NAME)
-                .setDescription(DESCRIPTION);
+                .setDescription(DESCRIPTION)
+                .setOrdinal(ORDINAL);
     }
 }
