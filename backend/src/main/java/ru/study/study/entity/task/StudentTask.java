@@ -50,6 +50,15 @@ public class StudentTask extends BaseEntity {
     @Column(name = "EXPIRIED")
     private LocalDateTime exp;
 
+    @Column(name = "SOLUTION")
+    private String solution;
+
+    @Column(name = "COMMENT")
+    private String comment;
+
+    @Column(name = "ASSESMENT")
+    private Long assesment;
+
     @Override
     public StudentTask setId(Long id) {
         this.id = id;
