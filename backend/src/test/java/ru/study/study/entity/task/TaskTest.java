@@ -33,6 +33,7 @@ public class TaskTest extends BaseEntityTest {
         assertEquals(NAME, task.getName());
         assertEquals(CREATED, task.getCreated());
         assertEquals(MODIFIED, task.getModified());
+        assertEquals(ID, task.getOrdinal());
 
         assertThat(task2.getId()).isEqualTo(-ID);
 
@@ -44,6 +45,7 @@ public class TaskTest extends BaseEntityTest {
                 .setPlan(new EducationPlan())
                 .setName(NAME)
                 .setCreated(CREATED)
-                .setModified(MODIFIED);
+                .setModified(MODIFIED)
+                .setOrdinal(ID);
     }
 }

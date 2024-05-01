@@ -19,4 +19,6 @@ public class TaskAddRequest {
     private String name;
     @Schema(description = "Описание задачи")
     private String description;
+    @Schema(description = "Порядковый номер учебного плана")
+    private Integer ordinal;
 }
