@@ -15,6 +15,7 @@ import ru.study.study.dto.request.user.UserChangePWDRequest;
 import ru.study.study.dto.request.user.UserCheckEmailRequest;
 import ru.study.study.dto.request.user.UserCheckLoginRequest;
 import ru.study.study.dto.request.user.UserLoginRequest;
+import ru.study.study.dto.response.ResponseBody;
 import ru.study.study.dto.response.user.UserResponse;
 import ru.study.study.service.UserService;
 
@@ -46,8 +47,26 @@ public class UserController {
             value = USER,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
-    public UserResponse getUser(@PathVariable Long id) {
-        return service.getUser(id);
+    public ResponseBody<UserResponse> getUser(@PathVariable Long id) {
+
+        ResponseBody<UserResponse> response;
+
+        try {
+            response = ResponseBody.<UserResponse>builder()
+                    .success(true)
+                    .message("")
+                    .data(service.getUser(id))
+                    .build();
+
+        } catch (Exception ex) {
+
+            response = ResponseBody.<UserResponse>builder()
+                    .success(false)
+                    .message(ex.getMessage())
+                    .build();
+        }
+
+        return response;
     }
 
     @Operation(summary = "Удаление пользователя")
