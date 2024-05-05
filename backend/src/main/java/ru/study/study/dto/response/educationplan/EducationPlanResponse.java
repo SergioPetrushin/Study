@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.dto.response.user.UserResponse;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -26,5 +28,7 @@ public class EducationPlanResponse {
     private LocalDateTime created;
     @Schema(description = "Время изменения")
     private LocalDateTime modified;
+    @Schema( description = "Задачи плана")
+    private List<TaskResponse> tasks;
 
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import ru.study.study.dto.request.filedz.FileDzAddRequest;
 import ru.study.study.dto.request.filedz.FileDzRequest;
 import ru.study.study.dto.response.filedz.FileDzResponse;
@@ -36,7 +37,7 @@ public class FileDzController {
             value = FILE_DZ_ADD,
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
-    public FileDzResponse addFileDz(@RequestBody FileDzAddRequest request) {
+    public FileDzResponse addFileDz(@RequestBody FileDzAddRequest request, MultipartFile file) {
         return fileDzService.addFileDz(request);
     }
     @Operation(summary = "Удаление файла ДЗ")

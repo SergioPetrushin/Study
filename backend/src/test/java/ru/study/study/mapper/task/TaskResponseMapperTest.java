@@ -27,6 +27,7 @@ class TaskResponseMapperTest {
     private TaskResponseMapper mapper;
 
     private final static Long ID = 1L;
+    private final static Integer ORDINAL = 1;
     private final static String NAME = "NAME";
     private final static String DESCRIPTION = "DESCRIPTION";
     private static final LocalDateTime CREATED = LocalDateTime.now();
@@ -46,6 +47,7 @@ class TaskResponseMapperTest {
         assertEquals(DESCRIPTION, result.getDescription());
         assertEquals(CREATED, result.getCreated());
         assertEquals(MODIFIED, result.getModified());
+        assertEquals(ORDINAL, result.getOrdinal());
 
         verify(educationPlanResponseMapper).from((EducationPlan) any());
         verify(source).getId();
@@ -54,6 +56,7 @@ class TaskResponseMapperTest {
         verify(source).getDescription();
         verify(source).getCreated();
         verify(source).getModified();
+        verify(source).getOrdinal();
         verifyNoMoreInteractions(educationPlanResponseMapper, source);
 
     }
@@ -74,6 +77,7 @@ class TaskResponseMapperTest {
         assertEquals(DESCRIPTION, result.getDescription());
         assertEquals(CREATED, result.getCreated());
         assertEquals(MODIFIED, result.getModified());
+        assertEquals(ORDINAL, result.getOrdinal());
 
         verify(educationPlanResponseMapper, times(3)).from((EducationPlan) any());
         verify(source, times(3)).getId();
@@ -82,6 +86,7 @@ class TaskResponseMapperTest {
         verify(source, times(3)).getDescription();
         verify(source, times(3)).getCreated();
         verify(source, times(3)).getModified();
+        verify(source, times(3)).getOrdinal();
         verifyNoMoreInteractions(educationPlanResponseMapper, source);
     }
 
@@ -92,6 +97,7 @@ class TaskResponseMapperTest {
                 .setName(NAME)
                 .setCreated(CREATED)
                 .setModified(MODIFIED)
-                .setDescription(DESCRIPTION);
+                .setDescription(DESCRIPTION)
+                .setOrdinal(ORDINAL);
     }
 }

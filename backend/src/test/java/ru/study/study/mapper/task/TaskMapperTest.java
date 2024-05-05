@@ -19,6 +19,7 @@ class TaskMapperTest {
     private TaskMapper mapper;
 
     private final static Long ID = 1L;
+    private final static Integer ORDINAL = 1;
     private final static String NAME = "NAME";
     private final static String DESCRIPTION = "DESCRIPTION";
 
@@ -29,11 +30,13 @@ class TaskMapperTest {
 
         assertEquals(NAME, result.getName());
         assertEquals(DESCRIPTION, result.getDescription());
+        assertEquals(ORDINAL, result.getOrdinal());
         assertNotNull(result.getPlan());
 
         verify(source).getPlanId();
         verify(source).getName();
         verify(source).getDescription();
+        verify(source).getOrdinal();
         verifyNoMoreInteractions(source);
 
     }
@@ -47,11 +50,13 @@ class TaskMapperTest {
 
         assertEquals(NAME, result.getName());
         assertEquals(DESCRIPTION, result.getDescription());
+        assertEquals(ORDINAL, result.getOrdinal());
         assertNotNull(result.getPlan());
 
         verify(source, times(3)).getPlanId();
         verify(source, times(3)).getName();
         verify(source, times(3)).getDescription();
+        verify(source, times(3)).getOrdinal();
         verifyNoMoreInteractions(source);
 
     }
@@ -61,6 +66,7 @@ class TaskMapperTest {
                 .setTaskId(ID)
                 .setPlanId(ID)
                 .setName(NAME)
-                .setDescription(DESCRIPTION);
+                .setDescription(DESCRIPTION)
+                .setOrdinal(ORDINAL);
     }
 }

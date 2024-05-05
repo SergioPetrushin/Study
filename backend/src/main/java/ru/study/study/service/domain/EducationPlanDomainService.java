@@ -22,16 +22,16 @@ public class EducationPlanDomainService {
     private final EducationPlanResponseMapper educationPlanResponseMapper;
 
     @Transactional
-    public void editEducationPlan(EducationPlanAddRequest request) {
-        var plan = repository.getReferenceById(request.getPlanId());
+    public void editEducationPlan(Long planId, EducationPlanAddRequest request) {
+        var plan = repository.getReferenceById(planId);
         educationPlanMerger.merge(plan, request);
         repository.save(plan);
     }
 
     @Transactional
-    public Long addEducationPlan(EducationPlanAddRequest request) {
+    public Long addEducationPlan(EducationPlanAddRequest request, Long currentUserId) {
         var plan = educationPlanMapper.from(request);
-        plan.setUser(new User(1L));
+        plan.setUser(new User(currentUserId));
         return repository.save(plan).getId();
 
     }

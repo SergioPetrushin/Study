@@ -26,6 +26,9 @@ public class Task extends EntityWithName {
     @JoinColumn(name = "PLAN_ID")
     private EducationPlan plan;
 
+    @Column(name = "ORDINAL")
+    private Integer ordinal;
+
     @Override
     public Task setId(Long id) {
         this.id = id;
