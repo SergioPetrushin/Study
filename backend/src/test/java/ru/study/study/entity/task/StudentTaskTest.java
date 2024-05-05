@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StudentTaskTest extends BaseEntityTest {
     private final static Long ID = 1L;
+    private final static String TEXT = "Text";
     private static final LocalDateTime CREATED = LocalDateTime.now();
     private static final LocalDateTime EXPIRED = LocalDateTime.now();
     private static final LocalDateTime MODIFIED = LocalDateTime.now().plusMinutes(2);
@@ -31,6 +32,9 @@ public class StudentTaskTest extends BaseEntityTest {
         assertEquals(EXPIRED, studentTask.getExp());
         assertEquals(CREATED, studentTask.getCreated());
         assertEquals(MODIFIED, studentTask.getModified());
+        assertEquals(TEXT, studentTask.getSolution());
+        assertEquals(TEXT, studentTask.getComment());
+        assertEquals(ID, studentTask.getAssesment());
 
         assertThat(studentTask2.getId()).isEqualTo(-ID);
 
@@ -43,7 +47,10 @@ public class StudentTaskTest extends BaseEntityTest {
                 .setId(ID)
                 .setExp(EXPIRED)
                 .setCreated(CREATED)
-                .setModified(MODIFIED);
+                .setModified(MODIFIED)
+                .setSolution(TEXT)
+                .setComment(TEXT)
+                .setAssesment(ID);
 
     }
 }
