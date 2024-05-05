@@ -14,18 +14,18 @@
     </changeSet>
   
     <changeSet id="ADD-SOLUTION-STUDENT-TASKS-001" author="petrushin_ss">
-        <addColumn tableName="STUDENT_TASK">
-            <column name="SOLUTION" type="STRING" value="null"/>
+        <addColumn tableName="STUDENT_TASKS">
+            <column name="SOLUTION" type="VARCHAR(50)" value="null"/>
         </addColumn>
     </changeSet>
     <changeSet id="ADD-COMMENT-STUDENT-TASKS-002" author="petrushin_ss">
-        <addColumn tableName="STUDENT_TASK">
-            <column name="COMMENT" type="STRING" value="null"/>
+        <addColumn tableName="STUDENT_TASKS">
+            <column name="COMMENT" type="VARCHAR(50)" value="null"/>
         </addColumn>
     </changeSet>
     <changeSet id="ADD-ASSESMENT-STUDENT-TASKS-003" author="petrushin_ss">
-        <addColumn tableName="STUDENT_TASK">
-            <column name="ASSESMENT" type="LONG" value="null"/>
+        <addColumn tableName="STUDENT_TASKS">
+            <column name="ASSESMENT" type="INT" value="null"/>
         </addColumn>
     </changeSet>
 </databaseChangeLog>

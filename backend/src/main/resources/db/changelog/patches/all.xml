@@ -6,5 +6,6 @@
 
     <includeAll path="classpath:/db/changelog/patches/2023-02-17"/>
     <includeAll path="classpath:/db/changelog/patches/2024-03-10"/>
+    <includeAll path="classpath:/db/changelog/patches/2024-05-01"/>
 
 </databaseChangeLog>

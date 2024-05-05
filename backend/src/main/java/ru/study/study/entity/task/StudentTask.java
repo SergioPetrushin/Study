@@ -40,15 +40,15 @@ public class StudentTask extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TASK_ID")
-    private User taskId;
+    private Task task;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TASK_STATUS_ID")
-    private User taskStatusId;
+    private TaskStatus taskStatus;
 
 
     @Column(name = "EXPIRIED")
-    private LocalDateTime exp;
+    private LocalDateTime expiried;
 
     @Column(name = "SOLUTION")
     private String solution;
