@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.study.study.dto.response.task.StudentTaskResponse;
 import ru.study.study.entity.task.TaskStatus;
-import ru.study.study.mapper.student_task.StudentTaskResponseMapper;
+import ru.study.study.mapper.studenttask.StudentTaskResponseMapper;
 import ru.study.study.repository.StudentTaskRepository;
 
 import java.security.InvalidParameterException;

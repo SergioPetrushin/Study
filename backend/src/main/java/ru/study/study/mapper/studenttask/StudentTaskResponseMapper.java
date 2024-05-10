@@ -1,4 +1,4 @@
-package ru.study.study.mapper.student_task;
+package ru.study.study.mapper.studenttask;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
