@@ -29,7 +29,7 @@ public class StudentTaskTest extends BaseEntityTest {
         var studentTask2 = new StudentTask(-ID);
 
         assertEquals(ID, studentTask.getId());
-        assertEquals(EXPIRED, studentTask.getExp());
+        assertEquals(EXPIRED, studentTask.getExpiried());
         assertEquals(CREATED, studentTask.getCreated());
         assertEquals(MODIFIED, studentTask.getModified());
         assertEquals(TEXT, studentTask.getSolution());
@@ -42,10 +42,10 @@ public class StudentTaskTest extends BaseEntityTest {
 
     private StudentTask getStudentTask() {
         return new StudentTask()
-                .setTaskId(new User())
-                .setTaskStatusId(new User())
+                .setTask(new Task())
+                .setTaskStatus(new TaskStatus())
                 .setId(ID)
-                .setExp(EXPIRED)
+                .setExpiried(EXPIRED)
                 .setCreated(CREATED)
                 .setModified(MODIFIED)
                 .setSolution(TEXT)

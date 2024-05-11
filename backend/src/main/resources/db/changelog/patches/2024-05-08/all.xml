@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+    </changeSet>
+    <changeSet id="UPDATE-TASK-STATUS-001" author="petrushin_ss">
+       <delete tableName="TASK_STATUS" schemaName="REPOSITORY"/>
+
+        <dropSequence schemaName="REPOSITORY" sequenceName="TASK_STATUS_SEQ"/>
+        <createSequence schemaName="REPOSITORY" sequenceName="TASK_STATUS_SEQ" startValue="0" minValue="0"/>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="ISSUED" />
+            <column name="DESCRIPTION" value="Задание выдано"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="IN_WORK" />
+            <column name="DESCRIPTION" value="В работе у ученика"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="QUESTION"/>
+            <column name="DESCRIPTION" value="У ученика возникли вопросы"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="ON_CHECK" />
+            <column name="DESCRIPTION" value="Выдано преподавателю"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="COMPLETED" />
+            <column name="DESCRIPTION" value="Задание выполнено"/>
+        </insert>
+
+        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
+            <column name="NAME" value="REJECTED" />
+            <column name="DESCRIPTION" value="Задание отклонено"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
