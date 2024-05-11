@@ -9,6 +9,9 @@
     <changeSet id="UPDATE-TASK-STATUS-001" author="petrushin_ss">
        <delete tableName="TASK_STATUS" schemaName="REPOSITORY"/>
 
+        <dropSequence schemaName="REPOSITORY" sequenceName="TASK_STATUS_SEQ"/>
+        <createSequence schemaName="REPOSITORY" sequenceName="TASK_STATUS_SEQ" startValue="0" minValue="0"/>
+
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
             <column name="NAME" value="ISSUED" />
             <column name="DESCRIPTION" value="Задание выдано"/>

@@ -2,8 +2,6 @@ package ru.study.study.entity.task;
 
 public enum TaskStatusEnum {
 
-    CREATED,
-    CHANGED,
     ISSUED,
     IN_WORK,
     QUESTION,
