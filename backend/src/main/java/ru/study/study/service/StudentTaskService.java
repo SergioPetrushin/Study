@@ -2,6 +2,8 @@ package ru.study.study.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.study.study.dto.request.studenttask.StudentTaskAddRequest;
+import ru.study.study.dto.response.studenttask.StudentTaskResponse;
 import ru.study.study.entity.task.TaskStatusEnum;
 import ru.study.study.service.domain.StudentTaskDomainService;
 
@@ -37,4 +39,8 @@ public class StudentTaskService {
         }
     }
 
+    public StudentTaskResponse addStudentTask(StudentTaskAddRequest request) {
+        Long id = service.addStudentTask(request);
+        return service.getStudentTask(id);
+    }
 }

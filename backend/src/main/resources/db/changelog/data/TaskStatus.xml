@@ -11,33 +11,22 @@
         </preConditions>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="CREATED" />
-            <column name="DESCRIPTION" value="Задание создано"/>
-        </insert>
-
-        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="CHANGED" />
-            <column name="DESCRIPTION" value="Задание изменено"/>
-        </insert>
-
-
-        <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
             <column name="NAME" value="ISSUED" />
             <column name="DESCRIPTION" value="Задание выдано"/>
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="IN_A_STUDENTS_WORK" />
+            <column name="NAME" value="IN_WORK" />
             <column name="DESCRIPTION" value="В работе у ученика"/>
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="STUDENT_HAS_QUESTIONS" />
+            <column name="NAME" value="QUESTION"/>
             <column name="DESCRIPTION" value="У ученика возникли вопросы"/>
         </insert>
 
         <insert schemaName="REPOSITORY" tableName="TASK_STATUS">
-            <column name="NAME" value="SENT_TO_TEACHER" />
+            <column name="NAME" value="ON_CHECK" />
             <column name="DESCRIPTION" value="Выдано преподавателю"/>
         </insert>
 
