@@ -1,10 +1,10 @@
-package ru.study.study.dto.response.task;
+package ru.study.study.dto.response.studenttask;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import ru.study.study.dto.response.task.TaskResponse;
 import ru.study.study.entity.task.TaskStatusEnum;
 
 import java.time.LocalDateTime;

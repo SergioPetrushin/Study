@@ -54,7 +54,6 @@ public class WebSecurity implements WebMvcConfigurer {
         http.authorizeHttpRequests(auth ->
                 auth
                         .requestMatchers(mvcMatcherBuilder.pattern(USER_LOGIN)).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern(USER)).hasAnyAuthority("ADMIN", "STUDENT")
                         .requestMatchers(mvcMatcherBuilder.pattern(USERS)).permitAll()
                         .anyRequest().authenticated()
         );
